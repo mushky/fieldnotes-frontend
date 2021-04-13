@@ -1,77 +1,44 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import Header from './Components/Header';
-
-import Note from './Components/Note/Note';
-import CreateNote from './Components/Note/CreateNote';
-
+import NoteList from './Components/Note/NoteList'
 import Login from './Components/User/Login';
+import Logout from './Components/User/Logout';
 
-import axios from 'axios';
+import { UserContext } from './UserContext';
+
 import './App.css';
 
+// TODO: Refactor to NoteList [DONE]
 // TODO: LOGIN SHOULD WORK AND REDIRECT
+// TODO: Add Category and Tags to Form [DONE]
 // TODO: EDIT
 // TODO: DetailNoteView
 
 function App() {
-  const [notes, setNotes] = useState([]);
-  const [loggedIn] = useState(false);
-  
-  useEffect(() => {
-    axios.get('http://localhost:3001/api/notes/user/606e2747fe1e935eea5603e6')
-      .then((res) => {
-        setNotes(res.data.Note)
-      })
-  },[])
-
-  function addNote(newNote) {
-    setNotes(prevNotes => {
-      return [...prevNotes, newNote];
-    })
-  }
-
-  function deleteNote(id) {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNmUyNzQ3ZmUxZTkzNWVlYTU2MDNlNiIsImlhdCI6MTYxODI3MTE5NCwiZXhwIjoxNjE4Mjc4Mzk0fQ.iXThB1tZi0Na7B6gJ5q9u6NPC7dY1VC613kUm4E1YMY"
-
-		const headers = {
-			"x-access-token": token
-		}
-
-    setNotes(prevNotes => {
-      return prevNotes.filter((noteItem) => {
-        return noteItem._id !== id;
-      });
-    })
-
-    axios.delete(`http://localhost:3001/api/notes/${id}`, { headers })
-      .then((res) => {
-        console.log(res);
-      }, (error) => {
-        console.log(error);
-      })
-  }
+  const [userValue, setUserValue] = useState("");
 
   return (
-    <div className="App">
-      <Header />
-      { loggedIn ? <Login /> : <CreateNote onAdd={addNote}/> }
-  
-      <div>
-        {notes.map((noteItem) => {
-            return(
-            <Note 
-              key={noteItem._id} 
-              id={noteItem._id}
-              title={noteItem.title} 
-              content={noteItem.content} 
-              onDelete={deleteNote}/>
-            )
-          })}
+    <Router>
+      <div className="App">
+        <header className="header">
+          <Link to="/Notes"><h2 className="titleName">Field Notes</h2></Link><br></br>
+          <nav>
+            <li>
+              { userValue.length > 1 && <Link to="/Logout">Logout</Link> }
+              { userValue.length <= 0 && <Link to="/Login">Login</Link>}
+            </li>
+            { userValue.length > 1 && <p className="logged-in">Logged in as: <strong>{ userValue[2] }</strong></p> }
+          </nav>
+        </header>
+          <UserContext.Provider value={{ userValue, setUserValue }}>
+            <Route path="/Notes" exact component={NoteList}/>
+            <Route path="/Login" exact component={Login} />
+            <Route path="/Logout" exact component={Logout} />
+          </UserContext.Provider>
       </div>
+    </Router>
 
-        
-    </div>
   );
 }
 
