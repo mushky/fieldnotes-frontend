@@ -1,15 +1,18 @@
 import React, {useState, useEffect} from 'react';
 
 import Header from './Components/Header';
-import Footer from './Components/Footer';
 
 import Note from './Components/Note/Note';
 import CreateNote from './Components/Note/CreateNote';
+
 import Login from './Components/User/Login';
 
 import axios from 'axios';
 import './App.css';
 
+// TODO: LOGIN SHOULD WORK AND REDIRECT
+// TODO: EDIT
+// TODO: DetailNoteView
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -47,8 +50,6 @@ function App() {
       }, (error) => {
         console.log(error);
       })
-
-
   }
 
   return (

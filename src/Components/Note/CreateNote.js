@@ -18,27 +18,23 @@ function CreateNote(props) {
 				[name]: value
 			};
 		})
-
-
 	}
 
 	function submitNote(e) {
 		e.preventDefault();
 
 		const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNmUyNzQ3ZmUxZTkzNWVlYTU2MDNlNiIsImlhdCI6MTYxODI3MTE5NCwiZXhwIjoxNjE4Mjc4Mzk0fQ.iXThB1tZi0Na7B6gJ5q9u6NPC7dY1VC613kUm4E1YMY"
-
 		const headers = {
 			"x-access-token": token
 		}
 
 		axios.post('http://localhost:3001/api/notes', note , {headers})
-			.then((response) => {
-				console.log(response);
+			.then((res) => {
 				const newNote = {
-					_id: response.data.Note._id,
-					content: response.data.Note.content,
-					title: response.data.Note.title,
-					userId: response.data.Note.userId
+					_id: res.data.Note._id,
+					content: res.data.Note.content,
+					title: res.data.Note.title,
+					userId: res.data.Note.userId
 				}
 				props.onAdd(newNote);
 				setNote(newNote);
