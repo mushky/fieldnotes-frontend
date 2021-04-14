@@ -1,5 +1,8 @@
 import React from 'react';
 
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Fab from '@material-ui/core/Fab';
+
 function Note(props) {
 
 	function handleClick(e) {
@@ -16,7 +19,6 @@ function Note(props) {
 			<p>{props.content}</p>
 			<p>{props.category}</p>
 			<p>{props.tags}</p>
-			<button className="delete-button" onClick={handleClick}>DELETE</button>
 		</div>
 	)
 }

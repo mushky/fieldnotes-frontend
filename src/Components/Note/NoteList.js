@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../UserContext';
 
 import Note from './Note';
 import CreateNote from './CreateNote';
+import NoteDetailView from './NoteDetailView';
 
 import axios from "axios";
-import { UserContext } from '../../UserContext';
 
 function NoteList() {
 	const {userValue, setUserValue} = useContext(UserContext);
-	
+
   const [notes, setNotes] = useState([]);
 	const [editMode, setEditMode] = useState(true);
 	const [selectedNote, setSelectedNote] = useState({
@@ -41,8 +42,8 @@ function NoteList() {
 		const headers = {
 			"x-access-token": token
 		}
-
-    setNotes(prevNotes => {
+		console.log(id);
+		setNotes(prevNotes => {
       return prevNotes.filter((noteItem) => {
         return noteItem._id !== id;
       });
@@ -54,6 +55,10 @@ function NoteList() {
       }, (error) => {
         console.log(error);
       })
+
+		setTimeout(() => {
+			setSelectedNote({})
+		},1000)
 		
 
   }
@@ -89,7 +94,7 @@ function NoteList() {
 						tags={noteItem.tags}
 						userId={noteItem.userId}
 						onSelect={selectNote} 
-						onDelete={deleteNote}/>
+					/>
 					)
 				})}
 			</div>
@@ -98,15 +103,19 @@ function NoteList() {
 				<div>
 					<button className="toggle-button" onClick={toggleEditMode}>Toggle</button>
 				</div>
+
 				{ editMode &&
 					<CreateNote onAdd={addNote}/> 
 				}
-				<hr></hr>
-				<h1>{selectedNote.title}</h1>
-				<p>{selectedNote.content}</p>
-				<br></br>
-				<pre>{selectedNote.category}</pre>
-				<pre>{selectedNote.tags}</pre>
+				<NoteDetailView 
+					key={selectedNote.id} 
+					id={selectedNote.id}
+					title={selectedNote.title} 
+					content={selectedNote.content} 
+					category={selectedNote.category} 
+					tags={selectedNote.tags} 
+					onDelete={deleteNote}
+				/>
 			</div>
 		</div>
 	)

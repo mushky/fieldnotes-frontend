@@ -2,6 +2,9 @@ import React, {useState, useContext} from 'react';
 import axios from 'axios';
 import { UserContext } from '../../UserContext';
 
+import NoteAddIcon from '@material-ui/icons/NoteAdd';
+import Fab from '@material-ui/core/Fab';
+
 function CreateNote(props) {
 	const url = `http://localhost:3001/api`
 
@@ -69,7 +72,11 @@ function CreateNote(props) {
 				<input className="note-form-input" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
 				<input className="note-form-input" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
 
-				<button className="note-form-button" onClick={onHandleSubmit}>Add</button>
+				<div className="note-form-button">
+					<Fab onClick={onHandleSubmit}>
+						<NoteAddIcon />
+					</Fab>
+				</div>
 			</form>
 		</div>
 	)
