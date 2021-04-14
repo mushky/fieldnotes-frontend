@@ -8,11 +8,11 @@ import Logout from './Components/User/Logout';
 import { UserContext } from './Context/UserContext';
 
 import './App.css';
+// TODO: LOGIN SHOULD WORK AND REDIRECT
 
 // TODO: Refactor to NoteList [DONE]
-// TODO: LOGIN SHOULD WORK AND REDIRECT
 // TODO: Add Category and Tags to Form [DONE]
-// TODO: EDIT
+// TODO: EDIT [DONE]
 // TODO: DetailNoteView [DONE]
 // TODO: Toggle should switch between post and detailview [DONE]
 

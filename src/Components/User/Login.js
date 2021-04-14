@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { UserContext } from '../../Context/UserContext';
 
-function Login() {
+const Login = () => {
 	const {userValue, setUserValue} = useContext(UserContext);
 
 	const [user, setUser] = useState({

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../Context/UserContext';
 
-function Logout() {
+const Logout = () => {
   const {userValue, setUserValue} = useContext(UserContext);
 
 	function onHandleSubmit(e) {

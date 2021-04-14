@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LargeNote(props) {
+const LargeNote = (props) => {
 	return(
 		<div>
 			<h1>{props.title}</h1> 

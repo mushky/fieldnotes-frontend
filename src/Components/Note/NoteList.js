@@ -7,11 +7,11 @@ import NoteDetailView from './NoteDetailView';
 
 import axios from "axios";
 
-function NoteList() {
+const NoteList = () => {
 	const {userValue, setUserValue} = useContext(UserContext);
 
   const [notes, setNotes] = useState([]);
-	const [editMode, setEditMode] = useState(false);
+	const [editMode, setEditMode] = useState(true);
 	const [selectedNote, setSelectedNote] = useState({
 		_id: "",
 		title: "",
@@ -37,18 +37,31 @@ function NoteList() {
     })
   }
 
-	function updateNote(newNote) {
-    setNotes(prevNotes => {
-      return [...prevNotes, newNote];
-    })
-  }
+	const onUpdate = (newNote) => {
+		for (let i = 0; i < notes.length; i++) {
+			if (notes[i]._id === newNote.id) {
+				let note = notes.filter((note) => note.id === newNote.id)
+
+				note.title = newNote.title;
+				note.content = newNote.content;
+				note.category = newNote.category;
+				note.tags = newNote.tags;
+
+				notes[i] = note;
+
+				setTimeout(() => {
+					setSelectedNote(newNote);
+					return;
+				},1000)
+			}
+		}
+	}
 
   function deleteNote(id) {
 		const token = userValue[3];
 		const headers = {
 			"x-access-token": token
 		}
-		console.log(id);
 		setNotes(prevNotes => {
       return prevNotes.filter((noteItem) => {
         return noteItem._id !== id;
@@ -120,7 +133,7 @@ function NoteList() {
 						category={selectedNote.category} 
 						tags={selectedNote.tags} 
 						onDelete={deleteNote}
-						onUpdate={updateNote}
+						onUpdate={onUpdate}
 					/>
 				}
 			</div>

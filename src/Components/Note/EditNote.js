@@ -3,14 +3,16 @@ import { UserContext } from '../../Context/UserContext';
 
 import Fab from '@material-ui/core/Fab';
 import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import axios from 'axios';
 
-function EditNote(props) {
+const EditNote = (props) => {
 	const url = `http://localhost:3001/api`
 	const {userValue, setUserValue} = useContext(UserContext);
 
 	const [note, setNote] = useState({
+		id: props.id,
 		title: props.title,
 		content: props.content,
 		category: props.category,
@@ -29,16 +31,22 @@ function EditNote(props) {
 		})
 	}
 
+	function handleDelete() {
+		props.onDelete(note.id);
+	}
+
 	function onHandleSubmit(e) {
 		e.preventDefault();
+
 		const token = userValue[3];
 		const headers = {
 			"x-access-token": token
 		}
+
 		axios.put(`${url}/notes/${props.id}`, note , {headers})
 			.then((res) => {
 				const updatedNote = {
-					_id: res.data.updateNote._id,
+					id: props.id,
 					content: res.data.updateNote.content,
 					title: res.data.updateNote.title,
 					category: res.data.updateNote.category,
@@ -46,21 +54,15 @@ function EditNote(props) {
 					userId: res.data.updateNote.userId
 				}
 				setNote(updatedNote);
+				console.log(updatedNote);
 				props.onUpdate(updatedNote);
 			}, (error) => {
 				console.log(error);
 			}).then(
-				setTimeout(() => {
-					setNote({
-						title: "",
-						content: "",
-						category: "",
-						tags: "",
-						userId: userValue[0]
-					})
-				},1000)
-
+				alert("Note Updated")
 			)
+
+			
 	}
 
 	return(
@@ -77,6 +79,12 @@ function EditNote(props) {
 						<DynamicFeedIcon />
 					</Fab>
 				</div>
+
+				<div className="note-form-button">
+					<Fab onClick={handleDelete}>
+						<DeleteForeverIcon />
+					</Fab>
+				</div>				
 			</form>			
 		</div>
 	)

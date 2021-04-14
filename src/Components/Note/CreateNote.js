@@ -6,7 +6,7 @@ import NoteAddIcon from '@material-ui/icons/NoteAdd';
 
 import axios from 'axios';
 
-function CreateNote(props) {
+const CreateNote = (props) => {
 	const url = `http://localhost:3001/api`
 
 	const {userValue, setUserValue} = useContext(UserContext);

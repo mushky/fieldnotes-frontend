@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Note(props) {
+const Note = (props) => {
 
 	function handleSelect(e) {
 		props.onSelect(props);

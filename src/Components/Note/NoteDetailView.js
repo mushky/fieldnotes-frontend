@@ -5,15 +5,19 @@ import LargeNote from '../Note/LargeNote';
 import EditIcon from '@material-ui/icons/Edit';
 import Fab from '@material-ui/core/Fab';
 
-function NoteDetailView(props) {
+const NoteDetailView = (props) => {
 	const [isEditMode, setIsEditMode] = useState(false);
 
 	function handleEditNote() {
 		setIsEditMode(!isEditMode);
 	}
 
-	function updateNote(props) {
+	function onUpdate(props) {
 		props.onUpdate(props);
+	}
+
+	function onDelete(propsid) {
+		props.onDelete(props);
 	}
 
 	return(
@@ -25,11 +29,11 @@ function NoteDetailView(props) {
 			</div>
 
 			{ !isEditMode && 
-				<LargeNote id={props.id} title={props.title} content={props.content} category={props.category} tags={props.tags} />
+				<LargeNote {...props} />
 			}
 
 			{ isEditMode && 
-				<EditNote id={props.id} title={props.title} content={props.content} category={props.category} tags={props.tags} onUpdate={updateNote}/>
+				<EditNote {...props}/>
 			}
 		</div>
 
