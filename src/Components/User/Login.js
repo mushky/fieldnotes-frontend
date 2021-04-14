@@ -44,11 +44,10 @@ function Login() {
 	}
 
 	return(
-		<div className="container">
+		<div className="login-container">
 			<form>
 				<input onChange={handleChange} value={user.username} name="username" placeholder="username"></input>
 				<input onChange={handleChange} value={user.password} name="password" placeholder="********"></input>
-
 				<button onClick={onSubmit}>Submit</button>
 			</form>
 

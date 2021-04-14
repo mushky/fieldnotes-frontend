@@ -7,35 +7,38 @@
 
 .container {
   display: flex;
-  border: 1px solid red;
   padding: 10px;
   margin: 10px;
 }
 
 .titleName {
   padding-top: 5px;
+  color: #B55AFC;
 }
 
 .leftContainer {
   flex: 2;
-  border: 1px solid blue;
+  border:#FF63BE solid 1px;
+
 }
 
 .rightContainer {
   flex: 3;
-  border: 1px solid black
+  border:#FF63BE solid 1px;
+
 }
 
 .header {
-  background-color: peru;
+  background-color: #000000;
   margin: auto -16px;
   padding: 16px 32px;
 }
 
 .note {
-  background-color: #d0d0d0;
+  background-color: #000000;
   border-radius: 2px;
   box-shadow: 0 2px 5x #ccc;
+  color: #FF63BE;
   width: 100%;
   float: left;
   margin-bottom: 20px;
@@ -43,11 +46,11 @@
 
 body {
   font-family: "Source Sans Pro", sans-serif;
-  color: white;
   font-weight: 300;
-  background: #50a3a2;
+  background: #000000;
   width: 100%;
   height: 100%;
+  color: #07CAF9;
 }
 
 .container h1 {
@@ -56,8 +59,7 @@ body {
 }
 
 input {
-  border: 1px solid rgba(252, 252, 252, 0.4);
-  background-color: rgba(252, 252, 252, 0.2);
+  background-color:#000000;
   width: 250px;
   border-radius: 3px;
   font-family: "Source Sans Pro", sans-serif;
@@ -73,10 +75,10 @@ input {
 button {
   appearance: none;
   outline: 0;
-  background-color: white;
+  background-color: #B55AFC;
   border: 0;
   padding: 10px 15px;
-  color: #50a3a2;
+  color: #000000;
   border-radius: 3px;
   width: 250px;
   font-size: 18px;
@@ -86,7 +88,7 @@ button {
   position: relative;
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: #000000;
   padding: 5px;
   border-radius: 1px;
 }
@@ -99,8 +101,9 @@ button {
   font-size: 1.2em;
   font-family: inherit;
   resize: none;
-  color: black;
+  color: #07CAF9;
   text-align: left;
+  background-color: #000000;
 }
 
 .note-form-textarea {
@@ -112,13 +115,15 @@ button {
   font-family: inherit;
   resize: none;
   height: 500px;
+  background-color: #000000;
+  color: #07CAF9;
 }
 
 .note-form-button {
   position: absolute;
   right: 18px;
   bottom: -18px;
-  background: #f5ba13;
+  background: #B55AFC;
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -131,7 +136,7 @@ button {
 
 .delete-button {
   position: absolute;
-  background: #f5ba13;
+  background: #B55AFC;
   color: #fff;
   border: none;
   width: 60px;
@@ -142,7 +147,41 @@ button {
   justify-content: center;
 }
 
+.toggle-button {
+  background: #B55AFC;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.note-list-button {
+  background: #B55AFC;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .logged-in {
+  color: #B55AFC;
   float: right;
   font-size: 20px;
+}
+
+.login-container {
+  width: 300px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  color: #000000;
+  font-weight: 300;
 }

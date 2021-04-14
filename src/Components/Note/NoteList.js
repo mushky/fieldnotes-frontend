@@ -9,8 +9,9 @@ import { UserContext } from '../../UserContext';
 function NoteList() {
 	const {userValue, setUserValue} = useContext(UserContext);
   const [notes, setNotes] = useState([]);
-	const [editMode, setEditMode] = useState(false);
+	const [editMode, setEditMode] = useState(true);
 	const [selectedNote, setSelectedNote] = useState({
+		_id: "",
 		title: "",
 		content: "",
 		category: "",
@@ -52,27 +53,30 @@ function NoteList() {
       }, (error) => {
         console.log(error);
       })
+		
+
   }
 
 	function selectNote(noteObject) {
 		setSelectedNote({
-			id: noteObject._id,
+			id: noteObject.id,
 			title: noteObject.title,
 			content: noteObject.content,
 			category: noteObject.category,
 			tags: noteObject.tags,
 			userId: noteObject.userId
 		});
+		console.log(selectedNote);
 	}
 
 	function toggleEditMode() {
 		setEditMode(!editMode);
-		console.log(editMode);
 	}
 
 	return(
 		<div className="container">
-			<div className="leftContainer">				
+			<div className="leftContainer">
+				<button className="note-list-button">Note List</button>				
 				{notes.map((noteItem) => {
 					return(
 					<Note 
@@ -82,6 +86,7 @@ function NoteList() {
 						content={noteItem.content}
 						category={noteItem.category}
 						tags={noteItem.tags}
+						userId={noteItem.userId}
 						onSelect={selectNote} 
 						onDelete={deleteNote}/>
 					)
@@ -89,7 +94,9 @@ function NoteList() {
 			</div>
 
 			<div className="rightContainer">
-				<button onClick={toggleEditMode}>Toggle</button>
+				<div>
+					<button className="toggle-button" onClick={toggleEditMode}>Toggle</button>
+				</div>
 				{ editMode &&
 					<CreateNote onAdd={addNote}/> 
 				}

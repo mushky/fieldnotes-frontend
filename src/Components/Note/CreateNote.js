@@ -35,7 +35,6 @@ function CreateNote(props) {
 
 		axios.post(`${url}/notes`, note , {headers})
 			.then((res) => {
-				console.log(res);
 				const newNote = {
 					_id: res.data.Note._id,
 					content: res.data.Note.content,
@@ -55,7 +54,7 @@ function CreateNote(props) {
 						content: "",
 						category: "",
 						tags: "",
-						userId: userValue[3]
+						userId: userValue[0]
 					})
 				},1000)
 
