@@ -5,7 +5,7 @@ import NoteList from './Components/Note/NoteList'
 import Login from './Components/User/Login';
 import Logout from './Components/User/Logout';
 
-import { UserContext } from './UserContext';
+import { UserContext } from './Context/UserContext';
 
 import './App.css';
 
@@ -13,7 +13,8 @@ import './App.css';
 // TODO: LOGIN SHOULD WORK AND REDIRECT
 // TODO: Add Category and Tags to Form [DONE]
 // TODO: EDIT
-// TODO: DetailNoteView
+// TODO: DetailNoteView [DONE]
+// TODO: Toggle should switch between post and detailview [DONE]
 
 function App() {
   const [userValue, setUserValue] = useState("");

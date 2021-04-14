@@ -1,13 +1,6 @@
 import React from 'react';
 
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import Fab from '@material-ui/core/Fab';
-
 function Note(props) {
-
-	function handleClick(e) {
-		props.onDelete(props.id);
-	}
 
 	function handleSelect(e) {
 		props.onSelect(props);

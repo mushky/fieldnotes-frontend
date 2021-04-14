@@ -1,27 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import EditNote from '../Note/EditNote';
+import LargeNote from '../Note/LargeNote';
+import EditIcon from '@material-ui/icons/Edit';
 import Fab from '@material-ui/core/Fab';
 
-function NoteDetailView(props) {
 
-	function handleClick(e) {
-		props.onDelete(props.id);
+function NoteDetailView(props) {
+	const [isEditMode, setIsEditMode] = useState(false);
+
+	function handleEditNote() {
+		setIsEditMode(!isEditMode);
+		console.log(props);
+	}
+
+	function updateNote(props) {
+		console.log(props);
+		props.onUpdate(props);
 	}
 
 	return(
 		<div>
-			<h1>{props.title}</h1>
-			<p>{props.content}</p>
-			<br></br>
-			<pre>{props.category}</pre>
-			<pre>{props.tags}</pre>
-
-			<div className="delete-button">
+			<div className="edit-button">
 				<Fab>
-					<DeleteForeverIcon onClick={handleClick}/>
+					<EditIcon onClick={handleEditNote}/>
 				</Fab>
 			</div>
+
+			{ !isEditMode && 
+				<LargeNote id={props.id} title={props.title} content={props.content} category={props.category} tags={props.tags} />
+			}
+
+			{ isEditMode && 
+				<EditNote id={props.id} title={props.title} content={props.content} category={props.category} tags={props.tags} onUpdate={updateNote}/>
+			}
+			
 		</div>
 
 	)

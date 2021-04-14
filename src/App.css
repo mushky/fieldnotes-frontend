@@ -99,7 +99,14 @@ button {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #850037;
+}
 
+.edit-form {
+  width: 100%;
+  background-color: #000000FF;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #850037;
 }
 
 .note-form-input {
@@ -135,7 +142,12 @@ button {
 }
 
 .delete-button {
-  float:right;
+  float: right;
+  justify-content: center;
+}
+
+.edit-button {
+  float: right;
   justify-content: center;
 }
 

@@ -1,24 +1,23 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import { UserContext } from '../../Context/UserContext';
 
 import Fab from '@material-ui/core/Fab';
-import NoteAddIcon from '@material-ui/icons/NoteAdd';
+import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 
 import axios from 'axios';
 
-function CreateNote(props) {
+function EditNote(props) {
 	const url = `http://localhost:3001/api`
-
 	const {userValue, setUserValue} = useContext(UserContext);
+
 	const [note, setNote] = useState({
-		title: "",
-		content: "",
-		category: "",
-		tags: "",
+		title: props.title,
+		content: props.content,
+		category: props.category,
+		tags: props.tags,
 		userId: userValue[0]
 	});
-
-
+	
 	function onHandleChange(e) {
 		const {name,value} = e.target;
 
@@ -36,19 +35,18 @@ function CreateNote(props) {
 		const headers = {
 			"x-access-token": token
 		}
-
-		axios.post(`${url}/notes`, note , {headers})
+		axios.put(`${url}/notes/${props.id}`, note , {headers})
 			.then((res) => {
-				const newNote = {
-					_id: res.data.Note._id,
-					content: res.data.Note.content,
-					title: res.data.Note.title,
-					category: res.data.Note.category,
-					tags: res.data.Note.tags,
-					userId: res.data.Note.userId
+				const updatedNote = {
+					_id: res.data.updateNote._id,
+					content: res.data.updateNote.content,
+					title: res.data.updateNote.title,
+					category: res.data.updateNote.category,
+					tags: res.data.updateNote.tags,
+					userId: res.data.updateNote.userId
 				}
-				setNote(newNote);
-				props.onAdd(newNote);
+				setNote(updatedNote);
+				props.onUpdate(updatedNote);
 			}, (error) => {
 				console.log(error);
 			}).then(
@@ -61,25 +59,27 @@ function CreateNote(props) {
 						userId: userValue[0]
 					})
 				},1000)
+
 			)
 	}
-	
+
 	return(
 		<div>
-			<form className="note-form ">
+			<h1>Edit Note</h1>
+			<form className="edit-form">
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
 				<input className="note-form-input" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
 				<input className="note-form-input" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
-
+				
 				<div className="note-form-button">
 					<Fab onClick={onHandleSubmit}>
-						<NoteAddIcon />
+						<DynamicFeedIcon />
 					</Fab>
 				</div>
-			</form>
+			</form>			
 		</div>
 	)
 }
 
-export default CreateNote;
+export default EditNote;

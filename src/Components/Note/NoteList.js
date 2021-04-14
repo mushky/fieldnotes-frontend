@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { UserContext } from '../../UserContext';
+import { UserContext } from '../../Context/UserContext';
 
 import Note from './Note';
 import CreateNote from './CreateNote';
@@ -11,7 +11,7 @@ function NoteList() {
 	const {userValue, setUserValue} = useContext(UserContext);
 
   const [notes, setNotes] = useState([]);
-	const [editMode, setEditMode] = useState(true);
+	const [editMode, setEditMode] = useState(false);
 	const [selectedNote, setSelectedNote] = useState({
 		_id: "",
 		title: "",
@@ -32,6 +32,12 @@ function NoteList() {
 	},[])
 
 	function addNote(newNote) {
+    setNotes(prevNotes => {
+      return [...prevNotes, newNote];
+    })
+  }
+
+	function updateNote(newNote) {
     setNotes(prevNotes => {
       return [...prevNotes, newNote];
     })
@@ -59,8 +65,6 @@ function NoteList() {
 		setTimeout(() => {
 			setSelectedNote({})
 		},1000)
-		
-
   }
 
 	function selectNote(noteObject) {
@@ -72,7 +76,6 @@ function NoteList() {
 			tags: noteObject.tags,
 			userId: noteObject.userId
 		});
-		console.log(selectedNote);
 	}
 
 	function toggleEditMode() {
@@ -82,40 +85,44 @@ function NoteList() {
 	return(
 		<div className="container">
 			<div className="leftContainer">
-				<button className="note-list-button">Note List</button>				
+				<button className="note-list-button">Note List</button>		
+
 				{notes.map((noteItem) => {
 					return(
-					<Note 
-						key={noteItem._id} 
-						id={noteItem._id}
-						title={noteItem.title} 
-						content={noteItem.content}
-						category={noteItem.category}
-						tags={noteItem.tags}
-						userId={noteItem.userId}
-						onSelect={selectNote} 
-					/>
+						<Note 
+							key={noteItem._id} 
+							id={noteItem._id}
+							title={noteItem.title} 
+							content={noteItem.content}
+							category={noteItem.category}
+							tags={noteItem.tags}
+							userId={noteItem.userId}
+							onSelect={selectNote} 
+						/>
 					)
 				})}
 			</div>
 
 			<div className="rightContainer">
 				<div>
-					<button className="toggle-button" onClick={toggleEditMode}>Toggle</button>
+					{ editMode && <button className="toggle-button" onClick={toggleEditMode}>Switch to View Note Mode</button> }
+					{ !editMode && <button className="toggle-button" onClick={toggleEditMode}>Switch to Create Note Mode</button> }
 				</div>
 
-				{ editMode &&
-					<CreateNote onAdd={addNote}/> 
+				{ editMode && <CreateNote onAdd={addNote}/> }
+
+				{ !editMode &&
+					<NoteDetailView 
+						key={selectedNote.id} 
+						id={selectedNote.id}
+						title={selectedNote.title} 
+						content={selectedNote.content} 
+						category={selectedNote.category} 
+						tags={selectedNote.tags} 
+						onDelete={deleteNote}
+						onUpdate={updateNote}
+					/>
 				}
-				<NoteDetailView 
-					key={selectedNote.id} 
-					id={selectedNote.id}
-					title={selectedNote.title} 
-					content={selectedNote.content} 
-					category={selectedNote.category} 
-					tags={selectedNote.tags} 
-					onDelete={deleteNote}
-				/>
 			</div>
 		</div>
 	)

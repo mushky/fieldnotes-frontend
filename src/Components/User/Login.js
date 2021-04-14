@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
 import axios from 'axios';
-import { UserContext } from '../../UserContext';
+import { UserContext } from '../../Context/UserContext';
 
 function Login() {
 	const {userValue, setUserValue} = useContext(UserContext);
