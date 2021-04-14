@@ -8,6 +8,7 @@ import { UserContext } from '../../UserContext';
 
 function NoteList() {
 	const {userValue, setUserValue} = useContext(UserContext);
+	
   const [notes, setNotes] = useState([]);
 	const [editMode, setEditMode] = useState(true);
 	const [selectedNote, setSelectedNote] = useState({
@@ -22,12 +23,12 @@ function NoteList() {
 	const url = `http://localhost:3001/api`
   
 	useEffect(() => {
-    axios.get(`${url}/notes/user/${userValue[0]}`)
-      .then((res) => {
+		axios.get(`${url}/notes/user/${userValue[0]}`)
+			.then((res) => {
 				console.log(res);
-        setNotes(res.data.Note)
-      })
-  },[])
+				setNotes(res.data.Note)
+			})
+	},[])
 
 	function addNote(newNote) {
     setNotes(prevNotes => {

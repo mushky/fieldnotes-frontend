@@ -3,8 +3,9 @@ import axios from 'axios';
 import { UserContext } from '../../UserContext';
 
 function CreateNote(props) {
-	const {userValue, setUserValue} = useContext(UserContext);
+	const url = `http://localhost:3001/api`
 
+	const {userValue, setUserValue} = useContext(UserContext);
 	const [note, setNote] = useState({
 		title: "",
 		content: "",
@@ -13,7 +14,6 @@ function CreateNote(props) {
 		userId: userValue[0]
 	});
 
-	const url = `http://localhost:3001/api`
 
 	function onHandleChange(e) {
 		const {name,value} = e.target;
