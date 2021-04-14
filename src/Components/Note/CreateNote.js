@@ -18,7 +18,6 @@ function CreateNote(props) {
 		userId: userValue[0]
 	});
 
-
 	function onHandleChange(e) {
 		const {name,value} = e.target;
 
