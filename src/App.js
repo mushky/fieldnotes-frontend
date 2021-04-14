@@ -8,13 +8,8 @@ import Logout from './Components/User/Logout';
 import { UserContext } from './Context/UserContext';
 
 import './App.css';
-// TODO: LOGIN SHOULD WORK AND REDIRECT
 
-// TODO: Refactor to NoteList [DONE]
-// TODO: Add Category and Tags to Form [DONE]
-// TODO: EDIT [DONE]
-// TODO: DetailNoteView [DONE]
-// TODO: Toggle should switch between post and detailview [DONE]
+// TODO: LOGIN REDIRECT
 
 function App() {
   const [userValue, setUserValue] = useState("");
