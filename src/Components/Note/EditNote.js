@@ -15,6 +15,7 @@ const EditNote = (props) => {
 		id: props.id,
 		title: props.title,
 		content: props.content,
+		link: props.link,
 		category: props.category,
 		tags: props.tags,
 		userId: userValue[0]
@@ -49,6 +50,7 @@ const EditNote = (props) => {
 					id: props.id,
 					content: res.data.updateNote.content,
 					title: res.data.updateNote.title,
+					link: res.data.updateNote.link,
 					category: res.data.updateNote.category,
 					tags: res.data.updateNote.tags,
 					userId: res.data.updateNote.userId
@@ -71,6 +73,7 @@ const EditNote = (props) => {
 			<form className="edit-form">
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
+				<input className="note-form-input" name="link" onChange={onHandleChange} value={note.link} placeholder="Link" />
 				<input className="note-form-input" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
 				<input className="note-form-input" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
 				
@@ -80,7 +83,7 @@ const EditNote = (props) => {
 					</Fab>
 				</div>
 
-				<div className="note-form-button">
+				<div className="delete-note">
 					<Fab onClick={handleDelete}>
 						<DeleteForeverIcon />
 					</Fab>

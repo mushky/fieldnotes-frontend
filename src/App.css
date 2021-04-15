@@ -54,7 +54,7 @@ body {
   width: 100%;
   height: 100%;
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-  color: #07CAF9;
+  color: #20C20E;
 }
 
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
@@ -143,7 +143,7 @@ button {
 }
 
 .delete-button {
-  float: right;
+  float: left;
   justify-content: center;
 }
 

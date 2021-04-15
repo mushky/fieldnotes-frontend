@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../Context/UserContext';
 
-import Note from './Note';
+import SmallNote from './SmallNote';
 import CreateNote from './CreateNote';
 import NoteDetailView from './NoteDetailView';
 
@@ -16,6 +16,7 @@ const NoteList = () => {
 		_id: "",
 		title: "",
 		content: "",
+		link: "",
 		category: "",
 		tags: "",
 		userId: userValue[0]
@@ -44,6 +45,7 @@ const NoteList = () => {
 
 				note.title = newNote.title;
 				note.content = newNote.content;
+				note.link = newNote.link;
 				note.category = newNote.category;
 				note.tags = newNote.tags;
 
@@ -81,10 +83,12 @@ const NoteList = () => {
   }
 
 	function selectNote(noteObject) {
+		console.log(noteObject);
 		setSelectedNote({
 			id: noteObject.id,
 			title: noteObject.title,
 			content: noteObject.content,
+			link: noteObject.link,
 			category: noteObject.category,
 			tags: noteObject.tags,
 			userId: noteObject.userId
@@ -102,11 +106,12 @@ const NoteList = () => {
 
 				{notes.map((noteItem) => {
 					return(
-						<Note 
+						<SmallNote 
 							key={noteItem._id} 
 							id={noteItem._id}
 							title={noteItem.title} 
 							content={noteItem.content}
+							link={noteItem.link}
 							category={noteItem.category}
 							tags={noteItem.tags}
 							userId={noteItem.userId}
@@ -129,7 +134,8 @@ const NoteList = () => {
 						key={selectedNote.id} 
 						id={selectedNote.id}
 						title={selectedNote.title} 
-						content={selectedNote.content} 
+						content={selectedNote.content}
+						link={selectedNote.link} 
 						category={selectedNote.category} 
 						tags={selectedNote.tags} 
 						onDelete={deleteNote}

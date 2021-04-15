@@ -9,7 +9,7 @@ import { UserContext } from './Context/UserContext';
 
 import './App.css';
 
-// TODO: LOGIN REDIRECT
+// TODO: LOGIN SHOULD REDIRECT
 
 function App() {
   const [userValue, setUserValue] = useState("");
@@ -18,7 +18,7 @@ function App() {
     <Router>
       <div className="App">
         <header className="header">
-          <Link to="/Notes"><h2 className="titleName">Field Notes</h2></Link><br></br>
+          <Link to="/Notes"><h2 className="titleName">Field Notes</h2></Link>
           <nav>
             <li>
               { userValue.length > 1 && <Link to="/Logout">Logout</Link> }

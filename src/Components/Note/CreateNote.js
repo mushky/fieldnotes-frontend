@@ -13,6 +13,7 @@ const CreateNote = (props) => {
 	const [note, setNote] = useState({
 		title: "",
 		content: "",
+		link: "",
 		category: "",
 		tags: "",
 		userId: userValue[0]
@@ -42,6 +43,7 @@ const CreateNote = (props) => {
 					_id: res.data.Note._id,
 					content: res.data.Note.content,
 					title: res.data.Note.title,
+					url: res.data.Note.link,
 					category: res.data.Note.category,
 					tags: res.data.Note.tags,
 					userId: res.data.Note.userId
@@ -68,9 +70,9 @@ const CreateNote = (props) => {
 			<form className="note-form ">
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
+				<input className="note-form-input" name="link" onChange={onHandleChange} value={note.link} placeholder="link" />
 				<input className="note-form-input" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
 				<input className="note-form-input" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
-
 				<div className="note-form-button">
 					<Fab onClick={onHandleSubmit}>
 						<NoteAddIcon />
