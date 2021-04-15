@@ -10,6 +10,9 @@ import { UserContext } from './Context/UserContext';
 import './App.css';
 
 // TODO: LOGIN SHOULD REDIRECT
+// TODO: Pagination
+// TODO: Search Bar
+// TODO: Text Area should be able to read markdown
 
 function App() {
   const [userValue, setUserValue] = useState("");
@@ -18,9 +21,9 @@ function App() {
     <Router>
       <div className="App">
         <header className="header">
-          <Link to="/Notes"><h2 className="titleName">Field Notes</h2></Link>
+          <Link to="/Notes"><h1 className="titleName">Field Notes</h1></Link>
           <nav>
-            <li>
+            <li className="login-logout">
               { userValue.length > 1 && <Link to="/Logout">Logout</Link> }
               { userValue.length <= 0 && <Link to="/Login">Login</Link>}
             </li>

@@ -5,6 +5,8 @@ import SmallNote from './SmallNote';
 import CreateNote from './CreateNote';
 import NoteDetailView from './NoteDetailView';
 
+import SearchBar from '../Misc/SearchBar';
+
 import axios from "axios";
 
 const NoteList = () => {
@@ -102,7 +104,8 @@ const NoteList = () => {
 	return(
 		<div className="container">
 			<div className="leftContainer">
-				<button className="note-list-button">Note List</button>		
+				<SearchBar />
+				{/* <button className="note-list-button">Note List</button>		 */}
 
 				{notes.map((noteItem) => {
 					return(

@@ -11,7 +11,6 @@ const Login = () => {
 		password: ""
 	});
 
-
 	function handleChange(e) {
 		const {name,value} = e.target;
 
@@ -50,7 +49,6 @@ const Login = () => {
 				<input onChange={handleChange} value={user.password} name="password" placeholder="********"></input>
 				<button onClick={onSubmit}>Submit</button>
 			</form>
-
 		</div>
 	)
 
