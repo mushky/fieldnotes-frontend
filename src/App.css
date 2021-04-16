@@ -129,6 +129,20 @@ button {
 
 }
 
+.note-form-select {
+  width: 100%;
+  border: none;
+  padding: 4px;
+  outline: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  resize: none;
+  color: black;
+  text-align: left;
+  border: 1px solid #006699;
+  background-color: black;
+}
+
 .note-form-textarea {
   width: 100%;
   border: none;

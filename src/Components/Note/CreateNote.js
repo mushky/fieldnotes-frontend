@@ -4,31 +4,43 @@ import { UserContext } from '../../Context/UserContext';
 import Fab from '@material-ui/core/Fab';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 
+import Select from 'react-select'
+
 import axios from 'axios';
 
 const CreateNote = (props) => {
 	const url = `http://localhost:3001/api`
 
-	const {userValue, setUserValue} = useContext(UserContext);
+	const { userValue } = useContext(UserContext);
+	const [category, setCategory] = useState("");
+	const [categories, setCategories] = useState([]);
 	const [note, setNote] = useState({
 		title: "",
 		content: "",
 		link: "",
-		category: "",
+		category: category,
 		tags: "",
 		userId: userValue[0]
 	});
-	const [categories, setCategories] = useState([]);
 
 	useEffect(() => {
-		const fetchNotes = async () => {
+		const fetchCategories = async () => {
 			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
-			setCategories(res.data.categories)
-			console.log(res);
+
+			let objectArray = [];
+			for (let i = 0; i < res.data.category.length; i++) {
+				objectArray.push({'value': res.data.category[i].name, 'label': res.data.category[i].name})
+			}
+
+			setCategories(objectArray);
 		}
 
-		fetchNotes();
+		fetchCategories();
 	},[])
+
+	const handleSelect = (selectedOption) => {
+    setCategory(selectedOption);
+	};
 
 	function onHandleChange(e) {
 		const {name,value} = e.target;
@@ -69,9 +81,11 @@ const CreateNote = (props) => {
 						title: "",
 						content: "",
 						category: "",
+						link: "",
 						tags: "",
 						userId: userValue[0]
 					})
+					setCategory('');
 				},1000)
 			)
 	}
@@ -83,7 +97,7 @@ const CreateNote = (props) => {
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
 				<input className="note-form-input" name="link" onChange={onHandleChange} value={note.link} placeholder="link" />
-				<input className="note-form-input" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
+				<Select className="note-form-select" onChange={handleSelect} options={categories} name="category" value={category}  placeholder="create new categories with the category creator..."/>
 				<input className="note-form-input" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
 
 				<div className="note-form-button">
