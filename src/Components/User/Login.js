@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 import { UserContext } from '../../Context/UserContext';
 
 const Login = () => {
 	const {userValue, setUserValue} = useContext(UserContext);
+	const history = useHistory();
 
 	const [user, setUser] = useState({
 		username: "",
@@ -35,7 +37,9 @@ const Login = () => {
 				res.data.existingUser.username,			// username
 				res.data.token											// token
 			])
-			alert("User Authenticated");
+			setTimeout(() => {
+				history.push("/notes");
+			})
 		}, (error) => {
 			console.log(error);
 			alert("Error with authentication " + error);

@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../Context/UserContext';
+import { useHistory } from 'react-router-dom';
 
 const Logout = () => {
   const {userValue, setUserValue} = useContext(UserContext);
+	const history = useHistory();
 
 	function onHandleSubmit(e) {
 		e.preventDefault();
 	
 		setUserValue([])
-		alert("Logged out");
+		history.push("/login");
 	}
 
 	return(

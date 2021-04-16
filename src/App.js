@@ -9,7 +9,6 @@ import { UserContext } from './Context/UserContext';
 
 import './App.css';
 
-// TODO: LOGIN SHOULD REDIRECT
 // TODO: Pagination
 // TODO: Search Bar
 // TODO: Text Area should be able to read markdown
