@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const EditNote = (props) => {
 	const url = `http://localhost:3001/api`
-	const {userValue, setUserValue} = useContext(UserContext);
+	const { userValue } = useContext(UserContext);
 
 	const [note, setNote] = useState({
 		id: props.id,

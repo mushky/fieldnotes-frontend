@@ -5,7 +5,7 @@ import axios from 'axios';
 import { UserContext } from '../../Context/UserContext';
 
 const Login = () => {
-	const {userValue, setUserValue} = useContext(UserContext);
+	const { setUserValue } = useContext(UserContext);
 	const history = useHistory();
 
 	const [user, setUser] = useState({

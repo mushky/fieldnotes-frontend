@@ -5,12 +5,10 @@ import SmallNote from './SmallNote';
 import CreateNote from './CreateNote';
 import NoteDetailView from './NoteDetailView';
 
-import SearchBar from '../Misc/SearchBar';
-
 import axios from "axios";
 
 const NoteList = () => {
-	const {userValue, setUserValue} = useContext(UserContext);
+	const { userValue } = useContext(UserContext);
 
   const [notes, setNotes] = useState([]);
 	const [loading, setLoading] = useState(false);
@@ -25,18 +23,37 @@ const NoteList = () => {
 		userId: userValue[0]
 	});
 
-	const url = `http://localhost:3001/api`
-  
-	useEffect(() => {
-		const fetchNotes = async () => {
-			setLoading(true);
-			const res = await axios.get(`${url}/notes/user/${userValue[0]}`)
-			setNotes(res.data.Note)
-			setLoading(false);
-		}
+	// For Search
+	const [content, setContent] = useState("");
 
+	// For API
+	const url = `http://localhost:3001/api`
+
+	const token = userValue[3];
+	const userId = userValue[0];
+
+	const headers = {
+		"x-access-token": token
+	}
+  
+	const fetchNotes = async () => {
+		setLoading(true);
+		const res = await axios.get(`${url}/notes/user/${userValue[0]}`)
+		setNotes(res.data.Note)
+		setLoading(false);
+	}
+
+	const fetchNotesBySearch = async () => {
+		setLoading(true);
+		const res = await axios.get(`${url}/notes/search?userId=${userId}&content=${content}`, {headers})
+		setNotes(res.data.Note)
+		setContent();
+		setLoading(false);
+	}
+
+	useEffect(() => {
 		fetchNotes();
-	},[])
+	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	if (loading) {
 		return <h2>Loading...</h2>
@@ -71,23 +88,17 @@ const NoteList = () => {
 	}
 
   function deleteNote(id) {
-		const token = userValue[3];
-		const headers = {
-			"x-access-token": token
-		}
 		setNotes(prevNotes => {
       return prevNotes.filter((noteItem) => {
         return noteItem._id !== id;
       });
     })
-
     axios.delete(`http://localhost:3001/api/notes/${id}`, { headers })
       .then((res) => {
         console.log(res);
       }, (error) => {
         console.log(error);
       })
-
 		setTimeout(() => {
 			setSelectedNote({})
 		},1000)
@@ -110,10 +121,25 @@ const NoteList = () => {
 		setEditMode(!editMode);
 	}
 
+	// For Search
+	function handleSearchChange(e) {
+		setContent(e.target.value);	
+	}
+
+	const onSearch = (e) => {
+		e.preventDefault();
+		if (content === undefined || content === "") {
+			fetchNotes();
+		} else {
+			fetchNotesBySearch();
+		}
+	}
+
 	return(
 		<div className="container">
 			<div className="leftContainer">
-				<SearchBar />
+				<input className="searchbar-input" name="search" onChange={handleSearchChange} placeholder="search..." />
+				<button className="note-form-button" onClick={onSearch}>Search</button>
 				{/* <button className="note-list-button">Note List</button>		 */}
 
 				{notes.map((noteItem) => {
