@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { UserContext } from '../../Context/UserContext';
 
 import Fab from '@material-ui/core/Fab';
@@ -18,6 +18,17 @@ const CreateNote = (props) => {
 		tags: "",
 		userId: userValue[0]
 	});
+	const [categories, setCategories] = useState([]);
+
+	useEffect(() => {
+		const fetchNotes = async () => {
+			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
+			setCategories(res.data.categories)
+			console.log(res);
+		}
+
+		fetchNotes();
+	},[])
 
 	function onHandleChange(e) {
 		const {name,value} = e.target;
@@ -80,7 +91,7 @@ const CreateNote = (props) => {
 						<NoteAddIcon />
 					</Fab>
 				</div>
-				
+
 			</form>
 		</div>
 	)

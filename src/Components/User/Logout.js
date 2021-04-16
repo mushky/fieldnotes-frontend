@@ -14,7 +14,7 @@ const Logout = () => {
 	}
 
 	return(
-		<div>
+		<div className="login-container">
 			<button onClick={onHandleSubmit}>Logout</button>
 		</div>
 	)

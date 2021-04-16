@@ -13,6 +13,7 @@ const NoteList = () => {
 	const {userValue, setUserValue} = useContext(UserContext);
 
   const [notes, setNotes] = useState([]);
+	const [loading, setLoading] = useState(false);
 	const [editMode, setEditMode] = useState(true);
 	const [selectedNote, setSelectedNote] = useState({
 		_id: "",
@@ -27,12 +28,20 @@ const NoteList = () => {
 	const url = `http://localhost:3001/api`
   
 	useEffect(() => {
-		axios.get(`${url}/notes/user/${userValue[0]}`)
-			.then((res) => {
-				console.log(res);
-				setNotes(res.data.Note)
-			})
+		const fetchNotes = async () => {
+			setLoading(true);
+			const res = await axios.get(`${url}/notes/user/${userValue[0]}`)
+			setNotes(res.data.Note)
+			setLoading(false);
+		}
+
+		fetchNotes();
 	},[])
+
+	if (loading) {
+		return <h2>Loading...</h2>
+	}
+
 
 	function addNote(newNote) {
     setNotes(prevNotes => {

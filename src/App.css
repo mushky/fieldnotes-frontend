@@ -186,14 +186,12 @@ button {
 }
 
 .login-container {
-  width: 300px;
-  border-radius: 3px;
-  padding: 10px 15px;
-  margin: 0 auto 10px auto;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  color: #FFFF81;
-  font-weight: 300;
+  min-height: 75vh;
 }
 
 .searchbar-input {
@@ -202,7 +200,7 @@ button {
 }
 
 .login-logout {
-  color: #FFFF81
+  color: #FFFF81;
 }
 
 ul {

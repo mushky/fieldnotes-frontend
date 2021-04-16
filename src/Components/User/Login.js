@@ -13,6 +13,11 @@ const Login = () => {
 		password: ""
 	});
 
+	const [loading, setLoading] = useState(false);
+
+	if (loading) {
+		return <h2>Loading...</h2>
+	}
 	function handleChange(e) {
 		const {name,value} = e.target;
 
@@ -26,7 +31,7 @@ const Login = () => {
 
 	function onSubmit(e) {
 		e.preventDefault();
-		
+		setLoading(true);
 		axios.post('http://localhost:3001/api/users/login',{
 			"username": user.username,
 			"password": user.password
@@ -38,9 +43,12 @@ const Login = () => {
 				res.data.token											// token
 			])
 			setTimeout(() => {
+				setLoading(false);
 				history.push("/notes");
+				
 			})
 		}, (error) => {
+			setLoading(false);
 			console.log(error);
 			alert("Error with authentication " + error);
 		})
@@ -48,10 +56,11 @@ const Login = () => {
 
 	return(
 		<div className="login-container">
+			<h1>Field Notes</h1>
 			<form>
 				<input onChange={handleChange} value={user.username} name="username" placeholder="username"></input>
 				<input onChange={handleChange} value={user.password} name="password" placeholder="********"></input>
-				<button onClick={onSubmit}>Submit</button>
+				<button onClick={onSubmit}>Login</button>
 			</form>
 		</div>
 	)
