@@ -18,7 +18,7 @@ const CreateNote = (props) => {
 		title: "",
 		content: "",
 		link: "",
-		category: category,
+		category: "",
 		tags: "",
 		userId: userValue[0]
 	});
@@ -36,7 +36,7 @@ const CreateNote = (props) => {
 		}
 
 		fetchCategories();
-	},[])
+	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	const handleSelect = (selectedOption) => {
     setCategory(selectedOption);

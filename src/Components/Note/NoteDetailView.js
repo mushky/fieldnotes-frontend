@@ -12,14 +12,6 @@ const NoteDetailView = (props) => {
 		setIsEditMode(!isEditMode);
 	}
 
-	function onUpdate(props) {
-		props.onUpdate(props);
-	}
-
-	function onDelete(propsid) {
-		props.onDelete(props);
-	}
-
 	return(
 		<div>
 			<div className="edit-button">
