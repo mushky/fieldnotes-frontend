@@ -208,10 +208,7 @@ button {
   min-height: 75vh;
 }
 
-.searchbar-input {
-  width: 100%;
-  height: 38px;
-}
+
 
 .login-logout {
   color: #FFFF81;
@@ -219,4 +216,27 @@ button {
 
 ul {
   list-style-type: none;
+}
+
+.searchbar-input {
+  float: left;
+  width: 80%;
+  height: 38px;
+  text-align: left;
+}
+
+.search-button {
+  background: #0099CC;
+  color: #FFFF81;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  justify-content: center;
+  width: 20%;
+  float:right;
+}
+
+.fieldwrapper{
+  white-space: nowrap;
 }

@@ -55,11 +55,6 @@ const NoteList = () => {
 		fetchNotes();
 	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
-	if (loading) {
-		return <h2>Loading...</h2>
-	}
-
-
 	function addNote(newNote) {
     setNotes(prevNotes => {
       return [...prevNotes, newNote];
@@ -138,9 +133,11 @@ const NoteList = () => {
 	return(
 		<div className="container">
 			<div className="leftContainer">
-				<input className="searchbar-input" name="search" onChange={handleSearchChange} placeholder="search..." />
-				<button className="note-form-button" onClick={onSearch}>Search</button>
-				{/* <button className="note-list-button">Note List</button>		 */}
+				<div className="fieldwrapper">
+					<input className="searchbar-input" name="search" onChange={handleSearchChange} placeholder="search..." /> <button className="search-button" onClick={onSearch}>Search</button>
+				</div>
+				
+				{ loading && <h2>Loading...</h2> }
 
 				{notes.map((noteItem) => {
 					return(
