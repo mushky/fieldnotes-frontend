@@ -46,11 +46,15 @@ ul {
   list-style-type: none;
 }
 
+li:hover{
+  color:#4CAF50;
+}
+
 /* Anchor behaviors */
 a:visited { text-decoration: none; color:white; }
 a:hover { text-decoration: none; color:blue; }
 a:focus { text-decoration: none; color:yellow; }
-a:hover, a:active { text-decoration: none; color: yellow }
+a:hover, a:active { text-decoration: none; color: #4CAF50 }
 
 /* Container */
 .container {
@@ -62,9 +66,20 @@ a:hover, a:active { text-decoration: none; color: yellow }
 /* Sidebar */
 .sidebar-container {
   flex: .5;
-  border:#45a049 solid 4px;
   background-color: #333333;
-  height: 57.5em;
+  /* height: 57.5em; */
+  height: 100ev;
+}
+
+.sidebar-items-top {
+  letter-spacing: 1px;
+  padding: 5px;  
+}
+
+.sidebar-items-bottom {
+  letter-spacing: 1px;
+  padding: 5px;
+  bottom: 0;
 }
 
 /* Left Container */
@@ -72,7 +87,9 @@ a:hover, a:active { text-decoration: none; color: yellow }
   flex: 0 0 auto;			
   width: 460px;
   margin: 0px 0px 1px 1px;
-  overflow: auto;
+  overflow: scroll;
+  border-right:#888888 solid .1px;
+  height: 57.5em;
 }
 
 .searchbar-input {
@@ -88,13 +105,18 @@ a:hover, a:active { text-decoration: none; color: yellow }
 }
 
 .search-button {
-  background: #4CAF50;
-  color: #FFFF81;
-  border: none;
-  padding: 10px 15px;
+  background: #1f1f1f;
   cursor: pointer;
-  font-size: 14px;
-  width: 20%;
+  color: #4CAF50;
+  float: right;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.add-button {
+  background: #1f1f1f;
+  cursor: pointer;
+  color: #4CAF50;
   float: right;
 }
 
@@ -109,12 +131,19 @@ a:hover, a:active { text-decoration: none; color: yellow }
   height: 100px;
   padding: 5px;
   margin: 5px 5px;
+  border-bottom: #888888 solid .1px;
 }
+
+.note:hover{
+  background-color:#4CAF50;
+}
+
 
 /* Right Container */
 .right-container {
   flex: 4;
-  height: 55.5em;
+  height: 57.5em;
+  border-left:#888888 solid .1px;
 }
 
 .note-form {
@@ -126,26 +155,40 @@ a:hover, a:active { text-decoration: none; color: yellow }
   border-radius: 5px;
 }
 
-.edit-form {
-  width: 100%;
-  background-color:  #1f1f1f;
-  padding: 5px;
+.note-form-input {
+  margin: 0px;
+  min-width: 0px;
+  display: block;
+  appearance: none;
+  line-height: inherit;
+  background-color: transparent;
   border-radius: 5px;
-  color: white
+  color: rgb(211, 211, 211);
+  height: 100px;
+  overflow-y: hidden;
+  font-size: 3em;
+  font-weight: 700;
+  border: medium none;
+  resize: none;
+  width: 90%;
+  min-height: 30px;
 }
 
-.note-form-input {
-  background-color: #1f1f1f;
-  width: 100%;
-  border: none;
-  padding: 4px;
-  outline: none;
-  font-size: 1.6em;
-  font-family: inherit;
+.note-form-tags {
+  min-width: 0px;
+  display: block;
+  appearance: none;
+  line-height: inherit;
+  background-color: transparent;
+  color: rgb(211, 211, 211);
+  overflow-y: hidden;
+  font-size: 1.625em;
+  font-weight: 700;
+  border: medium none;
   resize: none;
-  color:white;
-  text-align: left;
-  border: 1px solid  #45a049;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .note-form-select {  
@@ -163,15 +206,41 @@ a:hover, a:active { text-decoration: none; color: yellow }
   height: 500px;
   background-color: #1f1f1f;
   color: white;
+  border: none;
 }
 
 .note-form-button {
   float: right;
+  background: #1f1f1f;
+  cursor: pointer;
+  color: #4CAF50;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.note-select-button {
+  background-color:  #1f1f1f !important;
+  color: black;
+}
+
+.edit-form {
+  width: 100%;
+  background-color: #1f1f1f;
+  padding: 5px;
+  border-radius: 5px;
+  color: white
 }
 
 .edit-button {
   float: right;
   justify-content: center;
+}
+
+.delete-note-button {
+  float: right;
+  cursor: pointer;
+  position: fixed;
+  bottom: 0.5px;
 }
 
 .toggle-button {
@@ -238,4 +307,15 @@ a:hover, a:active { text-decoration: none; color: yellow }
   border-radius: 4px;
   cursor: pointer;
   font-size: 1.4em;
+}
+
+/* Footer */
+
+.footer {
+  background-color: #333333;
+  position: fixed;
+  padding-left: 2px;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
 }

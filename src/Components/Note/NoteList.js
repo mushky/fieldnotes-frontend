@@ -7,14 +7,18 @@ import CreateNote from './CreateNote';
 import NoteDetailView from './NoteDetailView';
 import SideBar from '../Sidebar/SideBar';
 
+import AddBoxRoundedIcon from '@material-ui/icons/AddBoxRounded';
+import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
+
 import axios from "axios";
 
 const NoteList = () => {
 	const { userValue } = useContext(UserContext);
-
-  const [notes, setNotes] = useState([]);
+	const [notes, setNotes] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const [editMode, setEditMode] = useState(true);
+	const [editMode, setEditMode] = useState(false);
+
+	// The note currently selected by the user
 	const [selectedNote, setSelectedNote] = useState({
 		_id: "",
 		title: "",
@@ -55,6 +59,18 @@ const NoteList = () => {
 
 	useEffect(() => {
 		fetchNotes();
+
+		if (notes.length <= 0) {
+			setSelectedNote({
+				_id: "0",
+				title: "Welcome to Field Notes",
+				content: "Login to get started!\n\nClick the + button in the Top Right to create a new Note.\n\nSearch your notes using the search bar.",
+				link: "",
+				category: "",
+				tags: "",
+				userId: userValue[0],
+			})
+		}
 	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	function addNote(newNote) {
@@ -68,6 +84,7 @@ const NoteList = () => {
 			if (notes[i]._id === newNote.id) {
 				let note = notes.filter((note) => note.id === newNote.id)
 
+				note.id = newNote._id
 				note.title = newNote.title;
 				note.content = newNote.content;
 				note.link = newNote.link;
@@ -76,10 +93,9 @@ const NoteList = () => {
 
 				notes[i] = note;
 
-				setTimeout(() => {
-					setSelectedNote(newNote);
-					return;
-				},1000)
+				setSelectedNote(newNote);
+				
+				return;
 			}
 		}
 	}
@@ -148,11 +164,26 @@ const NoteList = () => {
 						placeholder="Search..." 
 					/> 
 					
-					<button className="search-button" onClick={onSearch}>Search</button>
+					<AddBoxRoundedIcon className="add-button" style={{ fontSize: 40 }} onClick={toggleEditMode}/>
+
+					<SearchRoundedIcon className="search-button" style={{ fontSize: 40 }} onClick={onSearch}/>
 
 				</div>
 				
 				{ loading && <h2>Loading...</h2> }
+
+				{ notes.length <= 0 && 
+					<SmallNote 
+						id={selectedNote.id}
+						title={selectedNote.title} 
+						content={selectedNote.content}
+						link={selectedNote.link}
+						category={selectedNote.category}
+						tags={selectedNote.tags}
+						userId={selectedNote.userId}
+						onSelect={selectNote} 
+					/>
+				}
 
 				{notes.map((noteItem) => {
 					return(
@@ -174,13 +205,6 @@ const NoteList = () => {
 
 			<div className="right-container">
 
-				<div>
-
-					{ editMode && <button className="toggle-button" onClick={toggleEditMode}>Switch to View Note Mode</button> }
-					{ !editMode && <button className="toggle-button" onClick={toggleEditMode}>Switch to Create Note Mode</button> }
-
-				</div>
-
 				{ editMode && <CreateNote onAdd={addNote}/> }
 
 				{ !editMode &&
@@ -196,9 +220,9 @@ const NoteList = () => {
 						onUpdate={onUpdate}
 					/>
 				}
-			</div>
-			
+			</div>			
 		</div>
+
 	)
 }
 
