@@ -23,15 +23,20 @@ FFFF81 funky yellow
   color: #FFFF81;
 }
 
+.sidebarContainer {
+  flex: .5;
+  border:#006699 solid 1px;
+  background-color: #000000;
+}
+
 .leftContainer {
   flex: 1;
   border:#006699 solid 1px;
   width: 100%;
-  overflow: scroll;
 }
 
 .rightContainer {
-  flex: 3;
+  flex: 4;
   border:#006699 solid 1px;
   height: 100%;
 }
