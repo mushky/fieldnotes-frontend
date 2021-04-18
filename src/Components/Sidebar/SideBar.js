@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { UserContext } from '../../Context/UserContext';
 
 
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SideBar = () => {
 	const { userValue } = useContext(UserContext);
