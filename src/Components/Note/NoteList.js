@@ -143,7 +143,7 @@ const NoteList = () => {
 					<input className="searchbar-input" 
 						name="search" 
 						onChange={handleSearchChange} 
-						placeholder="search..." 
+						placeholder="Search..." 
 					/> 
 					
 					<button className="search-button" onClick={onSearch}>Search</button>

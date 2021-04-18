@@ -19,38 +19,19 @@ There are 3 columns from Left to Right
 /*. Global Settings */
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, monospace, "Helvetica Neue", sans-serif;
 }
 
 body {
   font-family: "Source Sans Pro", sans-serif;
-  font-weight: 300;
-  background: #000000;
+  background: #1f1f1f;
+  margin: 0;
   width: 100%;
   height: 100%;
-  background-image: url("cubesbackground.png");
   color: white; 
-}
-
-input {
-  background-color:#000000;
-  border-radius: 3px;
-  font-family: "Source Sans Pro", sans-serif;
-  margin: 0 auto 10px auto;
-  text-align: center;
-  font-size: 18px;
-  color: white;
-  border: 1px solid #006699;
-}
-
-button {
-  background-color: #006699;
-  padding: 10px 15px;
-  color: #000000;
-  border-radius: 3px;
-  font-size: 18px;
 }
 
 input[type=submit]:hover {
@@ -70,36 +51,24 @@ a:hover, a:active { text-decoration: none; color: yellow }
 /* Container */
 .container {
   display: flex;
-  padding: 10px;
-  margin: 10px;
+  flex-direction: row;
+  overflow: hidden;
 }
 
 /* Sidebar */
 .sidebar-container {
   flex: .5;
-  border:#006699 solid 1px;
-  background-color: #000000;
-  height: 100%;
+  border:#45a049 solid 4px;
+  background-color: #333333;
+  height: 57.5em;
 }
 
 /* Left Container */
 .left-container {
-  flex: 1;
-  border:#006699 solid 1px;
+  flex: 0 0 auto;			
   width: 460px;
-  position: relative;
-}
-
-.note {
-  border: 4px solid #006699;
-  border-radius: 2px;
-  box-shadow: 0 2px 5x #ccc;
-  color: white;
-  width: 450px;
-  height: 100px;
-  float: left;
-  margin: 5px;
-  padding: 5px;
+  margin: 0px 0px 1px 1px;
+  overflow: auto;
 }
 
 .searchbar-input {
@@ -107,80 +76,88 @@ a:hover, a:active { text-decoration: none; color: yellow }
   width: 80%;
   height: 38px;
   text-align: left;
-  padding: 10px 15px;
+  padding: 10px;
+  background-color:#1f1f1f;
+  color: white;
+  font-size: 1.4em;
+  border: none;
 }
 
 .search-button {
-  background: #0099CC;
+  background: #4CAF50;
   color: #FFFF81;
   border: none;
+  padding: 10px 15px;
   cursor: pointer;
   font-size: 14px;
-  text-align: center;
-  justify-content: center;
   width: 20%;
-  float:right;
+  float: right;
 }
 
 .fieldwrapper{
   white-space: nowrap;
 }
 
+.note {
+  color: white;
+  float: left;
+  width: 450px;
+  height: 100px;
+  padding: 5px;
+  margin: 5px 5px;
+}
+
 /* Right Container */
 .right-container {
   flex: 4;
-  border:#006699 solid 1px;
-  height: 100%;
+  height: 55.5em;
 }
 
 .note-form {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #000000FF;
+  background-color:  #1f1f1f;
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid #006699;
 }
 
 .edit-form {
   width: 100%;
-  background-color: #000000FF;
+  background-color:  #1f1f1f;
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid #006699;
   color: white
 }
 
 .note-form-input {
+  background-color: #1f1f1f;
   width: 100%;
   border: none;
   padding: 4px;
   outline: none;
-  font-size: 1.4em;
+  font-size: 1.6em;
   font-family: inherit;
   resize: none;
   color:white;
   text-align: left;
-  border: 1px solid #006699;
+  border: 1px solid  #45a049;
 }
 
-.note-form-select {
+.note-form-select {  
   padding: 4px;
   color: black;
   text-align: left;
-  border: 1px solid #006699;
-  background-color: black;
+  background-color: #1f1f1f;
 }
 
 .note-form-textarea {
   width: 100%;
   padding: 4px;
-  font-size: 1.em;
+  font-size: 1.2em;
   font-family: inherit;
   height: 500px;
-  background-color:black;
-  border: 1px solid #006699;
+  background-color: #1f1f1f;
   color: white;
 }
 
@@ -194,14 +171,14 @@ a:hover, a:active { text-decoration: none; color: yellow }
 }
 
 .toggle-button {
-  background: #0099CC;
+  background: #4CAF50;
+  padding: 10px 15px;
   color: white;
   border: none;
   cursor: pointer;
   font-size: 14px;
   width: 100%;
 }
-
 
 /* Login and Logout */
 .login-container {
@@ -220,6 +197,8 @@ a:hover, a:active { text-decoration: none; color: yellow }
   margin: 8px 0;
   border: solid green;
   border-radius: 4px;
+  background-color: #1f1f1f;
+  font-size: 1.4em;
 }
 
 .login-form-password {
@@ -229,6 +208,8 @@ a:hover, a:active { text-decoration: none; color: yellow }
   margin: 8px 0;
   border: solid green;
   border-radius: 4px;
+  background-color: #1f1f1f;
+  font-size: 1.4em;
 }
 
 .login-button {
@@ -240,6 +221,7 @@ a:hover, a:active { text-decoration: none; color: yellow }
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 1.4em;
 }
 
 .logout-button {
@@ -251,4 +233,5 @@ a:hover, a:active { text-decoration: none; color: yellow }
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 1.4em;
 }

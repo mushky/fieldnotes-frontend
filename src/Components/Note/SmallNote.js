@@ -7,7 +7,7 @@ const SmallNote = (props) => {
 	}
 
 	function truncate(str) {
-    return str.length > 160 ? str.substring(0, 160) + "..." : str;
+    return str.length > 160 ? str.substring(0, 100) + "..." : str;
 	}
 
 	return(
