@@ -135,11 +135,13 @@ const NoteList = () => {
 
 	return(
 		<div className="container">
-
+			
 			<SideBar />
 
 			<div className="left-container">
+
 				<div className="fieldwrapper">
+
 					<input className="searchbar-input" 
 						name="search" 
 						onChange={handleSearchChange} 
@@ -147,6 +149,7 @@ const NoteList = () => {
 					/> 
 					
 					<button className="search-button" onClick={onSearch}>Search</button>
+
 				</div>
 				
 				{ loading && <h2>Loading...</h2> }
@@ -170,9 +173,12 @@ const NoteList = () => {
 			</div>
 
 			<div className="right-container">
+
 				<div>
+
 					{ editMode && <button className="toggle-button" onClick={toggleEditMode}>Switch to View Note Mode</button> }
 					{ !editMode && <button className="toggle-button" onClick={toggleEditMode}>Switch to Create Note Mode</button> }
+
 				</div>
 
 				{ editMode && <CreateNote onAdd={addNote}/> }
@@ -191,6 +197,7 @@ const NoteList = () => {
 					/>
 				}
 			</div>
+			
 		</div>
 	)
 }

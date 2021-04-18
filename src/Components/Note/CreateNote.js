@@ -4,16 +4,22 @@ import { UserContext } from '../../Context/UserContext';
 import Fab from '@material-ui/core/Fab';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 
+import {Editor, EditorState, RichUtils} from 'draft-js';
 import Select from 'react-select'
 
 import axios from 'axios';
+
+import 'draft-js/dist/Draft.css';
+
 
 const CreateNote = (props) => {
 	const url = `http://localhost:3001/api`
 
 	const { userValue } = useContext(UserContext);
-	const [category, setCategory] = useState("");
-	const [categories, setCategories] = useState([]);
+
+	const [editorState, setEditorState] = useState(
+		() => EditorState.createEmpty(),
+	);
 	const [note, setNote] = useState({
 		title: "",
 		content: "",
@@ -22,6 +28,9 @@ const CreateNote = (props) => {
 		tags: "",
 		userId: userValue[0]
 	});
+
+	const [category, setCategory] = useState("");
+	const [categories, setCategories] = useState([]);
 
 	useEffect(() => {
 		const fetchCategories = async () => {
@@ -65,13 +74,9 @@ const CreateNote = (props) => {
 
 		axios.post(`${url}/notes`, note , {headers})
 			.then((res) => {
-				const newNote = {
-					_id: res.data.Note._id,
-					content: res.data.Note.content,
-					title: res.data.Note.title,
-					url: res.data.Note.link,
-					category: res.data.Note.category,
-					tags: res.data.Note.tags,
+				const newNote = { 
+					_id: res.data.Note._id, content: res.data.Note.content, title: res.data.Note.title,
+					url: res.data.Note.link,category: res.data.Note.category,tags: res.data.Note.tags,					
 					userId: res.data.Note.userId
 				}
 				setNote(newNote);
@@ -80,13 +85,9 @@ const CreateNote = (props) => {
 				console.log(error);
 			}).then(
 				setTimeout(() => {
-					setNote({
-						title: "",
-						content: "",
-						category: "",
-						link: "",
-						tags: "",
-						userId: userValue[0]
+					setNote({ 
+						title: "", content: "", category: "", 
+						link: "", tags: "", userId: userValue[0] 
 					})
 					setCategory('');
 				},1000)
@@ -99,6 +100,7 @@ const CreateNote = (props) => {
 
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
+				{/* <Editor editorState={editorState} onChange={setEditorState} placeholder="Rich Text Editor"/> */}
 				<input className="note-form-input" name="link" onChange={onHandleChange} value={note.link} placeholder="link" />
 				<Select className="note-form-select" onChange={handleSelect} options={categories} name="category" value={category}  placeholder="create new categories with the category creator..."/>
 				<input className="note-form-input" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
