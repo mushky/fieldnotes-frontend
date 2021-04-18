@@ -132,6 +132,17 @@ const NoteList = () => {
 
 	return(
 		<div className="container">
+			<div className="sidebarContainer">
+				<p>Notes</p>
+				<p>Categories</p>
+				<p>Favorites</p>
+				<p>Tags</p>
+				<p>Trash</p>
+				<hr></hr>
+				<p>Light Mode</p>
+				<p>Login</p>
+				<p>Settings</p>
+			</div>
 			<div className="leftContainer">
 				<div className="fieldwrapper">
 					<input className="searchbar-input" name="search" onChange={handleSearchChange} placeholder="search..." /> <button className="search-button" onClick={onSearch}>Search</button>
