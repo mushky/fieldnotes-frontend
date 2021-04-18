@@ -126,26 +126,28 @@ a:hover, a:active { text-decoration: none; color: yellow }
   border-radius: 5px;
 }
 
-.edit-form {
-  width: 100%;
-  background-color:  #1f1f1f;
-  padding: 5px;
-  border-radius: 5px;
-  color: white
-}
-
 .note-form-input {
-  background-color: #1f1f1f;
-  width: 100%;
-  border: none;
-  padding: 4px;
-  outline: none;
-  font-size: 1.6em;
-  font-family: inherit;
+  margin: 0px;
+  min-width: 0px;
+  display: block;
+  appearance: none;
+  line-height: inherit;
+  background-color: transparent;
+  border-radius: 5px;
+  color: rgb(211, 211, 211);
+  height: 60px;
+  overflow-y: hidden;
+  font-size: 1.625em;
+  font-weight: 700;
+  border: medium none;
+  border-top-color: currentcolor;
+  border-right-color: currentcolor;
+  border-bottom-color: currentcolor;
+  border-left-color: currentcolor;
   resize: none;
-  color:white;
-  text-align: left;
-  border: 1px solid  #45a049;
+  width: 100%;
+  min-height: 30px;
+  padding: 0px;
 }
 
 .note-form-select {  
@@ -167,6 +169,14 @@ a:hover, a:active { text-decoration: none; color: yellow }
 
 .note-form-button {
   float: right;
+}
+
+.edit-form {
+  width: 100%;
+  background-color:  #1f1f1f;
+  padding: 5px;
+  border-radius: 5px;
+  color: white
 }
 
 .edit-button {
