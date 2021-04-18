@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import EditNote from '../Note/EditNote';
 import LargeNote from '../Note/LargeNote';
@@ -12,17 +12,21 @@ const NoteDetailView = (props) => {
 		setIsEditMode(!isEditMode);
 	}
 
+	useEffect(() => {
+		setIsEditMode(true);
+	},[])
+
 	return(
 		<div>
 			<div className="edit-button">
-				<Fab>
+				{/* <Fab>
 					<EditIcon onClick={handleEditNote}/>
-				</Fab>
+				</Fab> */}
 			</div>
 
-			{ !isEditMode && 
+			{/* { !isEditMode && 
 				<LargeNote {...props} />
-			}
+			} */}
 
 			{ isEditMode && 
 				<EditNote {...props}/>

@@ -110,6 +110,7 @@ const NoteList = () => {
 			tags: noteObject.tags,
 			userId: noteObject.userId
 		});
+		setEditMode(false);
 	}
 
 	function toggleEditMode() {

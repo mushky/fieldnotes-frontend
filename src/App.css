@@ -28,7 +28,6 @@ FFFF81 funky yellow
   border:#006699 solid 1px;
   background-color: #000000;
   height: 100%;
-
 }
 
 .leftContainer {
@@ -72,8 +71,6 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
   color: white; 
 }
-
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 
 .container h1 {
   font-size: 40px;
