@@ -12,7 +12,7 @@ import './App.css';
 // TODO: Deployment (Frontend)
 // TODO: Deployment (Backend)
 // TODO: Pagination
-// TODO: Search Bar
+// TODO: Search Bar [DONE]
 // TODO: Text Area should be able to read markdown
 
 function App() {

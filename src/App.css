@@ -26,11 +26,14 @@ FFFF81 funky yellow
 .leftContainer {
   flex: 1;
   border:#006699 solid 1px;
+  width: 100%;
+  overflow: scroll;
 }
 
 .rightContainer {
   flex: 3;
   border:#006699 solid 1px;
+  height: 100%;
 }
 
 .header {

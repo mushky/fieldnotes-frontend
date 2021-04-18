@@ -154,6 +154,7 @@ const NoteList = () => {
 						/>
 					)
 				})}
+
 			</div>
 
 			<div className="rightContainer">

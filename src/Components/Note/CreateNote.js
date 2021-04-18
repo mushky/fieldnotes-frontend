@@ -60,6 +60,9 @@ const CreateNote = (props) => {
 			"x-access-token": token
 		}
 
+		// Adding Selected Category to note
+		note.category = category["value"];
+
 		axios.post(`${url}/notes`, note , {headers})
 			.then((res) => {
 				const newNote = {
