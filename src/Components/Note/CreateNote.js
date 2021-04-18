@@ -99,8 +99,8 @@ const CreateNote = (props) => {
 			<form className="note-form">
 
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
-				{/* <textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" /> */}
-				<Editor editorState={editorState} onChange={setEditorState} />
+				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
+				{/* <Editor editorState={editorState} onChange={setEditorState} placeholder="Rich Text Editor"/> */}
 				<input className="note-form-input" name="link" onChange={onHandleChange} value={note.link} placeholder="link" />
 				<Select className="note-form-select" onChange={handleSelect} options={categories} name="category" value={category}  placeholder="create new categories with the category creator..."/>
 				<input className="note-form-input" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
