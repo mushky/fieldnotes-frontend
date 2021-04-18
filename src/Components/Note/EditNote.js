@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const EditNote = (props) => {
 	const url = `http://localhost:3001/api`
-	const { userValue } = useContext(UserContext);
+	const {userValue, setUserValue} = useContext(UserContext);
 
 	const [note, setNote] = useState({
 		id: props.id,
@@ -69,7 +69,6 @@ const EditNote = (props) => {
 
 	return(
 		<div>
-			<h1>Edit Note</h1>
 			<form className="edit-form">
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
