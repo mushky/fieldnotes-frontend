@@ -9,8 +9,12 @@ FFFF81 funky yellow
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-weight: 300;
 }
+
+a:visited { text-decoration: none; color:white; }
+a:hover { text-decoration: none; color:blue; }
+a:focus { text-decoration: none; color:yellow; }
+a:hover, a:active { text-decoration: none; color: yellow }
 
 .container {
   display: flex;
@@ -18,26 +22,26 @@ FFFF81 funky yellow
   margin: 10px;
 }
 
-.titleName {
+.title-name {
   padding-top: 5px;
-  color: #FFFF81;
+  color: white;
 }
 
-.sidebarContainer {
+.sidebar-container {
   flex: .5;
   border:#006699 solid 1px;
   background-color: #000000;
   height: 100%;
 }
 
-.leftContainer {
+.left-container {
   flex: 1;
   border:#006699 solid 1px;
   width: 100%;
-  height: 100%;
+  position: relative;
 }
 
-.rightContainer {
+.right-container {
   flex: 4;
   border:#006699 solid 1px;
   height: 100%;
@@ -72,10 +76,7 @@ body {
   color: white; 
 }
 
-.container h1 {
-  font-size: 40px;
-  font-weight: 200;
-}
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 
 input {
   background-color:#000000;
@@ -87,10 +88,8 @@ input {
   display: block;
   text-align: center;
   font-size: 18px;
-  color: #FFFF81;
-  font-weight: 300;
+  color: white;
   border: 1px solid #006699;
-
 }
 
 button {
@@ -121,6 +120,7 @@ button {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #006699;
+  color: white
 }
 
 .note-form-input {
@@ -128,23 +128,16 @@ button {
   border: none;
   padding: 4px;
   outline: none;
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-family: inherit;
   resize: none;
-  color: #FFFF81;
+  color:white;
   text-align: left;
   border: 1px solid #006699;
-
 }
 
 .note-form-select {
-  width: 100%;
-  border: none;
   padding: 4px;
-  outline: none;
-  font-size: 1.2em;
-  font-family: inherit;
-  resize: none;
   color: black;
   text-align: left;
   border: 1px solid #006699;
@@ -153,16 +146,13 @@ button {
 
 .note-form-textarea {
   width: 100%;
-  border: none;
   padding: 4px;
-  outline: none;
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-family: inherit;
-  resize: none;
   height: 500px;
   background-color:black;
   border: 1px solid #006699;
-  color: #FFFF81;
+  color: white;
 }
 
 .note-form-button {
@@ -216,10 +206,8 @@ button {
   min-height: 75vh;
 }
 
-
-
 .login-logout {
-  color: #FFFF81;
+  color:white;
 }
 
 ul {

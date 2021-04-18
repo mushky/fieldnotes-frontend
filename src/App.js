@@ -22,7 +22,7 @@ function App() {
     <Router>
       <div className="App">
         <header className="header">
-          <Link to="/Notes"><h1 className="titleName">Field Notes</h1></Link>
+          <Link to="/Notes"><h1 className="title-name">Field Notes</h1></Link>
           <nav>
             { userValue.length > 1 && <p className="logged-in">Logged in as: <strong>{ userValue[2] }</strong></p> }
             { userValue.length > 1 && <Link to="/Logout">Logout</Link> }

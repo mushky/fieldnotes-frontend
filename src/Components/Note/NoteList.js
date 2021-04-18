@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 import { UserContext } from '../../Context/UserContext';
 
 import SmallNote from './SmallNote';
@@ -133,18 +135,24 @@ const NoteList = () => {
 
 	return(
 		<div className="container">
-			<div className="sidebarContainer">
-				<p>Notes</p>
-				<p>Categories</p>
-				<p>Favorites</p>
-				<p>Tags</p>
-				<p>Trash</p>
-				<hr></hr>
-				<p>Light Mode</p>
-				<p>Login</p>
-				<p>Settings</p>
+			<div className="sidebar-container">
+				<ul>
+					<li>Notes</li>
+					<li>Categories</li>
+					<li>Favorites</li>
+					<li>Tags</li>
+					<li>Trash</li>
+					<hr></hr>
+					<li>Light Mode</li>
+					<li>
+						{ userValue.length > 1 && <Link to="/Logout">Logout</Link> }
+						{ userValue.length <= 0 && <Link to="/Login">Login</Link>}
+					</li>
+					<li>Settings</li>
+				</ul>
+
 			</div>
-			<div className="leftContainer">
+			<div className="left-container">
 				<div className="fieldwrapper">
 					<input className="searchbar-input" name="search" onChange={handleSearchChange} placeholder="search..." /> <button className="search-button" onClick={onSearch}>Search</button>
 				</div>
@@ -169,7 +177,7 @@ const NoteList = () => {
 
 			</div>
 
-			<div className="rightContainer">
+			<div className="right-container">
 				<div>
 					{ editMode && <button className="toggle-button" onClick={toggleEditMode}>Switch to View Note Mode</button> }
 					{ !editMode && <button className="toggle-button" onClick={toggleEditMode}>Switch to Create Note Mode</button> }
