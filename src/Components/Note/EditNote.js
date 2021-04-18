@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../../Context/UserContext';
 
-import Fab from '@material-ui/core/Fab';
-import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
+import EditRoundedIcon from '@material-ui/icons/EditRounded';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import axios from 'axios';
@@ -63,31 +62,30 @@ const EditNote = (props) => {
 			}).then(
 				alert("Note Updated")
 			)
-
-			
 	}
 
 	return(
 		<div>
+
 			<form className="edit-form">
+
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
-				<input className="note-form-input" name="link" onChange={onHandleChange} value={note.link} placeholder="Link" />
-				<input className="note-form-input" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
-				<input className="note-form-input" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
+				<input className="note-form-tags" name="link" onChange={onHandleChange} value={note.link} placeholder="Link" />
+				<input className="note-form-tags" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
+				<input className="note-form-tags" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
 				
+
 				<div className="note-form-button">
-					<Fab onClick={onHandleSubmit}>
-						<DynamicFeedIcon />
-					</Fab>
+					<EditRoundedIcon style={{ fontSize: 50 }} onClick={onHandleSubmit} />
 				</div>
 
-				<div className="delete-note">
-					<Fab onClick={handleDelete}>
-						<DeleteForeverIcon />
-					</Fab>
-				</div>				
+				<div className="delete-note-button">	
+					<DeleteForeverIcon style={{ fontSize: 30, color: "#FF0000" }} onClick={handleDelete}/>
+				</div>
+
 			</form>			
+
 		</div>
 	)
 }

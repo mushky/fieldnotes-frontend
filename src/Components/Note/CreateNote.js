@@ -1,10 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { UserContext } from '../../Context/UserContext';
 
-import Fab from '@material-ui/core/Fab';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 
-import {Editor, EditorState, RichUtils} from 'draft-js';
 import Select from 'react-select'
 
 import axios from 'axios';
@@ -17,9 +15,6 @@ const CreateNote = (props) => {
 
 	const { userValue } = useContext(UserContext);
 
-	const [editorState, setEditorState] = useState(
-		() => EditorState.createEmpty(),
-	);
 	const [note, setNote] = useState({
 		title: "",
 		content: "",
@@ -76,7 +71,7 @@ const CreateNote = (props) => {
 			.then((res) => {
 				const newNote = { 
 					_id: res.data.Note._id, content: res.data.Note.content, title: res.data.Note.title,
-					url: res.data.Note.link,category: res.data.Note.category,tags: res.data.Note.tags,					
+					link: res.data.Note.link,category: res.data.Note.category,tags: res.data.Note.tags,					
 					userId: res.data.Note.userId
 				}
 				setNote(newNote);
@@ -98,17 +93,15 @@ const CreateNote = (props) => {
 		<div>
 			<form className="note-form">
 
-				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
-				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
-				{/* <Editor editorState={editorState} onChange={setEditorState} placeholder="Rich Text Editor"/> */}
-				<input className="note-form-input" name="link" onChange={onHandleChange} value={note.link} placeholder="link" />
-				<Select className="note-form-select" onChange={handleSelect} options={categories} name="category" value={category}  placeholder="create new categories with the category creator..."/>
-				<input className="note-form-input" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
+				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Note Title" />
+				<hr></hr>
+				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Start typing here..." rows="5" cols="50" />
+				<input className="note-form-tags" name="link" onChange={onHandleChange} value={note.link} placeholder="Any Links?" />
+				<Select className="note-select-button" onChange={handleSelect} options={categories} name="category" value={category}  placeholder="create new categories with the category creator..."/>
+				<input className="note-form-tags" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
 
 				<div className="note-form-button">
-					<Fab onClick={onHandleSubmit}>
-						<NoteAddIcon />
-					</Fab>
+					<NoteAddIcon style={{ fontSize: 50 }} onClick={onHandleSubmit} />
 				</div>
 
 			</form>
