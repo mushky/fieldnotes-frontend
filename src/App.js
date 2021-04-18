@@ -21,13 +21,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header className="header">
-          <Link to="/Notes"><h1 className="title-name">Field Notes</h1></Link>
-          <nav>
-            { userValue.length > 1 && <p className="logged-in">Logged in as: <strong>{ userValue[2] }</strong></p> }
-            { userValue.length > 1 && <Link to="/Logout">Logout</Link> }
-          </nav>
-        </header>
           <UserContext.Provider value={{ userValue, setUserValue }}>
             <Route path="/" exact component={Login} />
             <Route path="/Notes" exact component={NoteList}/>

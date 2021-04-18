@@ -15,7 +15,7 @@ const Logout = () => {
 
 	return(
 		<div className="login-container">
-			<button onClick={onHandleSubmit}>Logout</button>
+			<button className="logout-button" onClick={onHandleSubmit}>Logout</button>
 		</div>
 	)
 

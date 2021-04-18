@@ -57,10 +57,10 @@ const Login = () => {
 	return(
 		<div className="login-container">
 			<h1>Field Notes</h1>
-			<form>
-				<input onChange={handleChange} value={user.username} name="username" placeholder="username"></input>
-				<input onChange={handleChange} value={user.password} name="password" placeholder="********"></input>
-				<button onClick={onSubmit}>Login</button>
+			<form className>
+				<input className="login-form-username" onChange={handleChange} value={user.username} name="username" placeholder="username"></input><br></br>
+				<input className="login-form-password" onChange={handleChange} value={user.password} name="password" placeholder="********"></input><br></br>
+				<button className="login-button" onClick={onSubmit}>Login</button>
 			</form>
 		</div>
 	)

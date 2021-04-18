@@ -1,9 +1,22 @@
-/* 006699 dark blue
-0099CC light blue
-FFFF81 funky yellow
-000000 black 
-#20C20E computer green
+/* CSS Structure: 
+  
+There are 3 columns from Left to Right
+
+1. sidebar
+2. left-container (contains note list and search bar)
+3. right-container (contains forms and large view of selected note)
+
+  sb. lc.   rc.
+  ___________________
+  |  |     |        |
+  |  |     |        |
+  |  |     |        |
+  |  |     |        |
+  |  |     |        |
+
 */
+
+/*. Global Settings */
 
 * {
   box-sizing: border-box;
@@ -11,22 +24,57 @@ FFFF81 funky yellow
   padding: 0;
 }
 
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 300;
+  background: #000000;
+  width: 100%;
+  height: 100%;
+  background-image: url("cubesbackground.png");
+  color: white; 
+}
+
+input {
+  background-color:#000000;
+  border-radius: 3px;
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 0 auto 10px auto;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  border: 1px solid #006699;
+}
+
+button {
+  background-color: #006699;
+  padding: 10px 15px;
+  color: #000000;
+  border-radius: 3px;
+  font-size: 18px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Anchor behaviors */
 a:visited { text-decoration: none; color:white; }
 a:hover { text-decoration: none; color:blue; }
 a:focus { text-decoration: none; color:yellow; }
 a:hover, a:active { text-decoration: none; color: yellow }
 
+/* Container */
 .container {
   display: flex;
   padding: 10px;
   margin: 10px;
 }
 
-.title-name {
-  padding-top: 5px;
-  color: white;
-}
-
+/* Sidebar */
 .sidebar-container {
   flex: .5;
   border:#006699 solid 1px;
@@ -34,22 +82,12 @@ a:hover, a:active { text-decoration: none; color: yellow }
   height: 100%;
 }
 
+/* Left Container */
 .left-container {
   flex: 1;
   border:#006699 solid 1px;
-  width: 100%;
+  width: 460px;
   position: relative;
-}
-
-.right-container {
-  flex: 4;
-  border:#006699 solid 1px;
-  height: 100%;
-}
-
-.header {
-  margin: auto -16px;
-  padding: 16px 32px;
 }
 
 .note {
@@ -62,46 +100,37 @@ a:hover, a:active { text-decoration: none; color: yellow }
   float: left;
   margin: 5px;
   padding: 5px;
-  opacity: 0.9;
-  float: center;
 }
 
-body {
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: 300;
-  background: #000000;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-  color: white; 
-}
-
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-
-input {
-  background-color:#000000;
-  width: 250px;
-  border-radius: 3px;
-  font-family: "Source Sans Pro", sans-serif;
+.searchbar-input {
+  float: left;
+  width: 80%;
+  height: 38px;
+  text-align: left;
   padding: 10px 15px;
-  margin: 0 auto 10px auto;
-  display: block;
+}
+
+.search-button {
+  background: #0099CC;
+  color: #FFFF81;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
   text-align: center;
-  font-size: 18px;
-  color: white;
-  border: 1px solid #006699;
+  justify-content: center;
+  width: 20%;
+  float:right;
 }
 
-button {
-  appearance: none;
-  outline: 0;
-  background-color: #006699;
-  border: 0;
-  padding: 10px 15px;
-  color: #000000;
-  border-radius: 3px;
-  width: 250px;
-  font-size: 18px;
+.fieldwrapper{
+  white-space: nowrap;
+}
+
+/* Right Container */
+.right-container {
+  flex: 4;
+  border:#006699 solid 1px;
+  height: 100%;
 }
 
 .note-form {
@@ -147,7 +176,7 @@ button {
 .note-form-textarea {
   width: 100%;
   padding: 4px;
-  font-size: 1.4em;
+  font-size: 1.em;
   font-family: inherit;
   height: 500px;
   background-color:black;
@@ -157,11 +186,6 @@ button {
 
 .note-form-button {
   float: right;
-}
-
-.delete-button {
-  float: left;
-  justify-content: center;
 }
 
 .edit-button {
@@ -175,28 +199,11 @@ button {
   border: none;
   cursor: pointer;
   font-size: 14px;
-  text-align: center;
-  justify-content: center;
   width: 100%;
 }
 
-.note-list-button {
-  background: #0099CC;
-  color: #FFFF81;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  text-align: center;
-  justify-content: center;
-  width: 100%;
-}
 
-.logged-in {
-  color: #0099CC;
-  float: right;
-  font-size: 20px;
-}
-
+/* Login and Logout */
 .login-container {
   display: flex;
   flex-direction: column;
@@ -206,33 +213,42 @@ button {
   min-height: 75vh;
 }
 
-.login-logout {
-  color:white;
+.login-form-username {
+  width: 100%;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: solid green;
+  border-radius: 4px;
 }
 
-ul {
-  list-style-type: none;
+.login-form-password {
+  width: 100%;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: solid green;
+  border-radius: 4px;
 }
 
-.searchbar-input {
-  float: left;
-  width: 80%;
-  height: 38px;
-  text-align: left;
-}
-
-.search-button {
-  background: #0099CC;
-  color: #FFFF81;
+.login-button {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
-  text-align: center;
-  justify-content: center;
-  width: 20%;
-  float:right;
 }
 
-.fieldwrapper{
-  white-space: nowrap;
+.logout-button {
+  width: 25%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

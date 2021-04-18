@@ -95,7 +95,7 @@ const CreateNote = (props) => {
 	
 	return(
 		<div>
-			<form className="note-form ">
+			<form className="note-form">
 
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />

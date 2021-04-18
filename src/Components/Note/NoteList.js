@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import { UserContext } from '../../Context/UserContext';
 
 import SmallNote from './SmallNote';
 import CreateNote from './CreateNote';
 import NoteDetailView from './NoteDetailView';
+import SideBar from '../Sidebar/SideBar';
 
 import axios from "axios";
 
@@ -135,26 +135,18 @@ const NoteList = () => {
 
 	return(
 		<div className="container">
-			<div className="sidebar-container">
-				<ul>
-					<li>Notes</li>
-					<li>Categories</li>
-					<li>Favorites</li>
-					<li>Tags</li>
-					<li>Trash</li>
-					<hr></hr>
-					<li>Light Mode</li>
-					<li>
-						{ userValue.length > 1 && <Link to="/Logout">Logout</Link> }
-						{ userValue.length <= 0 && <Link to="/Login">Login</Link>}
-					</li>
-					<li>Settings</li>
-				</ul>
 
-			</div>
+			<SideBar />
+
 			<div className="left-container">
 				<div className="fieldwrapper">
-					<input className="searchbar-input" name="search" onChange={handleSearchChange} placeholder="search..." /> <button className="search-button" onClick={onSearch}>Search</button>
+					<input className="searchbar-input" 
+						name="search" 
+						onChange={handleSearchChange} 
+						placeholder="search..." 
+					/> 
+					
+					<button className="search-button" onClick={onSearch}>Search</button>
 				</div>
 				
 				{ loading && <h2>Loading...</h2> }
