@@ -4,26 +4,26 @@ import SideBarClosed from './SideBarClosed';
 
 import SideBarOpen from './SideBarOpened';
 
-const SideBar = () => {
+const SideBar = (props) => {
 
 	const { userValue } = useContext(UserContext);
 
-	const [open, setOpen] = useState(true);
+	const [open, setOpen] = useState(false);
 
-	const toggleSidebar = () => {
+	const onToggleSidebar = () => {
 		setOpen(!open);
-		console.log(open);
 	}
 
+
 	return(
-		<nav onClick={toggleSidebar}>
+		<nav>
 
 			<div>
 				{ open && 
-					<SideBarOpen />
+					<SideBarOpen onToggleSidebar={onToggleSidebar}/>
 				}
 				{ !open && 
-					<SideBarClosed />
+					<SideBarClosed onToggleSidebar={onToggleSidebar}/>
 				}
 		</div>
 
