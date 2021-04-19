@@ -254,6 +254,10 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 }
 
 /* Login and Logout */
+
+.login-title {
+  font-size: 90px;
+}
 .login-container {
   display: flex;
   flex-direction: column;
