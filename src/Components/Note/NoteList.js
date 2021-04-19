@@ -164,9 +164,9 @@ const NoteList = () => {
 						placeholder="Search..." 
 					/> 
 					
-					<AddBoxRoundedIcon className="add-button" style={{ fontSize: 40 }} onClick={toggleEditMode}/>
-
 					<SearchRoundedIcon className="search-button" style={{ fontSize: 40 }} onClick={onSearch}/>
+
+					<AddBoxRoundedIcon className="add-button" style={{ fontSize: 40 }} onClick={toggleEditMode}/>
 
 				</div>
 				

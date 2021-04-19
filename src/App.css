@@ -18,7 +18,7 @@ There are 3 columns from Left to Right
 
 /* Media Queries */
 /* Responsive layout - makes a one column layout instead of a two-column layout */
-@media (max-width: 20px) {
+@media (max-width: 800px) {
   .container {
     flex-direction: column;
   }
@@ -76,8 +76,16 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 .sidebar-container {
   flex: .5;
   background-color: #333333;
-  /* height: 57.5em; */
+  height: 57.5em;
   height: 100ev;
+}
+
+.sidebar-container-closed {
+  flex: .5;
+  flex-direction: row;
+  background-color: #333333;
+  height: 10px;
+  width: 100%;
 }
 
 .sidebar-items-top {
@@ -117,7 +125,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   background: #1f1f1f;
   cursor: pointer;
   color: #4CAF50;
-  float: right;
+  float: left;
   justify-content: center;
   margin-right: 10px;
 }
@@ -126,7 +134,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   background: #1f1f1f;
   cursor: pointer;
   color: #4CAF50;
-  float: right;
+  float: left;
 }
 
 .fieldwrapper{
