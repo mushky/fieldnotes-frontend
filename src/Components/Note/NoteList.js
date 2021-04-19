@@ -35,8 +35,8 @@ const NoteList = () => {
 	// For API
 	const url = `http://localhost:3001/api`
 
-	const token = userValue[3];
 	const userId = userValue[0];
+	const token = userValue[3];
 
 	const headers = {
 		"x-access-token": token
