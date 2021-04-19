@@ -23,7 +23,7 @@ function App() {
     <Router>
       <div className="App">
           <UserContext.Provider value={{ userValue, setUserValue }}>
-            <Route path="/" exact component={Login} />
+            <Route path="/" exact component={NoteList} />
             <Route path="/Notes" exact component={NoteList}/>
             <Route path="/Login" exact component={Login} />
             <Route path="/Logout" exact component={Logout} />
