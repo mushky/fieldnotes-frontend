@@ -91,12 +91,16 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 .sidebar-items-top {
   letter-spacing: 1px;
   padding: 5px;  
+  background-color: #333333;
+
 }
 
 .sidebar-items-bottom {
   letter-spacing: 1px;
   padding: 5px;
   bottom: 0;
+  background-color: #333333;
+
 }
 
 /* Left Container */
