@@ -21,7 +21,7 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div>
           <UserContext.Provider value={{ userValue, setUserValue }}>
             <Route path="/" exact component={NoteList} />
             <Route path="/Notes" exact component={NoteList}/>
