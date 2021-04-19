@@ -12,14 +12,28 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FlareIcon from '@material-ui/icons/Flare';
 
+import MenuIcon from '@material-ui/icons/Menu';
+
 const SideBarOpen = (props) => {
 
 	const { userValue } = useContext(UserContext);
+
+	const onHandleToggleSidebar = () => {
+		props.onToggleSidebar(props);
+	}
+
 
 	return(
 		<div className="sidebar-container">
 
 			<ul className="sidebar-items">
+
+				<li className="sidebar-items-top" onClick={onHandleToggleSidebar}>
+					<MenuIcon style={{ fontSize: "16px", float: "left", marginRight: "10px", marginTop: "2px"  }}/>
+					<p>Collapse</p>
+				</li>
+
+				<br></br>
 
 				<li className="sidebar-items-top">
 					<HomeRoundedIcon style={{ fontSize: "16px", float: "left", marginRight: "10px", marginTop: "2px"  }}/>
