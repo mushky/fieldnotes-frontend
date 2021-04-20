@@ -75,7 +75,7 @@ const NoteList = () => {
 
 	function addNote(newNote) {
     setNotes(prevNotes => {
-      return [...prevNotes, newNote];
+      return [newNote, ...prevNotes];
     })
   }
 
