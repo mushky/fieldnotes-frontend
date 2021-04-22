@@ -80,7 +80,7 @@ const EditNote = (props) => {
 					<EditRoundedIcon style={{ fontSize: 50 }} onClick={onHandleSubmit} />
 				</div>
 
-				<div className="delete-note-button">	
+				<div className="">	
 					<DeleteForeverIcon style={{ fontSize: 30, color: "#FF0000" }} onClick={handleDelete}/>
 				</div>
 

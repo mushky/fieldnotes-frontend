@@ -170,36 +170,39 @@ const NoteList = () => {
 
 				</div>
 				
-				{ loading && <h2>Loading...</h2> }
+				<div className="notelist">
 
-				{ notes.length <= 0 && 
-					<SmallNote 
-						id={selectedNote.id}
-						title={selectedNote.title} 
-						content={selectedNote.content}
-						link={selectedNote.link}
-						category={selectedNote.category}
-						tags={selectedNote.tags}
-						userId={selectedNote.userId}
-						onSelect={selectNote} 
-					/>
-				}
+					{ loading && <h2>Loading...</h2> }
 
-				{notes.map((noteItem) => {
-					return(
+					{ notes.length <= 0 && 
 						<SmallNote 
-							key={noteItem._id} 
-							id={noteItem._id}
-							title={noteItem.title} 
-							content={noteItem.content}
-							link={noteItem.link}
-							category={noteItem.category}
-							tags={noteItem.tags}
-							userId={noteItem.userId}
+							id={selectedNote.id}
+							title={selectedNote.title} 
+							content={selectedNote.content}
+							link={selectedNote.link}
+							category={selectedNote.category}
+							tags={selectedNote.tags}
+							userId={selectedNote.userId}
 							onSelect={selectNote} 
 						/>
-					)
-				})}
+					}
+
+					{notes.map((noteItem) => {
+						return(
+							<SmallNote 
+								key={noteItem._id} 
+								id={noteItem._id}
+								title={noteItem.title} 
+								content={noteItem.content}
+								link={noteItem.link}
+								category={noteItem.category}
+								tags={noteItem.tags}
+								userId={noteItem.userId}
+								onSelect={selectNote} 
+							/>
+						)
+					})}
+				</div>
 
 			</div>
 

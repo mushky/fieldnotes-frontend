@@ -7,13 +7,12 @@ const SmallNote = (props) => {
 	}
 
 	function truncate(str) {
-    return str.length > 160 ? str.substring(0, 100) + "..." : str;
+    return str.length > 100 ? str.substring(0, 100) + "..." : str;
 	}
 
 	return(
 		<div className="note" onClick={handleSelect}>
-			<h3>{props.title}</h3>
-			<br></br>
+			<h4>{props.title}</h4>
 			<p>{truncate(props.content)}</p>
 		</div>
 	)
