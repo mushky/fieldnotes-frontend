@@ -8,7 +8,7 @@ const SideBar = (props) => {
 
 	const { userValue } = useContext(UserContext);
 
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(true);
 
 	const onToggleSidebar = () => {
 		setOpen(!open);
