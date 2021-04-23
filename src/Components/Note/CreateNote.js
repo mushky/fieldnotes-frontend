@@ -70,7 +70,7 @@ const CreateNote = (props) => {
 		// Adding Selected Category to note
 		note.category = category["value"];
 
-		axios.post(`${url}/notes`, note , {headers})
+		axios.post(`${localUrl}/notes`, note , {headers})
 			.then((res) => {
 				const newNote = { 
 					_id: res.data.Note._id, content: res.data.Note.content, title: res.data.Note.title,
