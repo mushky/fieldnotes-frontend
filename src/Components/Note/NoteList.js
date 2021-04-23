@@ -52,7 +52,7 @@ const NoteList = () => {
 
 	const fetchNotesBySearch = async () => {
 		setLoading(true);
-		const res = await axios.get(`${url}/notes/search?userId=${userId}&content=${content}`, {headers})
+		const res = await axios.get(`${localUrl}/notes/search?userId=${userId}&content=${content}`, {headers})
 		setNotes(res.data.Note)
 		setContent();
 		setLoading(false);
