@@ -95,7 +95,14 @@ const CreateNote = (props) => {
 	return(
 		<div>
 			<form className="note-form">
-				<Link className="back-link-create-note" to="/Notes">Back</Link>
+				<Link className="back-link-create-note" to="/Notes">
+					<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
+						<path 
+							fill="#FFFFFF" 
+							d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .64-.23a1 1 0 0 0 .13-1.41L7.14 13H19a1 1 0 0 0 0-2z"/>
+					</svg>
+					<br></br>
+				</Link>
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Note Title" />
 				<hr></hr>
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Start typing here..." rows="5" cols="50" />
