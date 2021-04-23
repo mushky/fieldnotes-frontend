@@ -156,7 +156,7 @@ const NoteList = () => {
 
 			<div className="left-container">
 
-				<div className="fieldwrapper">
+				<div className="search-fieldwrapper">
 
 					<input className="searchbar-input" 
 						name="search" 
