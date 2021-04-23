@@ -63,10 +63,8 @@ const CreateCategory = (props) => {
 		<div>
 			<form className="category-input-form">
 
-				<span>
-					<input className="category-input-form" name="name" onChange={onHandleChange} value={category.name} placeholder="Category name" />
-					<button className="add-category-button" onClick={onHandleSubmit}>Add</button>
-				</span>
+				<input className="category-input-form" name="name" onChange={onHandleChange} value={category.name} placeholder="Category name" />
+				<button className="add-category-button" onClick={onHandleSubmit}>Add</button>
 
 				<div className="">
 				</div>
