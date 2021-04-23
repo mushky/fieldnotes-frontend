@@ -18,7 +18,7 @@ There are 3 columns from Left to Right
 
 /* Media Queries */
 /* Responsive layout - makes a one column layout instead of a two-column layout */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .container {
     flex-direction:column;
   }
@@ -70,6 +70,9 @@ There are 3 columns from Left to Right
 
 @media (min-width: 1400px) {
   .add-button-responsive {
+    display: none !important;
+  }
+  .back-link-create-note {
     display: none !important;
   }
 }

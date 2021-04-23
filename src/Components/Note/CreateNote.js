@@ -1,4 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
+import { Link } from 'react-router-dom';
+
 import { UserContext } from '../../Context/UserContext';
 
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
@@ -93,7 +95,7 @@ const CreateNote = (props) => {
 	return(
 		<div>
 			<form className="note-form">
-
+				<Link className="back-link-create-note" to="/Notes">Back</Link>
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Note Title" />
 				<hr></hr>
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Start typing here..." rows="5" cols="50" />
