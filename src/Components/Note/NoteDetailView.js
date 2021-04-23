@@ -4,7 +4,6 @@ import EditNote from '../Note/EditNote';
 
 const NoteDetailView = (props) => {
 	const [isEditMode, setIsEditMode] = useState(false);
-
 	useEffect(() => {
 		setIsEditMode(true);
 	},[])

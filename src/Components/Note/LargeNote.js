@@ -1,6 +1,8 @@
 import React from 'react';
 
+
 const LargeNote = (props) => {
+
 	return(
 		<div>
 			<h2>{props.title}</h2>

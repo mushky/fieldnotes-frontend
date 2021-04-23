@@ -75,7 +75,7 @@ const NoteList = () => {
 		}
 	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
-	function addNote(newNote) {
+	const addNote = (newNote) => {
     setNotes(prevNotes => {
       return [newNote, ...prevNotes];
     })
@@ -102,7 +102,7 @@ const NoteList = () => {
 		}
 	}
 
-  function deleteNote(id) {
+  const deleteNote = (id) => {
 		setNotes(prevNotes => {
       return prevNotes.filter((noteItem) => {
         return noteItem._id !== id;
@@ -119,7 +119,7 @@ const NoteList = () => {
 		},1000)
   }
 
-	function selectNote(noteObject) {
+	const selectNote = (noteObject) => {
 		console.log(noteObject);
 		setSelectedNote({
 			id: noteObject.id,
@@ -133,20 +133,12 @@ const NoteList = () => {
 		setEditMode(false);
 	}
 
-	function toggleEditMode() {
+	const toggleEditMode = () => {
 		setEditMode(!editMode);
 	}
 
-	function goToAddNote() {
-		return(
-			<div>
-				<Link to="/AddNote"></Link>
-			</div>
-		)
-	}
-
 	// For Search
-	function handleSearchChange(e) {
+	const handleSearchChange = (e) => {
 		setContent(e.target.value);	
 	}
 
@@ -176,7 +168,9 @@ const NoteList = () => {
 					
 					<SearchRoundedIcon className="search-button" style={{ fontSize: 40 }} onClick={onSearch}/>
 
+					{/* Show on Desktop */}
 					<AddBoxRoundedIcon className="add-button" style={{ fontSize: 40 }} onClick={toggleEditMode}/>
+					{/* Show on Mobile*/}
 					<Link to="/AddNote"><AddBoxRoundedIcon className="add-button-responsive" style={{ fontSize: 40 }} onClick={toggleEditMode}/></Link>
 
 				</div>
@@ -197,20 +191,40 @@ const NoteList = () => {
 							onSelect={selectNote} 
 						/>
 					}
-
 					{notes.map((noteItem) => {
 						return(
-							<SmallNote 
-								key={noteItem._id} 
-								id={noteItem._id}
-								title={noteItem.title} 
-								content={noteItem.content}
-								link={noteItem.link}
-								category={noteItem.category}
-								tags={noteItem.tags}
-								userId={noteItem.userId}
-								onSelect={selectNote} 
-							/>
+							<div>
+
+								<div className="responsive-note-detail-view">
+									<Link to={`/ResponsiveNoteDetailView/${noteItem._id}`}>
+										<SmallNote 
+											key={noteItem._id} 
+											id={noteItem._id}
+											title={noteItem.title} 
+											content={noteItem.content}
+											link={noteItem.link}
+											category={noteItem.category}
+											tags={noteItem.tags}
+											userId={noteItem.userId}
+											onSelect={selectNote}
+										/>
+									</Link>
+								</div>
+							
+								<div className="note-detail-view">
+									<SmallNote 
+										key={noteItem._id} 
+										id={noteItem._id}
+										title={noteItem.title} 
+										content={noteItem.content}
+										link={noteItem.link}
+										category={noteItem.category}
+										tags={noteItem.tags}
+										userId={noteItem.userId}
+										onSelect={selectNote}
+									/>
+								</div>
+							</div>
 						)
 					})}
 				</div>
@@ -222,7 +236,8 @@ const NoteList = () => {
 				{ editMode && <CreateNote onAdd={addNote}/> }
 
 				{ !editMode &&
-					<NoteDetailView 
+					<NoteDetailView
+						className="note-detail" 
 						key={selectedNote.id} 
 						id={selectedNote.id}
 						title={selectedNote.title} 
@@ -234,7 +249,8 @@ const NoteList = () => {
 						onUpdate={onUpdate}
 					/>
 				}
-			</div>			
+			</div>
+	
 		</div>
 
 	)
