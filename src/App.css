@@ -18,7 +18,7 @@ There are 3 columns from Left to Right
 
 /* Media Queries */
 /* Responsive layout - makes a one column layout instead of a two-column layout */
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .container {
     flex-direction:column;
   }
@@ -48,6 +48,10 @@ There are 3 columns from Left to Right
     flex-direction: column;
   }
 
+  .add-button {
+    display: none !important;
+  }
+
   .notelist {
     flex-direction: column-reverse;
     padding-top: 60px;
@@ -58,11 +62,16 @@ There are 3 columns from Left to Right
     flex-direction: column;
     display: none;
   }
+
+  .login-title {
+    font-size: 70px !important;
+  }
 }
 
-@media only screen and (max-width: 800px) {
-
-
+@media (min-width: 1400px) {
+  .add-button-responsive {
+    display: none !important;
+  }
 }
 
 /*. Global Settings */
@@ -191,6 +200,19 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 }
 
 .add-button:hover {
+  width: 10%;
+  height: 10%;
+}
+
+.add-button-responsive {
+  background: #1f1f1f;
+  cursor: pointer;
+  color: #4CAF50;
+  float: left;
+  width: 8%;
+}
+
+.add-button-responsive:hover {
   width: 10%;
   height: 10%;
 }
@@ -333,6 +355,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 
 .login-title {
   font-size: 90px;
+  font-weight: bold;
 }
 
 .login-container {

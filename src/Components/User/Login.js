@@ -59,7 +59,7 @@ const Login = () => {
 
 	return(
 		<div className="login-container">
-			<h1 className="login-title">Field Notes</h1>
+			<p className="login-title">Field Notes</p>
 			<form className>
 				<input className="login-form-username" onChange={handleChange} value={user.username} name="username" placeholder="username"></input><br></br>
 				<input className="login-form-password" onChange={handleChange} value={user.password} name="password" placeholder="********"></input><br></br>

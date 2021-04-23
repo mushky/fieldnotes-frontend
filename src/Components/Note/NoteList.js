@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import { UserContext } from '../../Context/UserContext';
 
@@ -136,6 +137,14 @@ const NoteList = () => {
 		setEditMode(!editMode);
 	}
 
+	function goToAddNote() {
+		return(
+			<div>
+				<Link to="/AddNote"></Link>
+			</div>
+		)
+	}
+
 	// For Search
 	function handleSearchChange(e) {
 		setContent(e.target.value);	
@@ -168,6 +177,7 @@ const NoteList = () => {
 					<SearchRoundedIcon className="search-button" style={{ fontSize: 40 }} onClick={onSearch}/>
 
 					<AddBoxRoundedIcon className="add-button" style={{ fontSize: 40 }} onClick={toggleEditMode}/>
+					<Link to="/AddNote"><AddBoxRoundedIcon className="add-button-responsive" style={{ fontSize: 40 }} onClick={toggleEditMode}/></Link>
 
 				</div>
 				
