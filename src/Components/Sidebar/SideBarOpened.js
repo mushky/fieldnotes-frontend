@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from '../../Context/UserContext';
 
 import { Link } from 'react-router-dom';
@@ -42,7 +42,7 @@ const SideBarOpen = (props) => {
 
 				<li className="sidebar-items-top">
 					<FolderIcon style={{ fontSize: "16px", float: "left", marginRight: "10px", marginTop: "2px"  }}/>
-					Categories
+					<Link to="/Categories">Categories</Link>
 				</li>
 
 				<li className="sidebar-items-top">
