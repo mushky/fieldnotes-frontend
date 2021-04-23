@@ -450,3 +450,12 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 .category-item:hover{
   background-color:#01c352;
 }
+
+/* SVGs */
+
+.svg-sidebar-icon {
+  font-size: "16px";
+  float: "left";
+  margin-right: "10px";
+  margin-top: "2px"
+}

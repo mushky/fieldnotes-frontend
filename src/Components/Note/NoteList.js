@@ -34,6 +34,7 @@ const NoteList = () => {
 
 	// For API
 	const url = `http://localhost:3001/api`
+	const localUrl = `http://192.168.1.75:3001/api`
 
 	const userId = userValue[0];
 	const token = userValue[3];
@@ -44,7 +45,7 @@ const NoteList = () => {
   
 	const fetchNotes = async () => {
 		setLoading(true);
-		const res = await axios.get(`${url}/notes/user/${userValue[0]}`)
+		const res = await axios.get(`${localUrl}/notes/user/${userValue[0]}`)
 		setNotes(res.data.Note)
 		setLoading(false);
 	}

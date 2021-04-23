@@ -3,13 +3,12 @@ import { UserContext } from '../../Context/UserContext';
 
 import { Link } from 'react-router-dom';
 
-import AddBoxRoundedIcon from '@material-ui/icons/AddBoxRounded';
-
 import axios from 'axios';
 import CreateCategory from './CreateCategory';
 
 const CategoryList = (props) => {
 	const url = `http://localhost:3001/api`
+	const localUrl = `http://192.168.1.75:3001/api`
 
 	const { userValue } = useContext(UserContext);
 
@@ -17,7 +16,7 @@ const CategoryList = (props) => {
 
 	useEffect(() => {
 		const fetchCategories = async () => {
-			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
+			const res = await axios.get(`${localUrl}/categories/user/${userValue[0]}`)
 			setCategories(res.data.category);
 		}
 

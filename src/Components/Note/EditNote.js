@@ -8,6 +8,8 @@ import axios from 'axios';
 
 const EditNote = (props) => {
 	const url = `http://localhost:3001/api`
+	const localUrl = `http://192.168.1.75:3001/api`
+
 	const { userValue } = useContext(UserContext);
 
 	const [note, setNote] = useState({
@@ -43,7 +45,7 @@ const EditNote = (props) => {
 			"x-access-token": token
 		}
 
-		axios.put(`${url}/notes/${props.id}`, note , {headers})
+		axios.put(`${localUrl}/notes/${props.id}`, note , {headers})
 			.then((res) => {
 				const updatedNote = {
 					id: props.id,

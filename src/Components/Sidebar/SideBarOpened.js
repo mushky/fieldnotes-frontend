@@ -3,6 +3,7 @@ import { UserContext } from '../../Context/UserContext';
 
 import { Link } from 'react-router-dom';
 
+// TODO: Remove Material UI Icons and replace with SVG's or https://iconify.design/
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import FolderIcon from '@material-ui/icons/Folder';
 import GradeIcon from '@material-ui/icons/Grade';
@@ -12,8 +13,6 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FlareIcon from '@material-ui/icons/Flare';
 
-import MenuIcon from '@material-ui/icons/Menu';
-
 const SideBarOpen = (props) => {
 
 	const { userValue } = useContext(UserContext);
@@ -22,18 +21,23 @@ const SideBarOpen = (props) => {
 		props.onToggleSidebar(props);
 	}
 
-
 	return(
 		<div className="sidebar-container">
 
 			<ul className="sidebar-items">
-
 				<li className="sidebar-items-top" onClick={onHandleToggleSidebar}>
-					<MenuIcon style={{ fontSize: "16px", float: "left", marginRight: "10px", marginTop: "2px"  }}/>
-					<p>Collapse</p>
+					<svg className="hamburger-icon"
+						xmlns="http://www.w3.org/2000/svg" 
+						width="1em" height="1em" 
+						viewBox="0 0 15 15">
+						<g>
+						<path 
+							fill-rule="evenodd" clip-rule="evenodd" 
+							d="M1.5 3a.5.5 0 0 0 0 1h12a.5.5 0 0 0 0-1h-12zM1 7.5a.5.5 0 0 1 .5-.5h12a.5.5 0 0 1 0 1h-12a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h12a.5.5 0 0 1 0 1h-12a.5.5 0 0 1-.5-.5z" 
+							fill="#FFFFFF"/>
+						</g>
+					</svg>
 				</li>
-
-				<br></br>
 
 				<li className="sidebar-items-top">
 					<HomeRoundedIcon style={{ fontSize: "16px", float: "left", marginRight: "10px", marginTop: "2px"  }}/>

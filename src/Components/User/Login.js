@@ -5,7 +5,10 @@ import axios from 'axios';
 import { UserContext } from '../../Context/UserContext';
 
 const Login = () => {
-	const { setUserValue } = useContext(UserContext);
+	const url = `http://localhost:3001/api/users/login`;
+	const localUrl = `http://192.168.1.75:3001/api/users/login`
+
+	const { userValue, setUserValue } = useContext(UserContext);
 	const history = useHistory();
 
 	const [user, setUser] = useState({
@@ -32,7 +35,7 @@ const Login = () => {
 	function onSubmit(e) {
 		e.preventDefault();
 		setLoading(true);
-		axios.post('http://localhost:3001/api/users/login',{
+		axios.post(localUrl,{
 			"username": user.username,
 			"password": user.password
 		}).then((res) => {
@@ -61,6 +64,7 @@ const Login = () => {
 				<input className="login-form-username" onChange={handleChange} value={user.username} name="username" placeholder="username"></input><br></br>
 				<input className="login-form-password" onChange={handleChange} value={user.password} name="password" placeholder="********"></input><br></br>
 				<button className="login-button" onClick={onSubmit}>Login</button>
+				<p>{userValue}</p>
 			</form>
 		</div>
 	)

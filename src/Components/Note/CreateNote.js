@@ -12,6 +12,7 @@ import 'draft-js/dist/Draft.css';
 
 const CreateNote = (props) => {
 	const url = `http://localhost:3001/api`
+	const localUrl = `http://192.168.1.75:3001/api`
 
 	const { userValue } = useContext(UserContext);
 
@@ -29,7 +30,7 @@ const CreateNote = (props) => {
 
 	useEffect(() => {
 		const fetchCategories = async () => {
-			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
+			const res = await axios.get(`${localUrl}/categories/user/${userValue[0]}`)
 
 			let objectArray = [];
 			for (let i = 0; i < res.data.category.length; i++) {

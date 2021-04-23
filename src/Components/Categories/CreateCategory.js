@@ -9,6 +9,7 @@ import axios from 'axios';
 
 const CreateCategory = (props) => {
 	const url = `http://localhost:3001/api`
+	const localUrl = `http://192.168.1.75:3001/api`
 
 	const { userValue } = useContext(UserContext);
 
@@ -35,7 +36,7 @@ const CreateCategory = (props) => {
 			"x-access-token": token
 		}
 
-		axios.post(`${url}/categories`, category , {headers})
+		axios.post(`${localUrl}/categories`, category , {headers})
 			.then((res) => {
 				const newCategory = { 
 					_id: res.data.category._id, 
