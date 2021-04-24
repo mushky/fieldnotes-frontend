@@ -24,6 +24,7 @@ There are 3 columns from Left to Right
   }
 
   .sidebar-container {
+    flex: .5;
     z-index: 2;
     flex-direction: column;
     position: absolute;
@@ -32,9 +33,11 @@ There are 3 columns from Left to Right
   }
 
   .sidebar-container-closed {
+    flex: .5;
+    flex-direction: column;
     position: absolute;
     z-index: 2;
-    max-height: 20px;
+    max-height: 40px;
     width: 100%;
   }
 
@@ -44,8 +47,14 @@ There are 3 columns from Left to Right
   }
 
   .search-fieldwrapper {
-    margin-top: 34px;
+    margin-top: 54px;
     flex-direction: column;
+  }
+
+  .search-filter-bar {
+    margin-top: 100px !important;
+    background-color: #333333;
+    border: solid #333333
   }
 
   .add-button {
@@ -54,7 +63,7 @@ There are 3 columns from Left to Right
 
   .notelist {
     flex-direction: column-reverse;
-    padding-top: 60px;
+    margin-top: 10px;
   }
 
   .right-container {
@@ -229,8 +238,21 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   height: 10%;
 }
 
-.fieldwrapper{
-  white-space: nowrap;
+.search-filter-bar {
+  margin-top: 50px;
+  background-color: #333333;
+  border: solid #333333
+}
+
+.search-filter-bar-text-left {
+  color: #4CAF50;
+  margin-left: 10px;
+}
+
+.search-filter-bar-text-right {
+  color: white;
+  margin-right: 16px;
+  float: right;
 }
 
 .note {

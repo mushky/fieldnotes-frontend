@@ -158,7 +158,6 @@ const NoteList = () => {
 			<div className="left-container">
 
 				<div className="search-fieldwrapper">
-
 					<input className="searchbar-input" 
 						name="search" 
 						onChange={handleSearchChange} 
@@ -171,9 +170,22 @@ const NoteList = () => {
 					<AddBoxRoundedIcon className="add-button" style={{ fontSize: 40 }} onClick={toggleEditMode}/>
 					{/* Show on Mobile*/}
 					<Link to="/AddNote"><AddBoxRoundedIcon className="add-button-responsive" style={{ fontSize: 40 }} onClick={toggleEditMode}/></Link>
-
 				</div>
-				
+
+				<div className="search-filter-bar">
+					<strong>
+						<span className="search-filter-bar-text-left">
+							Recent
+						</span>
+					</strong>
+
+					<strong>
+						<span className="search-filter-bar-text-right">
+							Default
+						</span>
+					</strong>
+				</div>
+
 				<div className="notelist">
 
 					{ loading && <h2>Loading...</h2> }
@@ -193,7 +205,7 @@ const NoteList = () => {
 					{notes.map((noteItem) => {
 						return(
 							<div>
-								
+
 								{/* Show on Mobile */}
 
 								<div className="responsive-note-detail-view">

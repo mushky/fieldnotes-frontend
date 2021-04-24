@@ -28,7 +28,7 @@ const SideBarOpen = (props) => {
 				<li className="sidebar-items-top" onClick={onHandleToggleSidebar}>
 					<svg className="hamburger-icon"
 						xmlns="http://www.w3.org/2000/svg" 
-						width="1em" height="1em" 
+						width="2em" height="2em" 
 						viewBox="0 0 15 15">
 						<g>
 						<path 

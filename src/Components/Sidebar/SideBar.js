@@ -1,12 +1,9 @@
-import React, { useState, useContext } from 'react';
-import { UserContext } from '../../Context/UserContext';
+import React, { useState } from 'react';
 import SideBarClosed from './SideBarClosed';
 
 import SideBarOpen from './SideBarOpened';
 
-const SideBar = (props) => {
-
-	const { userValue } = useContext(UserContext);
+const SideBar = () => {
 
 	const [open, setOpen] = useState(false);
 
@@ -17,7 +14,6 @@ const SideBar = (props) => {
 
 	return(
 		<nav>
-
 			<div>
 				{ open && 
 					<SideBarOpen onToggleSidebar={onToggleSidebar}/>
