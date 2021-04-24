@@ -13,21 +13,33 @@ const CategoryList = (props) => {
 	const { userValue } = useContext(UserContext);
 
 	const [categories, setCategories] = useState([]);
+	const [selectedCategory, setSelectedCategory] = useState('');
+	const [notes, setNotes] = useState([]);
 
 	useEffect(() => {
-		const fetchCategories = async () => {
-			const res = await axios.get(`${localUrl}/categories/user/${userValue[0]}`)
-			setCategories(res.data.category);
-		}
-
 		fetchCategories();
 	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
-	function addCategory(newCategory) {
+	const fetchCategories = async () => {
+		const res = await axios.get(`${localUrl}/categories/user/${userValue[0]}`)
+		setCategories(res.data.category);
+	}
+
+	const addCategory = (newCategory) => {
     setCategories(prevCategories => {
       return [newCategory, ...prevCategories];
     })
   }
+
+	const getNotesByCategory = async (category) => {
+		const res = await axios.get(`http://192.168.1.75:3001/api/notes/category?userId=${userValue[0]}&category=${selectedCategory}`);
+		setNotes(res.data.Note);
+	}
+
+	const selectCategory = (category) => {
+		setSelectedCategory(category.target.textContent)
+		getNotesByCategory(selectedCategory)
+	}
 
 	return(
 		<div className="category-container">
@@ -47,7 +59,19 @@ const CategoryList = (props) => {
 			<div className="category-list">
 				{categories.map((category) => {
 					return(
-						<h3 className="category-item">{category.name}</h3>
+						<h3 className="category-item" onClick={selectCategory}>
+							{category.name}
+						</h3>
+					)
+				})}
+
+				{notes.map((note) => {
+					return(
+						<div>
+							<ul>
+								<li>{note.title}</li>
+							</ul>
+						</div>
 					)
 				})}
 			</div>

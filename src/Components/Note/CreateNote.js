@@ -107,12 +107,14 @@ const CreateNote = (props) => {
 				<hr></hr>
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Start typing here..." rows="5" cols="50" />
 				<input className="note-form-tags" name="link" onChange={onHandleChange} value={note.link} placeholder="Any Links?" />
-				<Select className="note-select-button" onChange={handleSelect} options={categories} name="category" value={category}  placeholder="create new categories with the category creator..."/>
-				<input className="note-form-tags" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
+				<Select className="note-select-button" onChange={handleSelect} options={categories} name="category" value={category}  placeholder="Category"/>
+				
+				<span>
+					<input className="note-form-tags" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
+					<NoteAddIcon className="note-form-button" style={{ fontSize: 50 }} onClick={onHandleSubmit} />
+				</span>
 
-				<div className="note-form-button">
-					<NoteAddIcon style={{ fontSize: 50 }} onClick={onHandleSubmit} />
-				</div>
+				<br></br>
 
 			</form>
 		</div>

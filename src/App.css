@@ -286,7 +286,6 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 
 .note-form-tags {
   min-width: 0px;
-  display: block;
   appearance: none;
   line-height: inherit;
   background-color: transparent;
@@ -296,9 +295,11 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   font-weight: 700;
   border: medium none;
   resize: none;
-  width: 100%;
+  width: 80%;
   margin-top: 10px;
   margin-bottom: 10px;
+  display: inline-block;
+
 }
 
 .note-form-select {  
@@ -320,12 +321,10 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 }
 
 .note-form-button {
-  float: right;
   background: #1f1f1f;
   cursor: pointer;
   color: #4CAF50;
-  justify-content: center;
-  margin-right: 10px;
+  float: right;
 }
 
 .note-select-button {

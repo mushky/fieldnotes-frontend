@@ -120,7 +120,6 @@ const NoteList = () => {
   }
 
 	const selectNote = (noteObject) => {
-		console.log(noteObject);
 		setSelectedNote({
 			id: noteObject.id,
 			title: noteObject.title,
@@ -194,6 +193,8 @@ const NoteList = () => {
 					{notes.map((noteItem) => {
 						return(
 							<div>
+								
+								{/* Show on Mobile */}
 
 								<div className="responsive-note-detail-view">
 									<Link to={`/ResponsiveNoteDetailView/${noteItem._id}`}>
@@ -210,7 +211,9 @@ const NoteList = () => {
 										/>
 									</Link>
 								</div>
-							
+								
+								{/* Show on Desktop */}
+
 								<div className="note-detail-view">
 									<SmallNote 
 										key={noteItem._id} 
