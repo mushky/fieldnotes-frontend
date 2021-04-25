@@ -88,7 +88,7 @@ const CreateNote = (props) => {
 						link: "", tags: "", userId: userValue[0] 
 					})
 					setCategory('');
-				},1000)
+				},100)
 			)
 	}
 	
@@ -115,7 +115,8 @@ const CreateNote = (props) => {
 				</span>
 
 				<br></br>
-
+				<br></br>
+				<br></br>
 			</form>
 		</div>
 	)

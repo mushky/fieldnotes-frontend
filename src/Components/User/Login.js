@@ -19,7 +19,7 @@ const Login = () => {
 	const [loading, setLoading] = useState(false);
 
 	if (loading) {
-		return <h2>Loading...</h2>
+		return <h1 className="login-loading">Loading...</h1>
 	}
 	function handleChange(e) {
 		const {name,value} = e.target;
@@ -40,10 +40,10 @@ const Login = () => {
 			"password": user.password
 		}).then((res) => {
 			setUserValue([
-				res.data.existingUser._id,					// id
-				res.data.existingUser.email,				// email
-				res.data.existingUser.username,			// username
-				res.data.token											// token
+				res.data.existingUser._id,		// id
+				res.data.existingUser.email,	// email
+				res.data.existingUser.username,	// username
+				res.data.token					// token
 			])
 			setTimeout(() => {
 				setLoading(false);

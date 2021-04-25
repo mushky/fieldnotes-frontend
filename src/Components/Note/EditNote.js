@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { UserContext } from '../../Context/UserContext';
 
 import EditRoundedIcon from '@material-ui/icons/EditRounded';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import axios from 'axios';
 
@@ -82,8 +81,8 @@ const EditNote = (props) => {
 					<EditRoundedIcon style={{ fontSize: 50 }} onClick={onHandleSubmit} />
 				</div>
 
-				<div className="">	
-					<DeleteForeverIcon style={{ fontSize: 30, color: "#FF0000" }} onClick={handleDelete}/>
+				<div className="delete-note-button">	
+					<p onClick={handleDelete}>Move to Trash</p>
 				</div>
 
 			</form>			

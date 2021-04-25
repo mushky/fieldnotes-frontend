@@ -8,7 +8,7 @@ const SideBarClosed = (props) => {
 
 	return(
 		<div className="sidebar-container-closed">
-			<li className="sidebar-items-top" onClick={onHandleToggleSidebar}>
+			<div className="sidebar-items-top" onClick={onHandleToggleSidebar}>
 				<svg className="hamburger-icon"
 					xmlns="http://www.w3.org/2000/svg" 
 					width="2em" height="2em" 
@@ -20,7 +20,7 @@ const SideBarClosed = (props) => {
 						fill="#FFFFFF"/>
 					</g>
 				</svg>
-			</li>
+			</div>
 
 		</div>
 	)

@@ -31,8 +31,8 @@ const CategoryList = (props) => {
     })
   }
 
-	const getNotesByCategory = async (category) => {
-		const res = await axios.get(`http://192.168.1.75:3001/api/notes/category?userId=${userValue[0]}&category=${selectedCategory}`);
+	const getNotesByCategory = async () => {
+		const res = await axios.get(`${localUrl}/notes/category?userId=${userValue[0]}&category=${selectedCategory}`);
 		setNotes(res.data.Note);
 	}
 

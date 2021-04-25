@@ -80,7 +80,9 @@ There are 3 columns from Left to Right
     display: none !important;
   }
 
-
+  ul {
+    list-style-type: none;
+  }
 }
 
 @media (min-width: 1400px) {
@@ -127,7 +129,7 @@ li:hover{
 
 /* Anchor behaviors */
 a:visited { text-decoration: none; color:white; }
-a:hover { text-decoration: none; color:blue; }
+a:hover { text-decoration: none; color:#4CAF50; }
 a:focus { text-decoration: none; color:yellow; }
 a:hover, a:active { text-decoration: none; color: #4CAF50 }
 
@@ -194,6 +196,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   color: white;
   font-size: 1.4rem;
   border: none;
+  margin-top: 5px;
 }
 
 .search-button {
@@ -205,6 +208,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   justify-content: center;
   margin-right: 10px;
   transition: width 0.5s;
+  margin-left: 16px;
 }
 
 .search-button:hover {
@@ -229,7 +233,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   background: #1f1f1f;
   cursor: pointer;
   color: #4CAF50;
-  float: left;
+  float: right;
   width: 8%;
 }
 
@@ -258,7 +262,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 .note {
   color: white;
   float: left;
-  width: 100%;
+  width: 98%;
   height: 5rem;
   padding: 5px;
   margin: 5px 5px;
@@ -266,8 +270,20 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   justify-content: center;
 }
 
+.note-content {
+  float: left;
+  margin-right: 50px;
+  width: 90%;
+  height: 100%;
+}
+
 .note:hover{
   background-color:#01c352;
+}
+
+.note-dots {
+  float: right;
+  margin-top: -50px;
 }
 
 
@@ -372,6 +388,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   cursor: pointer;
   position: fixed;
   bottom: 0.5px;
+  color: red;
 }
 
 .toggle-button {
@@ -445,6 +462,21 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   border-radius: 4px;
   cursor: pointer;
   font-size: 1.4rem;
+}
+
+.login-loading {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+
 }
 
 /* Category */

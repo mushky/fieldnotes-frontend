@@ -108,7 +108,7 @@ const NoteList = () => {
         return noteItem._id !== id;
       });
     })
-    axios.delete(`http://localhost:3001/api/notes/${id}`, { headers })
+    axios.delete(`${localUrl}/notes/${id}`, { headers })
       .then((res) => {
         console.log(res);
       }, (error) => {
@@ -116,7 +116,7 @@ const NoteList = () => {
       })
 		setTimeout(() => {
 			setSelectedNote({})
-		},1000)
+		},10)
   }
 
 	const selectNote = (noteObject) => {
@@ -169,7 +169,7 @@ const NoteList = () => {
 					{/* Show on Desktop */}
 					<AddBoxRoundedIcon className="add-button" style={{ fontSize: 40 }} onClick={toggleEditMode}/>
 					{/* Show on Mobile*/}
-					<Link to="/AddNote"><AddBoxRoundedIcon className="add-button-responsive" style={{ fontSize: 40 }} onClick={toggleEditMode}/></Link>
+					<Link to="/AddNote" onAdd={addNote}><AddBoxRoundedIcon className="add-button-responsive" style={{ fontSize: 40 }} onClick={toggleEditMode}/></Link>
 				</div>
 
 				<div className="search-filter-bar">
@@ -186,9 +186,11 @@ const NoteList = () => {
 					</strong>
 				</div>
 
-				<div className="notelist">
+				
+				{ loading && <h1>Loading...</h1> }
 
-					{ loading && <h2>Loading...</h2> }
+
+				<div className="notelist">
 
 					{ notes.length <= 0 && 
 						<SmallNote 
