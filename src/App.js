@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import NoteList from './Components/Note/NoteList'
 import CreateNote from './Components/Note/CreateNote';
@@ -26,7 +26,7 @@ function App() {
               <Route path="/Notes" exact component={NoteList}/>
               <Route path="/Categories" exact component={CategoryList} />
               <Route path="/AddNote" exact component={CreateNote} />
-              <Route path="/ResponsiveNoteDetailView/:noteId" exact component={ResponsiveNoteDetailView} />
+              <Route path="/ResponsiveNoteDetailView/:id" exact component={ResponsiveNoteDetailView} />
               <Route path="/Login" exact component={Login} />
               <Route path="/Logout" exact component={Logout} />
               <Route path="/Footer" exact component={Footer} />
