@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/fieldnotes-frontend/static/css/main.fa6b6fc6.chunk.css",
+    "main.js": "/fieldnotes-frontend/static/js/main.571ef506.chunk.js",
+    "main.js.map": "/fieldnotes-frontend/static/js/main.571ef506.chunk.js.map",
+    "runtime-main.js": "/fieldnotes-frontend/static/js/runtime-main.eeaae26f.js",
+    "runtime-main.js.map": "/fieldnotes-frontend/static/js/runtime-main.eeaae26f.js.map",
+    "static/css/2.e426f036.chunk.css": "/fieldnotes-frontend/static/css/2.e426f036.chunk.css",
+    "static/js/2.3c0b623a.chunk.js": "/fieldnotes-frontend/static/js/2.3c0b623a.chunk.js",
+    "static/js/2.3c0b623a.chunk.js.map": "/fieldnotes-frontend/static/js/2.3c0b623a.chunk.js.map",
+    "static/js/3.8e656ff9.chunk.js": "/fieldnotes-frontend/static/js/3.8e656ff9.chunk.js",
+    "static/js/3.8e656ff9.chunk.js.map": "/fieldnotes-frontend/static/js/3.8e656ff9.chunk.js.map",
+    "index.html": "/fieldnotes-frontend/index.html",
+    "static/css/2.e426f036.chunk.css.map": "/fieldnotes-frontend/static/css/2.e426f036.chunk.css.map",
+    "static/css/main.fa6b6fc6.chunk.css.map": "/fieldnotes-frontend/static/css/main.fa6b6fc6.chunk.css.map",
+    "static/js/2.3c0b623a.chunk.js.LICENSE.txt": "/fieldnotes-frontend/static/js/2.3c0b623a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.eeaae26f.js",
+    "static/css/2.e426f036.chunk.css",
+    "static/js/2.3c0b623a.chunk.js",
+    "static/css/main.fa6b6fc6.chunk.css",
+    "static/js/main.571ef506.chunk.js"
+  ]
+}
