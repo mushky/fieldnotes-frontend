@@ -387,7 +387,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   float: right;
   cursor: pointer;
   position: fixed;
-  bottom: 0.5px;
+  /* bottom: 0.5px; */
   color: red;
 }
 
