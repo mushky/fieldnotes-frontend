@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { UserContext } from '../../Context/UserContext';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -8,11 +7,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
     params: { noteId },
   } = match;
 
-	const { userValue } = useContext(UserContext);
 	const localUrl = `http://192.168.1.75:3001/api`
-
-	const userId = userValue[0];
-	const token = userValue[3];
 
 	const [note, setNote] = useState({
 		title: "",
@@ -33,6 +28,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 
 	useEffect(() => {
 		fetchNote();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
 
 	return(
@@ -45,6 +41,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 				</svg>
 					<br></br>
 			</Link>
+			{ loading && <h1>Loading...</h1> }
 			<h2>{note.title}</h2>
 			<br></br>
 			<p>{note.content}</p>

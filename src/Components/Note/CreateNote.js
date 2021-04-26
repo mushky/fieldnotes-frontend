@@ -24,13 +24,15 @@ const CreateNote = (props) => {
 		link: "",
 		category: "",
 		tags: "",
-		userId: userValue[0]
+		userId: userValue[0],
+		isResponsive: props.isResponsive
 	});
 
 	const [category, setCategory] = useState("");
 	const [categories, setCategories] = useState([]);
 
 	useEffect(() => {
+		console.log(props);
 		const fetchCategories = async () => {
 			const res = await axios.get(`${localUrl}/categories/user/${userValue[0]}`)
 
@@ -61,6 +63,7 @@ const CreateNote = (props) => {
 	}
 
 	function onHandleSubmit(e) {
+		console.log(props);
 		e.preventDefault();
 		const token = userValue[3];
 		const headers = {
@@ -78,7 +81,9 @@ const CreateNote = (props) => {
 					userId: res.data.Note.userId
 				}
 				setNote(newNote);
-				props.onAdd(newNote);
+				if (props.isResponsive === false) {
+					props.onAdd(newNote);
+				}
 			}, (error) => {
 				console.log(error);
 			}).then(

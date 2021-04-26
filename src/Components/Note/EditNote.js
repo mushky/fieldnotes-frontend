@@ -1,5 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../Context/UserContext';
+
+import { Hint } from 'react-autocomplete-hint';
 
 import EditRoundedIcon from '@material-ui/icons/EditRounded';
 
@@ -20,7 +22,26 @@ const EditNote = (props) => {
 		tags: props.tags,
 		userId: userValue[0]
 	});
-	
+
+	const [categories, setCategories] = useState([]);
+
+	const getCategories = async () => {
+			const res = await axios.get(`${localUrl}/categories/user/${userValue[0]}`)
+
+			let objectArray = [];
+			for (let i = 0; i < res.data.category.length; i++) {
+				objectArray.push(res.data.category[i].name)
+			}
+			console.log(objectArray);
+			setCategories(objectArray);
+		
+	}
+
+	useEffect(() => {
+		getCategories();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[]) 
+
 	function onHandleChange(e) {
 		const {name,value} = e.target;
 
@@ -69,14 +90,16 @@ const EditNote = (props) => {
 		<div className="view-note-fullscreen">
 
 			<form className="edit-form">
-
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
 				<input className="note-form-tags" name="link" onChange={onHandleChange} value={note.link} placeholder="Link" />
-				<input className="note-form-tags" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
+
+				<Hint className="hint-autocomplete" options={categories} allowTabFill >
+					<input className="note-form-categories" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
+				</Hint>
+
 				<input className="note-form-tags" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
 				
-
 				<div className="note-form-button">
 					<EditRoundedIcon style={{ fontSize: 50 }} onClick={onHandleSubmit} />
 				</div>

@@ -1,11 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../../Context/UserContext';
 
-import NoteAddIcon from '@material-ui/icons/NoteAdd';
-
-
 import axios from 'axios';
-
 
 const CreateCategory = (props) => {
 	const url = `http://localhost:3001/api`

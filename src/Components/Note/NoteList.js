@@ -8,7 +8,6 @@ import CreateNote from './CreateNote';
 import NoteDetailView from './NoteDetailView';
 import SideBar from '../Sidebar/SideBar';
 
-import AddBoxRoundedIcon from '@material-ui/icons/AddBoxRounded';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 
 import axios from "axios";
@@ -165,9 +164,10 @@ const NoteList = () => {
 					/>
 
 					{/* Show on Desktop */}
-					<AddBoxRoundedIcon className="add-button" style={{ fontSize: 40 }} onClick={toggleEditMode}/>
+					<button className="add-button" onClick={toggleEditMode}>+</button>
 					{/* Show on Mobile*/}
-					<Link to="/AddNote" onAdd={addNote}><AddBoxRoundedIcon className="add-button-responsive" style={{ fontSize: 40 }} onClick={toggleEditMode}/></Link>					
+					<Link to="/AddNote" onAdd={addNote}><button className="add-button-responsive" onClick={toggleEditMode}>+</button></Link>
+
 					<SearchRoundedIcon className="search-button" style={{ fontSize: 40 }} onClick={onSearch}/>
 
 				</div>
@@ -192,23 +192,16 @@ const NoteList = () => {
 						</span>
 					</strong>
 				</div>
-
 				
 				{ loading && <h1>Loading...</h1> }
-
 
 				<div className="notelist">
 
 					{ notes.length <= 0 && 
 						<SmallNote 
-							id={selectedNote.id}
-							title={selectedNote.title} 
-							content={selectedNote.content}
-							link={selectedNote.link}
-							category={selectedNote.category}
-							tags={selectedNote.tags}
-							userId={selectedNote.userId}
-							onSelect={selectNote} 
+							id={selectedNote.id} title={selectedNote.title} content={selectedNote.content} 
+							link={selectedNote.link} category={selectedNote.category} tags={selectedNote.tags} 
+							userId={selectedNote.userId} onSelect={selectNote} 
 						/>
 					}
 					{notes.map((noteItem) => {
@@ -220,15 +213,9 @@ const NoteList = () => {
 								<div className="responsive-note-detail-view">
 									<Link to={`/ResponsiveNoteDetailView/${noteItem._id}`}>
 										<SmallNote 
-											key={noteItem._id} 
-											id={noteItem._id}
-											title={noteItem.title} 
-											content={noteItem.content}
-											link={noteItem.link}
-											category={noteItem.category}
-											tags={noteItem.tags}
-											userId={noteItem.userId}
-											onSelect={selectNote}
+											key={noteItem._id} id={noteItem._id} title={noteItem.title} 
+											content={noteItem.content} link={noteItem.link} category={noteItem.category}
+											tags={noteItem.tags} userId={noteItem.userId} onSelect={selectNote}
 										/>
 									</Link>
 								</div>
@@ -237,15 +224,9 @@ const NoteList = () => {
 
 								<div className="note-detail-view">
 									<SmallNote 
-										key={noteItem._id} 
-										id={noteItem._id}
-										title={noteItem.title} 
-										content={noteItem.content}
-										link={noteItem.link}
-										category={noteItem.category}
-										tags={noteItem.tags}
-										userId={noteItem.userId}
-										onSelect={selectNote}
+										key={noteItem._id} id={noteItem._id} title={noteItem.title} 
+										content={noteItem.content} link={noteItem.link} category={noteItem.category}
+										tags={noteItem.tags} userId={noteItem.userId} onSelect={selectNote}
 									/>
 								</div>
 							</div>
@@ -257,20 +238,13 @@ const NoteList = () => {
 
 			<div className="right-container">
 
-				{ editMode && <CreateNote onAdd={addNote}/> }
+				{ editMode && <CreateNote onAdd={addNote} isResponsive={false}/> }
 
 				{ !editMode &&
 					<NoteDetailView
-						className="note-detail" 
-						key={selectedNote.id} 
-						id={selectedNote.id}
-						title={selectedNote.title} 
-						content={selectedNote.content}
-						link={selectedNote.link} 
-						category={selectedNote.category} 
-						tags={selectedNote.tags} 
-						onDelete={deleteNote}
-						onUpdate={onUpdate}
+						className="note-detail" key={selectedNote.id} id={selectedNote.id} title={selectedNote.title} 
+						content={selectedNote.content} link={selectedNote.link} category={selectedNote.category} 
+						tags={selectedNote.tags} onDelete={deleteNote} onUpdate={onUpdate} 
 					/>
 				}
 			</div>
