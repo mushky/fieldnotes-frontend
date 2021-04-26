@@ -66,7 +66,7 @@ const EditNote = (props) => {
 	}
 
 	return(
-		<div>
+		<div className="view-note-fullscreen">
 
 			<form className="edit-form">
 

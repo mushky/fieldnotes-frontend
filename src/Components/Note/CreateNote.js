@@ -93,7 +93,7 @@ const CreateNote = (props) => {
 	}
 	
 	return(
-		<div>
+		<div className="view-note-fullscreen">
 			<form className="note-form">
 				<Link className="back-link-create-note" to="/Notes">
 					<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
@@ -106,9 +106,8 @@ const CreateNote = (props) => {
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Note Title" />
 				<hr></hr>
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Start typing here..." rows="5" cols="50" />
-				<input className="note-form-tags" name="link" onChange={onHandleChange} value={note.link} placeholder="Any Links?" />
 				<Select className="note-select-button" onChange={handleSelect} options={categories} name="category" value={category}  placeholder="Category"/>
-				
+				<input className="note-form-tags" name="link" onChange={onHandleChange} value={note.link} placeholder="Links or Sources" />
 				<span>
 					<input className="note-form-tags" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
 					<NoteAddIcon className="note-form-button" style={{ fontSize: 50 }} onClick={onHandleSubmit} />

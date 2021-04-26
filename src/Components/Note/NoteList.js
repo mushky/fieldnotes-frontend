@@ -162,14 +162,14 @@ const NoteList = () => {
 						name="search" 
 						onChange={handleSearchChange} 
 						placeholder="Search..." 
-					/> 
-					
-					<SearchRoundedIcon className="search-button" style={{ fontSize: 40 }} onClick={onSearch}/>
+					/>
 
 					{/* Show on Desktop */}
 					<AddBoxRoundedIcon className="add-button" style={{ fontSize: 40 }} onClick={toggleEditMode}/>
 					{/* Show on Mobile*/}
-					<Link to="/AddNote" onAdd={addNote}><AddBoxRoundedIcon className="add-button-responsive" style={{ fontSize: 40 }} onClick={toggleEditMode}/></Link>
+					<Link to="/AddNote" onAdd={addNote}><AddBoxRoundedIcon className="add-button-responsive" style={{ fontSize: 40 }} onClick={toggleEditMode}/></Link>					
+					<SearchRoundedIcon className="search-button" style={{ fontSize: 40 }} onClick={onSearch}/>
+
 				</div>
 
 				<div className="search-filter-bar">
@@ -181,7 +181,14 @@ const NoteList = () => {
 
 					<strong>
 						<span className="search-filter-bar-text-right">
-							Default
+							<select className="custom-select">
+								<option>Default</option>
+								<option>Title</option>
+								<option>Category</option>
+								<option>Tags</option>
+							</select>
+							<span className="select-down-chevron">&#9660;</span>
+
 						</span>
 					</strong>
 				</div>
