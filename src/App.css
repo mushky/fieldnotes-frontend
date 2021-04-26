@@ -23,11 +23,13 @@ There are 3 columns from Left to Right
   padding: 0;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, monospace, "Helvetica Neue", sans-serif;
+
 }
 
 body {
   background: #1f1f1f;
   color: white; 
+  
 }
 
 button {
@@ -46,6 +48,14 @@ li:hover{
   color:#4CAF50;
 }
 
+input:-webkit-autofill 
+{
+  -webkit-box-shadow: inset 0 0 0px 9999px white;
+}
+
+input {
+  filter: none;
+}
 /* Media Queries */
 /* Responsive layout - makes a one column layout instead of a two-column layout */
 @media (max-width: 900px) {
@@ -113,7 +123,10 @@ li:hover{
   ul {
     list-style-type: none;
   }
-
+  input[type=text] {
+    color: white !important;
+    background-color: white !important;
+  }
 
 }
 
@@ -133,8 +146,6 @@ li:hover{
     padding: 20px !important;
   }
 }
-
-
 
 /* Anchor behaviors */
 a:visited { text-decoration: none; color:white; }
@@ -212,7 +223,6 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   cursor: pointer;
   color: #4CAF50;
   float: right;
-  width: 8%;
   justify-content: center;
   margin-right: 10px;
   transition: width 0.5s;
@@ -220,34 +230,65 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 }
 
 .search-button:hover {
-  width: 10%;
-  height: 10%;
+  color: rgb(1,255,107);
 }
 
 .add-button {
-  background: #1f1f1f;
+  margin: 2px 10px 10px;
+  width: 36px;
+  height: 36px;
+  z-index: 10;
+  padding: 15px;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-weight: 400;
+  border-radius: 50px;
+  font-size: 30px;
   cursor: pointer;
-  color: #4CAF50;
   float: right;
-  width: 8%;
+  -moz-box-align: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  color: white;
+  border: none;
+  background-color: rgb(1, 195, 82);
+  box-shadow: rgb(1, 195, 82) 1px 1px 10px 0px;
 }
 
 .add-button:hover {
-  width: 10%;
-  height: 10%;
+  background-color: rgb(1, 255, 82);
+  box-shadow: rgb(1, 255, 107) 1px 1px 10px 0px;
 }
 
 .add-button-responsive {
-  background: #1f1f1f;
+  margin: 0px 10px 10px;
+  width: 52px;
+  height: 52px;
+  z-index: 10;
+  padding: 15px;
+  padding-top: 10px;
+  bottom: 30px;
+  right: 18px;
+  font-weight: 400;
+  border-radius: 50px;
+  font-size: 40px;
+  position: fixed;
   cursor: pointer;
-  color: #4CAF50;
   float: right;
-  width: 8%;
+  -moz-box-align: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  color: white;
+  border: none;
+  background-color: rgb(1, 195, 82);
+  box-shadow: rgb(1, 195, 82) 1px 1px 10px 0px;
 }
 
 .add-button-responsive:hover {
-  width: 10%;
-  height: 10%;
+  background-color: rgb(1, 255, 82);
+  box-shadow: rgb(1, 255, 82) 1px 1px 10px 0px;
 }
 
 .search-filter-bar {
@@ -360,14 +401,25 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   margin-top: 10px;
   margin-bottom: 10px;
   display: inline-block;
+}
 
+.note-form-categories {
+  min-width: 0px;
+  /* background-color: transparent; */
+  color: black;
+  font-size: 1.625rem;
+  font-weight: 700;
+  border: medium none;
+  resize: none;
+  width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
 .note-form-select {  
   padding: 4px;
-  color: black;
   text-align: left;
-  background-color: #1f1f1f;
 }
 
 .note-form-textarea {
