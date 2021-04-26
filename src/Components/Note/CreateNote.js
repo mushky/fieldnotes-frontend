@@ -34,7 +34,7 @@ const CreateNote = (props) => {
 	useEffect(() => {
 		console.log(props);
 		const fetchCategories = async () => {
-			const res = await axios.get(`${localUrl}/categories/user/${userValue[0]}`)
+			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
 
 			let objectArray = [];
 			for (let i = 0; i < res.data.category.length; i++) {
@@ -73,7 +73,7 @@ const CreateNote = (props) => {
 		// Adding Selected Category to note
 		note.category = category["value"];
 
-		axios.post(`${localUrl}/notes`, note , {headers})
+		axios.post(`${url}/notes`, note , {headers})
 			.then((res) => {
 				const newNote = { 
 					_id: res.data.Note._id, content: res.data.Note.content, title: res.data.Note.title,
@@ -82,7 +82,7 @@ const CreateNote = (props) => {
 				}
 				setNote(newNote);
 				if (props.isResponsive === false) {
-					props.onAdd(newNote);
+					props.addNote(newNote);
 				}
 			}, (error) => {
 				console.log(error);

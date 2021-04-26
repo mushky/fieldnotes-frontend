@@ -32,7 +32,7 @@ const CreateCategory = (props) => {
 			"x-access-token": token
 		}
 
-		axios.post(`${localUrl}/categories`, category , {headers})
+		axios.post(`${url}/categories`, category , {headers})
 			.then((res) => {
 				const newCategory = { 
 					_id: res.data.category._id, 
@@ -40,7 +40,7 @@ const CreateCategory = (props) => {
 					userId: res.data.category.userId
 				}
 				setCategory(newCategory);
-				props.onAdd(newCategory);
+				props.addCategory(newCategory);
 			}, (error) => {
 				console.log(error);
 			}).then(
@@ -62,7 +62,7 @@ const CreateCategory = (props) => {
 				<input className="category-input-form" name="name" onChange={onHandleChange} value={category.name} placeholder="Category name" />
 				<button className="add-category-button" onClick={onHandleSubmit}>Add</button>
 
-				<div className="">
+				<div>
 				</div>
 
 			</form>			

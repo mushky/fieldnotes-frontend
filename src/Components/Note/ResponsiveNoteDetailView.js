@@ -6,6 +6,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 	const {
     params: { noteId },
   } = match;
+	const url = `http://localhost:3001/api`
 
 	const localUrl = `http://192.168.1.75:3001/api`
 
@@ -21,7 +22,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 
 	const fetchNote = async () => {
 		setLoading(true);
-		const res = await axios.get(`${localUrl}/notes/${match['params']['id']}`)
+		const res = await axios.get(`${url}/notes/${match['params']['id']}`)
 		setNote(res.data.Note)
 		setLoading(false);
 	}

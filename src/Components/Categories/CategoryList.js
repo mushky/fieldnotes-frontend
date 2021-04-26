@@ -21,7 +21,7 @@ const CategoryList = (props) => {
 	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	const fetchCategories = async () => {
-		const res = await axios.get(`${localUrl}/categories/user/${userValue[0]}`)
+		const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
 		setCategories(res.data.category);
 	}
 
@@ -32,7 +32,7 @@ const CategoryList = (props) => {
   }
 
 	const getNotesByCategory = async () => {
-		const res = await axios.get(`${localUrl}/notes/category?userId=${userValue[0]}&category=${selectedCategory}`);
+		const res = await axios.get(`${url}/notes/category?userId=${userValue[0]}&category=${selectedCategory}`);
 		setNotes(res.data.Note);
 	}
 
@@ -54,7 +54,7 @@ const CategoryList = (props) => {
 
 			<h2 className="category-title">Category List</h2>
 			
-			<CreateCategory onAdd={addCategory}/>
+			<CreateCategory addCategory={addCategory}/>
 
 			<div className="category-list">
 				{categories.map((category) => {

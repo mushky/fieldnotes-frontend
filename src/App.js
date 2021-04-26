@@ -25,8 +25,8 @@ function App() {
               <Route path="/" exact component={NoteList} />
               <Route path="/Notes" exact component={NoteList}/>
               <Route path="/Categories" exact component={CategoryList} />
-              <Route path="/AddNote" render={(params)=><CreateNote {...params}/>} />
-              {/* <Route path="/AddNote" exact component={CreateNote} /> */}
+              {/* <Route path="/AddNote" render={(params)=><CreateNote {...params}/>} /> */}
+              <Route path="/AddNote" exact component={CreateNote} />
               <Route path="/ResponsiveNoteDetailView/:id" exact component={ResponsiveNoteDetailView} />
               <Route path="/Login" exact component={Login} />
               <Route path="/Logout" exact component={Logout} />

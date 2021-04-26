@@ -26,13 +26,12 @@ const EditNote = (props) => {
 	const [categories, setCategories] = useState([]);
 
 	const getCategories = async () => {
-			const res = await axios.get(`${localUrl}/categories/user/${userValue[0]}`)
+			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
 
 			let objectArray = [];
 			for (let i = 0; i < res.data.category.length; i++) {
 				objectArray.push(res.data.category[i].name)
 			}
-			console.log(objectArray);
 			setCategories(objectArray);
 		
 	}
@@ -65,7 +64,7 @@ const EditNote = (props) => {
 			"x-access-token": token
 		}
 
-		axios.put(`${localUrl}/notes/${props.id}`, note , {headers})
+		axios.put(`${url}/notes/${props.id}`, note , {headers})
 			.then((res) => {
 				const updatedNote = {
 					id: props.id,

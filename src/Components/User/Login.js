@@ -35,7 +35,7 @@ const Login = () => {
 	function onSubmit(e) {
 		e.preventDefault();
 		setLoading(true);
-		axios.post(localUrl,{
+		axios.post(url,{
 			"username": user.username,
 			"password": user.password
 		}).then((res) => {

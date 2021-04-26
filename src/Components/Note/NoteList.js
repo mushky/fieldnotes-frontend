@@ -45,14 +45,14 @@ const NoteList = () => {
   
 	const fetchNotes = async () => {
 		setLoading(true);
-		const res = await axios.get(`${localUrl}/notes/user/${userValue[0]}`)
+		const res = await axios.get(`${url}/notes/user/${userValue[0]}`)
 		setNotes(res.data.Note)
 		setLoading(false);
 	}
 
 	const fetchNotesBySearch = async () => {
 		setLoading(true);
-		const res = await axios.get(`${localUrl}/notes/search?userId=${userId}&content=${content}`, {headers})
+		const res = await axios.get(`${url}/notes/search?userId=${userId}&content=${content}`, {headers})
 		setNotes(res.data.Note)
 		setContent();
 		setLoading(false);
@@ -107,7 +107,7 @@ const NoteList = () => {
         return noteItem._id !== id;
       });
     })
-    axios.delete(`${localUrl}/notes/${id}`, { headers })
+    axios.delete(`${url}/notes/${id}`, { headers })
       .then((res) => {
         console.log(res);
       }, (error) => {
@@ -166,7 +166,7 @@ const NoteList = () => {
 					{/* Show on Desktop */}
 					<button className="add-button" onClick={toggleEditMode}>+</button>
 					{/* Show on Mobile*/}
-					<Link to="/AddNote" onAdd={addNote}><button className="add-button-responsive" onClick={toggleEditMode}>+</button></Link>
+					<Link to="/AddNote"><button className="add-button-responsive" onClick={toggleEditMode}>+</button></Link>
 
 					<SearchRoundedIcon className="search-button" style={{ fontSize: 40 }} onClick={onSearch}/>
 
@@ -238,7 +238,7 @@ const NoteList = () => {
 
 			<div className="right-container">
 
-				{ editMode && <CreateNote onAdd={addNote} isResponsive={false}/> }
+				{ editMode && <CreateNote addNote={addNote} isResponsive={false}/> }
 
 				{ !editMode &&
 					<NoteDetailView
