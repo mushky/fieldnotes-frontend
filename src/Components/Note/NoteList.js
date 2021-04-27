@@ -26,7 +26,8 @@ const NoteList = () => {
 		link: "",
 		category: "",
 		tags: "",
-		userId: userValue[0]
+		userId: userValue[0],
+		isTrash: ""
 	});
 
 	// For Search
@@ -46,7 +47,9 @@ const NoteList = () => {
 	const fetchNotes = async () => {
 		setLoading(true);
 		const res = await axios.get(`${url}/notes/user/${userValue[0]}`)
-		setNotes(res.data.Note)
+		let foundNotes = res.data.Note;
+		let filteredNotes = foundNotes.filter(note => note.isTrash === false);
+		setNotes(foundNotes)
 		setLoading(false);
 	}
 
@@ -54,6 +57,15 @@ const NoteList = () => {
 		setLoading(true);
 		const res = await axios.get(`${url}/notes/search?userId=${userId}&content=${content}`, {headers})
 		setNotes(res.data.Note)
+		if (res.data.Note.length <= 0) {
+			setNotes([{
+				title: `Couldn't find any notes with that kind of content.`,
+				content: `Content provided: ${content}`,
+				tags: '',
+				category: '',
+				link: ''
+			}])
+		}
 		setContent();
 		setLoading(false);
 	}
