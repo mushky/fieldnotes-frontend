@@ -11,7 +11,7 @@ const TrashList = () => {
 	const [ notes, setNotes ] = useState([]);
 	const { userValue } = useContext(UserContext);
 
-	const [ setSelectedNote ] = useState({
+	const [ selectedNote, setSelectedNote ] = useState({
 		_id: "",
 		title: "",
 		content: "",

@@ -18,11 +18,6 @@ const SmallNote = (props) => {
 	const moveOutOfTrash = async () => {
 		const res = await axios.put(`${url}/notes/outtrash/${props.id}`)
 		alert("Note moved back to notes");
-		// setSelectedNote({ 
-		// 	id: selectedNote.id, title: selectedNote.title, 
-		// 	content: selectedNote.content, link: selectedNote.link, category: selectedNote.category, 
-		// 	tags: selectedNote.tags, isTrash: false
-		// });
 	}
 
 	return(
