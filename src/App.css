@@ -163,8 +163,6 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   width: 100%;
 }
 
-
-
 /* Sidebar */
 .sidebar-container {
   flex: .5;
@@ -608,6 +606,17 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 
 .category-item:hover{
   background-color:#01c352;
+}
+
+/* Trash */
+
+.container-trash {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-wrap: wrap; 
+  min-height: 100vh;
+  width: 25%;
 }
 
 /* SVGs */
