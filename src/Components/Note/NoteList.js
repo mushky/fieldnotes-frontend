@@ -73,7 +73,7 @@ const NoteList = () => {
 			setSelectedNote({
 				_id: "0",
 				title: "Welcome to Field Notes",
-				content: "Login to get started!\n\nClick the + button in the Top Right to create a new Note.\n\nSearch your notes using the search bar.",
+				content: "Login to get started!\n\nClick the + button in the Top Right to create a new Note.\n\nSearch your notes using the search bar.\n\nClick the Hamburger Icon in the Top Left for more options.",
 				link: "",
 				category: "",
 				tags: "",

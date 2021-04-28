@@ -16,6 +16,13 @@ There are 3 columns from Left to Right
 
 */
 
+/* Global Variables */
+
+:root {
+  --main-green-color: #45a049;
+  --main-background-color: #333333;
+}
+
 /*. Global Settings */
 
 * {
@@ -93,8 +100,8 @@ input {
 
   .search-filter-bar {
     margin-top: 100px !important;
-    background-color: #333333;
-    border: solid #333333
+    background-color: var(--main-background-color);
+    border: solid var(--main-background-color);
   }
 
   .add-button {
@@ -149,9 +156,9 @@ input {
 
 /* Anchor behaviors */
 a:visited { text-decoration: none; color:white; }
-a:hover { text-decoration: none; color:#4CAF50; }
+a:hover { text-decoration: none; color:var(--main-green-color); }
 a:focus { text-decoration: none; color:yellow; }
-a:hover, a:active { text-decoration: none; color: #4CAF50 }
+a:hover, a:active { text-decoration: none; color: var(--main-green-color) }
 
 /* Container */
 .container {
@@ -166,14 +173,14 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 /* Sidebar */
 .sidebar-container {
   flex: .5;
-  background-color: #333333;
+  background-color: var(--main-background-color);
   height: 60.5rem;
 }
 
 .sidebar-container-closed {
   flex: .5;
   flex-direction: row;
-  background-color: #333333;
+  background-color: var(--main-background-color);
   height: 1.5rem;
   height: 60.5rem;
 }
@@ -181,14 +188,14 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 .sidebar-items-top {
   letter-spacing: 1px;
   padding: 5px;  
-  background-color: #333333;
+  background-color: var(--main-background-color);
 }
 
 .sidebar-items-bottom {
   letter-spacing: 1px;
   padding: 5px;
   bottom: 0;
-  background-color: #333333;
+  background-color: var(--main-background-color);
 }
 
 /* Left Container */
@@ -219,7 +226,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 .search-button {
   background: #1f1f1f;
   cursor: pointer;
-  color: #4CAF50;
+  color: var(--main-green-color);
   float: right;
   justify-content: center;
   margin-right: 10px;
@@ -292,12 +299,12 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 
 .search-filter-bar {
   margin-top: 50px;
-  background-color: #333333;
+  background-color: var(--main-background-color);
   border: solid #333333
 }
 
 .search-filter-bar-text-left {
-  color: #4CAF50;
+  color: var(var(--main-green-color));
   margin-left: 10px;
 }
 
@@ -309,9 +316,9 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 
 .custom-select {
   appearance: none;
-  background-color:#333333;
+  background-color:var(--main-background-color);
   color: white;
-  border: solid #333333;
+  border: solid var(--main-background-color);
   font-size: 12px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   /* background-image: url(...);   Add custom arrow */
@@ -435,7 +442,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 .note-form-button {
   background: #1f1f1f;
   cursor: pointer;
-  color: #4CAF50;
+  color: var(--main-green-color);
   float: right;
 }
 
@@ -472,7 +479,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
   color: green;
 }
 .toggle-button {
-  background: #4CAF50;
+  background: var(--main-green-color);
   padding: 10px 15px;
   color: white;
   border: none;
@@ -522,7 +529,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 
 .login-button {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: var(--main-green-color);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -534,7 +541,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 
 .logout-button {
   width: 25%;
-  background-color: #4CAF50;
+  background-color: var(--main-green-color);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -581,7 +588,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 }
 
 .add-category-button {
-  background-color: #4CAF50;
+  background-color: var(--main-green-color);
   cursor: pointer;
   color: white;
   float: center;
@@ -634,7 +641,7 @@ a:hover, a:active { text-decoration: none; color: #4CAF50 }
 /* Footer */
 
 .footer {
-  background-color: #333333;
+  background-color: var(--main-background-color);
   position: fixed;
   padding-top: 5px;
   padding-left: 26px;
