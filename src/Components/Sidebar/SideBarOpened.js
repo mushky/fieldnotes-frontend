@@ -61,7 +61,7 @@ const SideBarOpen = (props) => {
 
 				<li className="sidebar-items-top">
 					<DeleteIcon style={{ fontSize: "16px", float: "left", marginRight: "10px", marginTop: "2px"  }}/>
-					Trash
+					<Link to="/Trash">Trash</Link>
 				</li>
 
 				<hr></hr>

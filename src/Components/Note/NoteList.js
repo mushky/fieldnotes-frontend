@@ -55,7 +55,7 @@ const NoteList = () => {
 		setLoading(true);
 		const res = await axios.get(`${url}/notes/search?userId=${userId}&content=${content}`, {headers})
 		setNotes(res.data.Note.filter(note => !note.isTrash))
-		if (res.data.Note.length <= 0) {
+		if (res.data.Note.length <= 0) {	
 			setNotes([{
 				title: `Couldn't find any notes with that kind of content.`, 
 				content: `Content provided: ${content}`
@@ -134,8 +134,10 @@ const NoteList = () => {
 			link: noteObject.link,
 			category: noteObject.category,
 			tags: noteObject.tags,
-			userId: noteObject.userId
+			userId: noteObject.userId,
+			isTrash: noteObject.isTrash
 		});
+		console.log(noteObject)
 		setEditMode(false);
 	}
 
@@ -223,7 +225,7 @@ const NoteList = () => {
 										<SmallNote 
 											key={noteItem._id} id={noteItem._id} title={noteItem.title} 
 											content={noteItem.content} link={noteItem.link} category={noteItem.category}
-											tags={noteItem.tags} userId={noteItem.userId} onSelect={selectNote}
+											tags={noteItem.tags} userId={noteItem.userId} isTrash={noteItem.isTrash} onSelect={selectNote}
 										/>
 									</Link>
 								</div>
@@ -234,7 +236,7 @@ const NoteList = () => {
 									<SmallNote 
 										key={noteItem._id} id={noteItem._id} title={noteItem.title} 
 										content={noteItem.content} link={noteItem.link} category={noteItem.category}
-										tags={noteItem.tags} userId={noteItem.userId} onSelect={selectNote}
+										tags={noteItem.tags} userId={noteItem.userId} isTrash={noteItem.isTrash} onSelect={selectNote}
 									/>
 								</div>
 							</div>
