@@ -11,7 +11,7 @@ const TrashList = () => {
 	const [ notes, setNotes ] = useState([]);
 	const { userValue } = useContext(UserContext);
 
-	const [ selectedNote, setSelectedNote ] = useState({
+	const [ setSelectedNote ] = useState({
 		_id: "",
 		title: "",
 		content: "",
@@ -47,21 +47,15 @@ const TrashList = () => {
 
 	const selectNote = (noteObject) => {
 		setSelectedNote({
-			id: noteObject.id,
-			title: noteObject.title,
-			content: noteObject.content,
-			link: noteObject.link,
-			category: noteObject.category,
-			tags: noteObject.tags,
+			id: noteObject.id, title: noteObject.title, content: noteObject.content,
+			link: noteObject.link, category: noteObject.category, tags: noteObject.tags,
 			userId: noteObject.userId
 		});
 
 		setTimeout(() => {
 			fetchNotes();
 		},200);
-	
 	}
-
 
 	return(
 		<div className="container-trash">

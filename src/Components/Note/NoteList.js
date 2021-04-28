@@ -109,6 +109,14 @@ const NoteList = () => {
 		}
 	}
 
+	const trashNote = (id) => {
+		setNotes(prevNotes => {
+      return prevNotes.filter((noteItem) => {
+        return noteItem._id !== id;
+      });
+    })
+	}
+
   const deleteNote = (id) => {
 		setNotes(prevNotes => {
       return prevNotes.filter((noteItem) => {
@@ -254,7 +262,7 @@ const NoteList = () => {
 					<NoteDetailView
 						className="note-detail" key={selectedNote.id} id={selectedNote.id} title={selectedNote.title} 
 						content={selectedNote.content} link={selectedNote.link} category={selectedNote.category} 
-						tags={selectedNote.tags} onDelete={deleteNote} onUpdate={onUpdate} 
+						tags={selectedNote.tags} onDelete={deleteNote} onUpdate={onUpdate} onTrash={trashNote}
 					/>
 				}
 			</div>

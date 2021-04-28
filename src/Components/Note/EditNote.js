@@ -52,10 +52,6 @@ const EditNote = (props) => {
 		})
 	}
 
-	function handleDelete() {
-		props.onDelete(note.id);
-	}
-
 	function onHandleSubmit(e) {
 		e.preventDefault();
 
@@ -85,6 +81,16 @@ const EditNote = (props) => {
 			)
 	}
 
+	const moveToTrash = async () => {
+		const res = await axios.put(`${url}/notes/intrash/${note.id}`)
+		alert("Note moved to trash");
+		setNote({ 
+			isTrash: true
+		});
+
+		props.onTrash(note.id);
+	}
+
 	return(
 		<div className="view-note-fullscreen">
 
@@ -104,7 +110,7 @@ const EditNote = (props) => {
 				</div>
 
 				<div className="delete-note-button">	
-					<p onClick={handleDelete}>Move to Trash</p>
+					<p onClick={moveToTrash}>Move to Trash</p>
 				</div>
 
 			</form>			
