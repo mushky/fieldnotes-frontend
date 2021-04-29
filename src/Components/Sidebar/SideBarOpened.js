@@ -32,7 +32,7 @@ const SideBarOpen = (props) => {
 				</li>
 
 				<li className="sidebar-items-top">
-					<Link to ="/Notes">
+					<Link to ="/">
 						<svg className="svg-sidebar-icon" 
 							xmlns="http://www.w3.org/2000/svg" 
 							width="2em" height="2em" viewBox="0 0 1200 1200">
@@ -40,7 +40,7 @@ const SideBarOpen = (props) => {
 							fill="#E0FFFF"/>
 						</svg>
 					</Link>
-					{/* <Link to="/Notes">Notes</Link> */}
+					{/* <Link to="/">Notes</Link> */}
 				</li>
 
 				<li className="sidebar-items-top">

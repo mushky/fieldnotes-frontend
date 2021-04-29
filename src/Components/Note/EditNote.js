@@ -24,6 +24,7 @@ const EditNote = (props) => {
 	});
 
 	const [categories, setCategories] = useState([]);
+	const [isExtraInfo, setIsExtraInfo] = useState(false);
 
 	const getCategories = async () => {
 			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
@@ -91,26 +92,50 @@ const EditNote = (props) => {
 		props.onTrash(note.id);
 	}
 
+	const toggleExtraInfo = () => {
+		setIsExtraInfo(!isExtraInfo)
+	}
+
 	return(
 		<div className="view-note-fullscreen">
 
 			<form className="edit-form">
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
-				<input className="note-form-tags" name="link" onChange={onHandleChange} value={note.link} placeholder="Link" />
-
-				<Hint className="hint-autocomplete" options={categories} allowTabFill >
-					<input className="note-form-categories" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
-				</Hint>
-
-				<input className="note-form-tags" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
 				
+				
+				{ !isExtraInfo && 
+					<p className="extra-info-button" onClick={toggleExtraInfo}><i>Show Additional Info</i></p>
+				}
+				{ isExtraInfo && 
+					<p className="extra-info-button" onClick={toggleExtraInfo}><i>Hide Additional Info</i></p>
+				}
+				<br></br><br></br>
+				{ isExtraInfo && 
+					<div className="extra-info">
+						<input className="note-form-tags" name="link" onChange={onHandleChange} value={note.link} placeholder="Link" />
+						<Hint className="hint-autocomplete" options={categories} allowTabFill >
+							<input className="note-form-categories" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
+						</Hint>
+
+						<input className="note-form-tags" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
+					</div>				
+				}
+
 				<div className="note-form-button">
-					<EditRoundedIcon style={{ fontSize: 50 }} onClick={onHandleSubmit} />
+					<svg className="svg-sidebar-icon" onClick={onHandleSubmit}
+						xmlns="http://www.w3.org/2000/svg" 
+						width="4em" height="4em" 
+						viewBox="0 0 24 24">
+						<g fill="none">
+							<path d="M16.474 5.408l2.118 2.117m-.756-3.982L12.109 9.27a2.118 2.118 0 0 0-.58 1.082L11 13l2.648-.53c.41-.082.786-.283 1.082-.579l5.727-5.727a1.853 1.853 0 1 0-2.621-2.621z" stroke="#01c352" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M19 15v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3" stroke="#01c352" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</g>
+					</svg>					
 				</div>
 
 				<div className="delete-note-button">	
-					<p onClick={moveToTrash}>Move to Trash</p>
+					<p onClick={moveToTrash}><i>Move to Trash</i></p>
 				</div>
 
 			</form>			

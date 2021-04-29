@@ -61,7 +61,7 @@ const TrashList = () => {
 		<div className="container-trash">
 			<h2>Trash List</h2>
 			<br></br>
-			<Link to="/Notes">Back</Link>
+			<Link to="/">Back</Link>
 			{ loading && <h1>Loading...</h1> }
 			{notes.map((noteItem) => {
 				return(

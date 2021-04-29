@@ -5,12 +5,11 @@ import SideBarOpen from './SideBarOpened';
 
 const SideBar = () => {
 
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(true);
 
 	const onToggleSidebar = () => {
 		setOpen(!open);
 	}
-
 
 	return(
 		<nav>

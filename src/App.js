@@ -24,7 +24,6 @@ function App() {
           <UserContext.Provider value={{ userValue, setUserValue }}>
             <Switch>
               <Route path="/" exact component={NoteList} />
-              <Route path="/Notes" exact component={NoteList}/>
               <Route path="/Categories" exact component={CategoryList} />
               <Route path="/AddNote" exact component={CreateNote} />
               <Route path="/ResponsiveNoteDetailView/:id" exact component={ResponsiveNoteDetailView} />

@@ -465,19 +465,29 @@ a:hover, a:active { text-decoration: none; color: var(--main-green-color) }
 }
 
 .delete-note-button {
-  float: right;
+  float: left;
   cursor: pointer;
-  position: fixed;
-  /* bottom: 0.5px; */
   color: red;
 }
 
-.out-trash-button {
-  /* float: right; */
-  cursor: pointer;
+.delete-note-button:hover {
+  background-color: #01c352;
+}
 
+.extra-info-button {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.extra-info-button:hover {
+  background-color: #01c352;
+}
+
+.out-trash-button {
+  cursor: pointer;
   color: green;
 }
+
 .toggle-button {
   background: var(--main-green-color);
   padding: 10px 15px;

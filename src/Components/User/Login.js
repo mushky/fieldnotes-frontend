@@ -47,7 +47,7 @@ const Login = () => {
 			])
 			setTimeout(() => {
 				setLoading(false);
-				history.push("/notes");
+				history.push("/");
 				
 			})
 		}, (error) => {

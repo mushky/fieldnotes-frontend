@@ -43,7 +43,7 @@ const CategoryList = (props) => {
 
 	return(
 		<div className="category-container">
-			<Link to="/Notes">
+			<Link to="/">
 				<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
 					<path 
 						fill="#FFFFFF" 
