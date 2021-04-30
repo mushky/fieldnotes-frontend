@@ -5,7 +5,7 @@ import SideBarOpen from './SideBarOpened';
 
 const SideBar = () => {
 
-	const [open, setOpen] = useState(true);
+	const [open, setOpen] = useState(false);
 
 	const onToggleSidebar = () => {
 		setOpen(!open);

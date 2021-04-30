@@ -76,7 +76,7 @@ input {
     flex-direction: column;
     position: absolute;
     max-height: 50px;
-    width: 100%;
+    width: 80%;
   }
 
   .sidebar-container-closed {
