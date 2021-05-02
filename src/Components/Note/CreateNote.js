@@ -13,7 +13,6 @@ import 'draft-js/dist/Draft.css';
 
 const CreateNote = (props) => {
 	const url = process.env.REACT_APP_API_URL
-	const localUrl = `http://192.168.1.75:3001/api`
 
 	const { userValue } = useContext(UserContext);
 

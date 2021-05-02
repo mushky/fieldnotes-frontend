@@ -6,10 +6,7 @@ import { Hint } from 'react-autocomplete-hint';
 import axios from 'axios';
 
 const EditNote = (props) => {
-
 	const url = process.env.REACT_APP_API_URL
-	const localUrl = `http://192.168.1.75:3001/api`
-
 	const { userValue } = useContext(UserContext);
 
 	const [note, setNote] = useState({
@@ -83,11 +80,10 @@ const EditNote = (props) => {
 
 	const moveToTrash = async () => {
 		const res = await axios.put(`${url}/notes/intrash/${note.id}`)
-		alert("Note moved to trash");
+		alert(`Note ${res.data.Note.title} moved to trash`);
 		setNote({ 
 			isTrash: true
 		});
-
 		props.onTrash(note.id);
 	}
 
@@ -101,7 +97,6 @@ const EditNote = (props) => {
 			<form className="edit-form">
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
-				
 				
 				{ !isExtraInfo && 
 					<p className="extra-info-button" onClick={toggleExtraInfo}><i>Show Additional Info</i></p>

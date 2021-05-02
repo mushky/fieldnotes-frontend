@@ -6,11 +6,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CreateCategory from './CreateCategory';
 
-
 const CategoryList = (props) => {
-	//const url = `http://localhost:3001/api`
 	const url = process.env.REACT_APP_API_URL;
-	const localUrl = `http://192.168.1.75:3001/api`
 
 	const { userValue } = useContext(UserContext);
 

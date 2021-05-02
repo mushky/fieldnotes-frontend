@@ -5,28 +5,24 @@ import { UserContext } from '../../Context/UserContext';
 
 const ResponsiveNoteDetailView = ({ match }) => {
 	const {
-    params: { noteId },
+    params: { id },
 	} = match;
+
 	const url = process.env.REACT_APP_API_URL
-
-	const localUrl = `http://192.168.1.75:3001/api`
-
-	const [note, setNote] = useState({
-		id: match['params']['id'],
-		title: "",
-		content: "",
-		link: "",
-		category: "",
-		tags: ""
-	})
-
+	
 	const { userValue } = useContext(UserContext);
 
 	const [loading, setLoading] = useState(false);
 
+	const [note, setNote] = useState({
+		id: id, title: "", content: "",
+		link: "", category: "", tags: ""
+	})
+
 	const fetchNote = async () => {
+		console.log(id);
 		setLoading(true);
-		const res = await axios.get(`${url}/notes/${match['params']['id']}`)
+		const res = await axios.get(`${url}/notes/${id}`)
 		setNote(res.data.Note)
 		setLoading(false);
 	}
@@ -37,20 +33,20 @@ const ResponsiveNoteDetailView = ({ match }) => {
 	},[])
 
 	const moveToTrash = async () => {
-		const res = await axios.put(`${url}/notes/intrash/${match['params']['id']}`)
-		alert("Note moved to trash");
+		const res = await axios.put(`${url}/notes/intrash/${id}`)
+		alert(`Note ${res.data.Note.title} moved to trash`);
 		setNote({ 
-			id: match['params']['id'], title: note.title, 
+			id: id, title: note.title, 
 			content: note.content, link: note.link, category: note.category, 
 			tags: note.tags, isTrash: true
 		});
 	}
 
 	const moveOutOfTrash = async () => {
-		const res = await axios.put(`${url}/notes/outtrash/${match['params']['id']}`)
-		alert("Note moved back to notes");
+		const res = await axios.put(`${url}/notes/outtrash/${id}`)
+		alert(`Note ${res.data.Note.title} moved back to notes`);
 		setNote({ 
-			id: match['params']['id'], title: note.title, 
+			id: id, title: note.title, 
 			content: note.content, link: note.link, category: note.category, 
 			tags: note.tags, isTrash: false
 		});

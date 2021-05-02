@@ -4,12 +4,8 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from '../../Context/UserContext';
 
-
-
 const Login = () => {
-	//localhost:3000/api
 	const url = `${process.env.REACT_APP_API_URL}/users/login`
-	const localUrl = `http://192.168.1.75:3001/api/users/login`
 
 	const { userValue, setUserValue } = useContext(UserContext);
 	const history = useHistory();
@@ -24,6 +20,7 @@ const Login = () => {
 	if (loading) {
 		return <h1 className="login-loading">Loading...</h1>
 	}
+
 	function handleChange(e) {
 		const {name,value} = e.target;
 
@@ -36,8 +33,6 @@ const Login = () => {
 	}
 
 	function onSubmit(e) {
-		console.log(url);
-		console.log(URL);
 		e.preventDefault();
 		setLoading(true);
 		axios.post(url,{
@@ -45,15 +40,14 @@ const Login = () => {
 			"password": user.password
 		}).then((res) => {
 			setUserValue([
-				res.data.existingUser._id,		// id
-				res.data.existingUser.email,	// email
+				res.data.existingUser._id,			// id
+				res.data.existingUser.email,		// email
 				res.data.existingUser.username,	// username
-				res.data.token					// token
+				res.data.token									// token
 			])
 			setTimeout(() => {
 				setLoading(false);
 				history.push("/");
-				
 			})
 		}, (error) => {
 			setLoading(false);
@@ -71,6 +65,7 @@ const Login = () => {
 				<button className="login-button" onClick={onSubmit}>Login</button>
 				<p>{userValue}</p>
 			</form>
+
 		</div>
 	)
 

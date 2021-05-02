@@ -8,6 +8,8 @@ import SmallNote from '../Note/SmallNote';
 import axios from 'axios';
 
 const TrashList = () => {
+	const url = process.env.REACT_APP_API_URL
+
 	const [ notes, setNotes ] = useState([]);
 	const { userValue } = useContext(UserContext);
 
@@ -23,9 +25,6 @@ const TrashList = () => {
 	})
 	
 	const [ loading, setLoading ] = useState(false);
-	
-	
-	const url = process.env.REACT_APP_API_URL
 
 	const userId = userValue[0];
 	const token = userValue[3];
@@ -36,14 +35,14 @@ const TrashList = () => {
   
 	const fetchNotes = async () => {
 		setLoading(true);
-		const res = await axios.get(`${url}/notes/user/${userValue[0]}`)
+		const res = await axios.get(`${url}/notes/user/${userId}`, headers)
 		setNotes(res.data.Note.filter(note => note.isTrash))
 		setLoading(false);
 	}
 
 	useEffect(() => {
 		fetchNotes();
-	},[])
+	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	const selectNote = (noteObject) => {
 		setSelectedNote({
