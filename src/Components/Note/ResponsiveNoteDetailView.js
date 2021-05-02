@@ -73,7 +73,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 
 			<p>{note.content}</p>
 			<br></br>
-			<p>{note.link}</p>
+			<p>{note.source}</p>
 			<br></br>
 			<pre>{note.category}</pre>
 			<br></br>

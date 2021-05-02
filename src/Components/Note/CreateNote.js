@@ -19,7 +19,7 @@ const CreateNote = (props) => {
 	const [note, setNote] = useState({
 		title: "",
 		content: "",
-		link: "",
+		source: "",
 		category: "",
 		tags: "",
 		userId: userValue[0],
@@ -30,7 +30,6 @@ const CreateNote = (props) => {
 	const [categories, setCategories] = useState([]);
 
 	useEffect(() => {
-		console.log(props);
 		const fetchCategories = async () => {
 			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
 
@@ -61,7 +60,6 @@ const CreateNote = (props) => {
 	}
 
 	function onHandleSubmit(e) {
-		console.log(props);
 		e.preventDefault();
 		const token = userValue[3];
 		const headers = {
@@ -75,7 +73,7 @@ const CreateNote = (props) => {
 			.then((res) => {
 				const newNote = { 
 					_id: res.data.Note._id, content: res.data.Note.content, title: res.data.Note.title,
-					link: res.data.Note.link,category: res.data.Note.category,tags: res.data.Note.tags,					
+					source: res.data.Note.source,category: res.data.Note.category,tags: res.data.Note.tags,					
 					userId: res.data.Note.userId
 				}
 				setNote(newNote);
@@ -88,7 +86,7 @@ const CreateNote = (props) => {
 				setTimeout(() => {
 					setNote({ 
 						title: "", content: "", category: "", 
-						link: "", tags: "", userId: userValue[0] 
+						source: "", tags: "", userId: userValue[0] 
 					})
 					setCategory('');
 				},100)
@@ -110,7 +108,7 @@ const CreateNote = (props) => {
 				<hr></hr>
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Start typing here..." rows="5" cols="50" />
 				<Select className="note-select-button" onChange={handleSelect} options={categories} name="category" value={category}  placeholder="Category"/>
-				<input className="note-form-tags" name="link" onChange={onHandleChange} value={note.link} placeholder="Links or Sources" />
+				<input className="note-form-tags" name="source" onChange={onHandleChange} value={note.source} placeholder="Sources" />
 				<span>
 					<input className="note-form-tags" name="tags" onChange={onHandleChange} value={note.tags} placeholder="Tags" />
 					<NoteAddIcon className="note-form-button" style={{ fontSize: 50 }} onClick={onHandleSubmit} />

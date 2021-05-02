@@ -9,7 +9,7 @@ const LargeNote = (props) => {
 			<br></br> 
 			<p>{props.content}</p>
 			<br></br><br></br>
-			<p>{props.link}</p>
+			<p>{props.source}</p>
 			<br></br>
 			<pre>{props.category}</pre>
 			<pre>{props.tags}</pre> 
