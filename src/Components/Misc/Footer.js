@@ -10,7 +10,7 @@ const Footer = ({ currentUser }) => {
 				<p><span className="footer-login-circle-indicator"></span>Logged in as {currentUser}</p> 
 			}
 			{ (currentUser === undefined) &&
-				<p><span className="footer-logged-out-circle-indicator"></span><Link>Not logged in - <strong>Click to Login</strong></Link></p>
+				<p><span className="footer-logged-out-circle-indicator"></span><Link to={`/Login`}>Not logged in - <strong>Click to Login</strong></Link></p>
 			}
 		</div>
 	)
