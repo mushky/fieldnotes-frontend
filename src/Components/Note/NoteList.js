@@ -34,7 +34,7 @@ const NoteList = () => {
 	const [content, setContent] = useState("");
 
 	// For API
-	const url = `http://localhost:3001/api`
+	const url = process.env.REACT_APP_API_URL
 	const localUrl = `http://192.168.1.75:3001/api`
 
 	const userId = userValue[0];

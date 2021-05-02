@@ -25,7 +25,7 @@ const TrashList = () => {
 	const [ loading, setLoading ] = useState(false);
 	
 	
-	const url = `http://localhost:3001/api`
+	const url = process.env.REACT_APP_API_URL
 
 	const userId = userValue[0];
 	const token = userValue[3];

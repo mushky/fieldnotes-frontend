@@ -3,8 +3,10 @@ import { UserContext } from '../../Context/UserContext';
 
 import axios from 'axios';
 
+const { DEV_URL, PROD_URL } = process.env;
+
 const CreateCategory = (props) => {
-	const url = `http://localhost:3001/api`
+	const url = process.env.REACT_APP_API_URL
 	const localUrl = `http://192.168.1.75:3001/api`
 
 	const { userValue } = useContext(UserContext);

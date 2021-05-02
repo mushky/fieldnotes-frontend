@@ -4,8 +4,11 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from '../../Context/UserContext';
 
+
+
 const Login = () => {
-	const url = `http://localhost:3001/api/users/login`;
+	//localhost:3000/api
+	const url = `${process.env.REACT_APP_API_URL}/users/login`
 	const localUrl = `http://192.168.1.75:3001/api/users/login`
 
 	const { userValue, setUserValue } = useContext(UserContext);
@@ -33,6 +36,8 @@ const Login = () => {
 	}
 
 	function onSubmit(e) {
+		console.log(url);
+		console.log(URL);
 		e.preventDefault();
 		setLoading(true);
 		axios.post(url,{

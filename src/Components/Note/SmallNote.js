@@ -3,7 +3,7 @@ import React from 'react';
 import axios from 'axios';
 
 const SmallNote = (props) => {
-	const url = `http://localhost:3001/api`
+	const url = process.env.REACT_APP_API_URL
 
 	function handleSelect(e) {
 		props.onSelect(props);
