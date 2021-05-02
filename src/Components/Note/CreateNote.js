@@ -72,8 +72,9 @@ const CreateNote = (props) => {
 		axios.post(`${url}/notes`, note , {headers})
 			.then((res) => {
 				const newNote = { 
-					_id: res.data.Note._id, content: res.data.Note.content, title: res.data.Note.title,
-					source: res.data.Note.source,category: res.data.Note.category,tags: res.data.Note.tags,					
+					_id: res.data.Note._id, content: res.data.Note.content, 
+					title: res.data.Note.title, source: res.data.Note.source, 
+					category: res.data.Note.category,tags: res.data.Note.tags,					
 					userId: res.data.Note.userId
 				}
 				setNote(newNote);

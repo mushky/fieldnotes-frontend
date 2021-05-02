@@ -97,16 +97,18 @@ const EditNote = (props) => {
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Title" />
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Type note here..." rows="5" cols="50" />
 				
+				<input className="note-form-tags" name="source" onChange={onHandleChange} value={note.source} placeholder={note.source} />
+
 				{ !isExtraInfo && 
 					<p className="extra-info-button" onClick={toggleExtraInfo}><i>Show Additional Info</i></p>
 				}
 				{ isExtraInfo && 
 					<p className="extra-info-button" onClick={toggleExtraInfo}><i>Hide Additional Info</i></p>
 				}
+
 				<br></br><br></br>
 				{ isExtraInfo && 
 					<div className="extra-info">
-						<input className="note-form-tags" name="source" onChange={onHandleChange} value={note.source} placeholder="source" />
 						<Hint className="hint-autocomplete" options={categories} allowTabFill >
 							<input className="note-form-categories" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
 						</Hint>
