@@ -669,6 +669,30 @@ a:hover, a:active { text-decoration: none; color: var(--main-green-color) }
   height: 30px;
 }
 
+.footer-text {
+  float: right;
+}
+
+.footer-login-circle-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color:rgb(1, 255, 107);
+  float: left;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.footer-logged-out-circle-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  float: left;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
 /* Animations */
 
 .hamburger-icon:focus, .hamburger-icon:hover {

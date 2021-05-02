@@ -4,8 +4,12 @@ const Footer = ({ currentUser }) => {
 
 	return(
 		<div className="footer">
-			{ currentUser !== undefined && <p>Logged in as {currentUser}</p> }
-			{ currentUser === null || currentUser === undefined && <p>Not logged in</p>}
+			{ (currentUser !== undefined) && 
+				<p><span className="footer-login-circle-indicator"></span>Logged in as {currentUser}</p> 
+			}
+			{ (currentUser === undefined) &&
+				<p><span className="footer-logged-out-circle-indicator"></span>Not logged in</p>
+			}
 		</div>
 	)
 }
