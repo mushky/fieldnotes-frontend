@@ -23,7 +23,7 @@ const NoteList = () => {
 		_id: "",
 		title: "",
 		content: "",
-		link: "",
+		source: "",
 		category: "",
 		tags: "",
 		userId: userValue[0],
@@ -73,7 +73,7 @@ const NoteList = () => {
 				_id: "0",
 				title: "Welcome to Field Notes",
 				content: "Login to get started!\n\nClick the + button in the Top Right to create a new Note.\n\nSearch your notes using the search bar.\n\nClick the Hamburger Icon in the Top Left for more options.",
-				link: "",
+				source: "",
 				category: "",
 				tags: "",
 				userId: userValue[0],
@@ -95,7 +95,7 @@ const NoteList = () => {
 				note.id = newNote._id
 				note.title = newNote.title;
 				note.content = newNote.content;
-				note.link = newNote.link;
+				note.source = newNote.source;
 				note.category = newNote.category;
 				note.tags = newNote.tags;
 
@@ -138,7 +138,7 @@ const NoteList = () => {
 			id: noteObject.id,
 			title: noteObject.title,
 			content: noteObject.content,
-			link: noteObject.link,
+			source: noteObject.source,
 			category: noteObject.category,
 			tags: noteObject.tags,
 			userId: noteObject.userId,
@@ -217,7 +217,7 @@ const NoteList = () => {
 					{ notes.length <= 0 && 
 						<SmallNote 
 							id={selectedNote.id} title={selectedNote.title} content={selectedNote.content} 
-							link={selectedNote.link} category={selectedNote.category} tags={selectedNote.tags} 
+							source={selectedNote.source} category={selectedNote.category} tags={selectedNote.tags} 
 							userId={selectedNote.userId} onSelect={selectNote} 
 						/>
 					}

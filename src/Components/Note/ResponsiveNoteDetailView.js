@@ -16,11 +16,10 @@ const ResponsiveNoteDetailView = ({ match }) => {
 
 	const [note, setNote] = useState({
 		id: id, title: "", content: "",
-		link: "", category: "", tags: ""
+		source: "", category: "", tags: ""
 	})
 
 	const fetchNote = async () => {
-		console.log(id);
 		setLoading(true);
 		const res = await axios.get(`${url}/notes/${id}`)
 		setNote(res.data.Note)
@@ -37,7 +36,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 		alert(`Note ${res.data.Note.title} moved to trash`);
 		setNote({ 
 			id: id, title: note.title, 
-			content: note.content, link: note.link, category: note.category, 
+			content: note.content, source: note.source, category: note.category, 
 			tags: note.tags, isTrash: true
 		});
 	}
@@ -47,7 +46,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 		alert(`Note ${res.data.Note.title} moved back to notes`);
 		setNote({ 
 			id: id, title: note.title, 
-			content: note.content, link: note.link, category: note.category, 
+			content: note.content, source: note.source, category: note.category, 
 			tags: note.tags, isTrash: false
 		});
 	}

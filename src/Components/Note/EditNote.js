@@ -13,7 +13,7 @@ const EditNote = (props) => {
 		id: props.id,
 		title: props.title,
 		content: props.content,
-		link: props.link,
+		source: props.source,
 		category: props.category,
 		tags: props.tags,
 		userId: userValue[0]
@@ -63,13 +63,12 @@ const EditNote = (props) => {
 					id: props.id,
 					content: res.data.updateNote.content,
 					title: res.data.updateNote.title,
-					link: res.data.updateNote.link,
+					source: res.data.updateNote.source,
 					category: res.data.updateNote.category,
 					tags: res.data.updateNote.tags,
 					userId: res.data.updateNote.userId
 				}
 				setNote(updatedNote);
-				console.log(updatedNote);
 				props.onUpdate(updatedNote);
 			}, (error) => {
 				console.log(error);
@@ -107,7 +106,7 @@ const EditNote = (props) => {
 				<br></br><br></br>
 				{ isExtraInfo && 
 					<div className="extra-info">
-						<input className="note-form-tags" name="link" onChange={onHandleChange} value={note.link} placeholder="Link" />
+						<input className="note-form-tags" name="source" onChange={onHandleChange} value={note.source} placeholder="source" />
 						<Hint className="hint-autocomplete" options={categories} allowTabFill >
 							<input className="note-form-categories" name="category" onChange={onHandleChange} value={note.category} placeholder="Category" />
 						</Hint>

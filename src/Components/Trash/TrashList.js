@@ -17,7 +17,7 @@ const TrashList = () => {
 		_id: "",
 		title: "",
 		content: "",
-		link: "",
+		source: "",
 		category: "",
 		tags: "",
 		userId: userValue[0],
@@ -47,7 +47,7 @@ const TrashList = () => {
 	const selectNote = (noteObject) => {
 		setSelectedNote({
 			id: noteObject.id, title: noteObject.title, content: noteObject.content,
-			link: noteObject.link, category: noteObject.category, tags: noteObject.tags,
+			source: noteObject.source, category: noteObject.category, tags: noteObject.tags,
 			userId: noteObject.userId
 		});
 
@@ -71,7 +71,7 @@ const TrashList = () => {
 						<div className="responsive-note-detail-view">
 							<SmallNote 
 								key={noteItem._id} id={noteItem._id} title={noteItem.title} 
-								content={noteItem.content} link={noteItem.link} category={noteItem.category}
+								content={noteItem.content} source={noteItem.source} category={noteItem.category}
 								tags={noteItem.tags} userId={noteItem.userId} isTrash={noteItem.isTrash} onSelect={selectNote}
 							/>
 
@@ -83,7 +83,7 @@ const TrashList = () => {
 						<div className="note-detail-view">
 							<SmallNote 
 								key={noteItem._id} id={noteItem._id} title={noteItem.title} 
-								content={noteItem.content} link={noteItem.link} category={noteItem.category}
+								content={noteItem.content} source={noteItem.source} category={noteItem.category}
 								tags={noteItem.tags} userId={noteItem.userId} isTrash={noteItem.isTrash} onSelect={selectNote}
 							/>
 
