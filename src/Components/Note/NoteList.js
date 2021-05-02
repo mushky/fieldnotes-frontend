@@ -231,7 +231,7 @@ const NoteList = () => {
 									<Link to={`/ResponsiveNoteDetailView/${noteItem._id}`}>
 										<SmallNote 
 											key={noteItem._id} id={noteItem._id} title={noteItem.title} 
-											content={noteItem.content} link={noteItem.link} category={noteItem.category}
+											content={noteItem.content} source={noteItem.source} category={noteItem.category}
 											tags={noteItem.tags} userId={noteItem.userId} isTrash={noteItem.isTrash} onSelect={selectNote}
 										/>
 									</Link>
@@ -242,7 +242,7 @@ const NoteList = () => {
 								<div className="note-detail-view">
 									<SmallNote 
 										key={noteItem._id} id={noteItem._id} title={noteItem.title} 
-										content={noteItem.content} link={noteItem.link} category={noteItem.category}
+										content={noteItem.content} source={noteItem.source} category={noteItem.category}
 										tags={noteItem.tags} userId={noteItem.userId} isTrash={noteItem.isTrash} onSelect={selectNote}
 									/>
 								</div>
@@ -260,7 +260,7 @@ const NoteList = () => {
 				{ !editMode &&
 					<NoteDetailView
 						className="note-detail" key={selectedNote.id} id={selectedNote.id} title={selectedNote.title} 
-						content={selectedNote.content} link={selectedNote.link} category={selectedNote.category} 
+						content={selectedNote.content} source={selectedNote.source} category={selectedNote.category} 
 						tags={selectedNote.tags} onDelete={deleteNote} onUpdate={onUpdate} onTrash={trashNote}
 					/>
 				}
