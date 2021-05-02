@@ -12,7 +12,7 @@ const SmallNote = (props) => {
 
 	function truncate(str) {
 		if (!str) return;
-		return str.length > 25 ? str.substring(0, 80) + "..." : str;
+		return str.length > 25 ? str.substring(0, 25) + "..." : str;
 	}
 
 	const moveOutOfTrash = async () => {
