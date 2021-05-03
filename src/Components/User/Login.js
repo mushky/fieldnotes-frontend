@@ -23,7 +23,7 @@ const Login = () => {
 		return(
 			<div className="login-loading">
 				<img className="skater-login-loading" src={SkaterMoving} alt="loading..." />
-				<h1 className="login-loading">Loading...</h1>
+				{/* <h1 className="login-loading">Loading...</h1> */}
 			</div>
 
 
