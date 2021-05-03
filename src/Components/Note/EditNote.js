@@ -79,7 +79,7 @@ const EditNote = (props) => {
 
 	const moveToTrash = async () => {
 		const res = await axios.put(`${url}/notes/intrash/${note.id}`)
-		alert(`Note ${res.data.Note.title} moved to trash`);
+		console.log(res);
 		setNote({ 
 			isTrash: true
 		});

@@ -7,7 +7,6 @@ const SmallNote = (props) => {
 
 	function handleSelect(e) {
 		props.onSelect(props);
-		console.log(props);
 	}
 
 	function truncate(str) {
@@ -17,7 +16,7 @@ const SmallNote = (props) => {
 
 	const moveOutOfTrash = async () => {
 		const res = await axios.put(`${url}/notes/outtrash/${props.id}`)
-		alert(`${res.data.Note.title} moved back to notes`);
+		console.log(res);
 	}
 
 	return(
