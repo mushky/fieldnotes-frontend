@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from '../../Context/UserContext';
 
+import SkaterMoving from '../../assets/SkaterMoving.gif';
+
 const Login = () => {
 	const url = `${process.env.REACT_APP_API_URL}/users/login`
 
@@ -18,7 +20,14 @@ const Login = () => {
 	const [loading, setLoading] = useState(false);
 
 	if (loading) {
-		return <h1 className="login-loading">Loading...</h1>
+		return(
+			<div>
+				<img className="skater-login-loading" src={SkaterMoving} alt="loading..." />
+				<h1 className="login-loading">Loading...</h1>
+			</div>
+
+
+		)
 	}
 
 	function handleChange(e) {
