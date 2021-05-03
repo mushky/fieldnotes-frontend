@@ -54,7 +54,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 	return(
 		<div className="responsive-note-detail-view">
 			<Link to="/">
-				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+				<svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
 					<path 
 						fill="#FFFFFF" 
 						d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .64-.23a1 1 0 0 0 .13-1.41L7.14 13H19a1 1 0 0 0 0-2z"/>
@@ -63,25 +63,26 @@ const ResponsiveNoteDetailView = ({ match }) => {
 			</Link>
 
 			{ loading && <h1>Loading...</h1> }
+			<div className="response-note-detail-view-container">	
+				<h2>{note.title}</h2>
+				{ note.isTrash &&
+					<p className="out-trash-button" onClick={moveOutOfTrash}>Undo</p>
+				}
 
-			<h2>{note.title}</h2>
-			{ note.isTrash &&
-				<p className="out-trash-button" onClick={moveOutOfTrash}>Undo</p>
-			}
+				<br></br>
 
-			<br></br>
-
-			<p>{note.content}</p>
-			<br></br>
-			<p>{note.source}</p>
-			<br></br>
-			<pre>{note.category}</pre>
-			<br></br>
-			<pre>{note.tags}</pre>
-			
-			{ !note.isTrash &&
-				<p className="delete-note-button" onClick={moveToTrash}>Move to Trash</p>
-			}
+				<p>{note.content}</p>
+				<br></br>
+				<p>{note.source}</p>
+				<br></br>
+				<pre>{note.category}</pre>
+				<br></br>
+				<pre>{note.tags}</pre>
+				
+				{ !note.isTrash &&
+					<p className="delete-note-button" onClick={moveToTrash}>Move to Trash</p>
+				}
+			</div>
 		</div>
 	)
 

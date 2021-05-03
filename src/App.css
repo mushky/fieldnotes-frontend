@@ -154,6 +154,7 @@ input {
   .back-link-create-note {
     display: none !important;
   }
+
   .responsive-note-detail-view {
     display: none !important;
   }
@@ -377,6 +378,11 @@ a:hover, a:active { text-decoration: none; color: var(--main-green-color) }
 .note-dots {
   float: right;
   margin-top: -50px;
+}
+
+.response-note-detail-view-container {
+  margin: 10px;
+  padding: 10px;
 }
 
 
