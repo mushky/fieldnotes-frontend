@@ -586,17 +586,18 @@ a:hover, a:active { text-decoration: none; color: var(--main-green-color) }
 }
 
 .skater-login-loading {
-  width: 49px;
-  height: 80px;
+  width: 98px;
+  height: 160px;
   text-align: center;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   position: absolute;
   position: absolute;
-  top: 40%;
-  left: 49.5%;
-  margin: -25px 0 0 -25px;
+  top: 35%;
+  left: 52%;
+  margin: -49px 0 0 -80px;
+
 }
 
 /* Category */
