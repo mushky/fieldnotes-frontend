@@ -21,7 +21,7 @@ const Login = () => {
 
 	if (loading) {
 		return(
-			<div>
+			<div className="login-loading">
 				<img className="skater-login-loading" src={SkaterMoving} alt="loading..." />
 				<h1 className="login-loading">Loading...</h1>
 			</div>
