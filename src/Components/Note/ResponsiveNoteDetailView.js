@@ -52,7 +52,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 	}
 
 	return(
-		<div>
+		<div className="responsive-note-detail-view">
 			<Link to="/">
 				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
 					<path 
