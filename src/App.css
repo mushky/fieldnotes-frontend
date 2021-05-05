@@ -607,7 +607,6 @@ a:hover, a:active { text-decoration: none; color: var(--main-green-color) }
 .skater-login-loading {
   width: 98px;
   height: 160px;
-  margin-top: -100px;
 }
 
 /* Category */
