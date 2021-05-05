@@ -41,7 +41,6 @@ const SideBarOpen = (props) => {
 						</svg>
 						<span className="sidebar-item-text">Note</span>
 					</Link>
-					{/* <Link to="/">Notes</Link> */}
 				</li>
 
 				<li className="sidebar-items-top">
@@ -87,8 +86,8 @@ const SideBarOpen = (props) => {
 							<path d="M600 0C268.629 0 0 268.629 0 600s268.629 600 600 600s600-268.629 600-600S931.371 0 600 0zm-93.091 224.341h186.182v57.422h217.09v105.688H289.819V281.763h217.09v-57.422zm-183.764 243.53h553.71v507.788h-553.71V467.871z" 
 							fill="#E0FFFF"/>
 						</svg>					
-					</Link>
 					<span className="sidebar-item-text">Trash</span>
+					</Link>
 				</li>
 
 				<hr></hr>
