@@ -15,6 +15,7 @@ const SmallNote = (props) => {
 	}
 
 	const moveOutOfTrash = async () => {
+		alert("Moving note back to notes")
 		const res = await axios.put(`${url}/notes/outtrash/${props.id}`)
 		console.log(res);
 	}
