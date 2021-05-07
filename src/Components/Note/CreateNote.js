@@ -13,7 +13,7 @@ import RichTextEditor from '../Misc/RichTextEditor';
 const CreateNote = (props) => {
 	const url = process.env.REACT_APP_API_URL
 
-	const { userValue } = useContext(UserContext);
+	const userId = localStorage.getItem("id");
 
 	const [note, setNote] = useState({
 		title: "",
@@ -21,7 +21,7 @@ const CreateNote = (props) => {
 		source: "",
 		category: "",
 		tags: "",
-		userId: userValue[0],
+		userId: userId,
 		isResponsive: props.isResponsive
 	});
 
@@ -32,7 +32,7 @@ const CreateNote = (props) => {
 
 	useEffect(() => {
 		const fetchCategories = async () => {
-			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
+			const res = await axios.get(`${url}/categories/user/${userId}`)
 
 			let objectArray = [];
 			for (let i = 0; i < res.data.category.length; i++) {
@@ -62,7 +62,7 @@ const CreateNote = (props) => {
 
 	function onHandleSubmit(e) {
 		e.preventDefault();
-		const token = userValue[3];
+		const token = localStorage.getItem("token");
 		const headers = {
 			"x-access-token": token
 		}
@@ -88,7 +88,7 @@ const CreateNote = (props) => {
 				setTimeout(() => {
 					setNote({ 
 						title: "", content: "", category: "", 
-						source: "", tags: "", userId: userValue[0] 
+						source: "", tags: "", userId: userId
 					})
 					setCategory('');
 				},100)

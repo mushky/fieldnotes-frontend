@@ -13,7 +13,6 @@ import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import axios from "axios";
 
 const NoteList = () => {
-	const { userValue } = useContext(UserContext);
 	const [notes, setNotes] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [editMode, setEditMode] = useState(false);
@@ -26,7 +25,7 @@ const NoteList = () => {
 		source: "",
 		category: "",
 		tags: "",
-		userId: userValue[0],
+		userId: localStorage.getItem("id"),
 		isTrash: ""
 	});
 
@@ -36,8 +35,8 @@ const NoteList = () => {
 	// For API
 	const url = process.env.REACT_APP_API_URL
 
-	const userId = userValue[0];
-	const token = userValue[3];
+	const userId = localStorage.getItem("id");
+	const token = localStorage.getItem("token");
 
 	const headers = {
 		"x-access-token": token
@@ -45,7 +44,7 @@ const NoteList = () => {
   
 	const fetchNotes = async () => {
 		setLoading(true);
-		const res = await axios.get(`${url}/notes/user/${userValue[0]}`)
+		const res = await axios.get(`${url}/notes/user/${userId}`)
 		setNotes(res.data.Note.filter(note => !note.isTrash))
 		setLoading(false);
 	}
@@ -76,7 +75,7 @@ const NoteList = () => {
 				source: "",
 				category: "",
 				tags: "",
-				userId: userValue[0],
+				userId: userId
 			})
 		}
 	},[]) // eslint-disable-line react-hooks/exhaustive-deps

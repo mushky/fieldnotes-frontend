@@ -99,8 +99,8 @@ const SideBarClosed = (props) => {
 					</li>
 
 					<li className="sidebar-items-bottom">
-						{ userValue.length > 1 && <Link to="/Logout"><svg className="svg-sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 8 8"><path d="M3 0v1h4v5H3v1h5V0H3zM2 2L0 3.5L2 5V4h4V3H2V2z" fill="#E0FFFF"/></svg></Link> }
-						{ userValue.length <= 0 && <Link to="/Login"><svg className="svg-sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 717 672"><path d="M391 672h195c37 0 68-13 92-38c24-24 39-56 39-92V151c0-36-15-68-39-92s-56-38-92-38H391v82h195c28 0 49 21 49 48v391c0 27-21 49-49 49H391v81zM0 269v156c0 18 15 33 33 33h182v123c0 11 5 20 15 25c4 1 9 1 11 1c7 0 13-2 18-7l235-235c9-9 8-27 0-37L259 94c-8-8-18-9-29-6c-10 5-15 13-15 24v124H33c-18 0-33 15-33 33z" fill="#E0FFFF"/></svg><span className="sidebar-item-text"></span></Link>}
+						{ localStorage.getItem("id") != null && <Link to="/Logout"><svg className="svg-sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 8 8"><path d="M3 0v1h4v5H3v1h5V0H3zM2 2L0 3.5L2 5V4h4V3H2V2z" fill="#E0FFFF"/></svg></Link> }
+						{ localStorage.getItem("id") == null && <Link to="/Login"><svg className="svg-sidebar-icon" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 717 672"><path d="M391 672h195c37 0 68-13 92-38c24-24 39-56 39-92V151c0-36-15-68-39-92s-56-38-92-38H391v82h195c28 0 49 21 49 48v391c0 27-21 49-49 49H391v81zM0 269v156c0 18 15 33 33 33h182v123c0 11 5 20 15 25c4 1 9 1 11 1c7 0 13-2 18-7l235-235c9-9 8-27 0-37L259 94c-8-8-18-9-29-6c-10 5-15 13-15 24v124H33c-18 0-33 15-33 33z" fill="#E0FFFF"/></svg><span className="sidebar-item-text"></span></Link>}
 
 					</li>
 

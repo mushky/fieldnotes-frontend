@@ -7,7 +7,8 @@ import axios from 'axios';
 
 const EditNote = (props) => {
 	const url = process.env.REACT_APP_API_URL
-	const { userValue } = useContext(UserContext);
+
+	const userId = localStorage.getItem("id");
 
 	const [note, setNote] = useState({
 		id: props.id,
@@ -16,14 +17,14 @@ const EditNote = (props) => {
 		source: props.source,
 		category: props.category,
 		tags: props.tags,
-		userId: userValue[0]
+		userId: userId
 	});
 
 	const [categories, setCategories] = useState([]);
 	const [isExtraInfo, setIsExtraInfo] = useState(false);
 
 	const getCategories = async () => {
-			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
+			const res = await axios.get(`${url}/categories/user/${userId}`)
 
 			let objectArray = [];
 			for (let i = 0; i < res.data.category.length; i++) {
@@ -52,7 +53,7 @@ const EditNote = (props) => {
 	function onHandleSubmit(e) {
 		e.preventDefault();
 
-		const token = userValue[3];
+		const token = localStorage.getItem("token");
 		const headers = {
 			"x-access-token": token
 		}

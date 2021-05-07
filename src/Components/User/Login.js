@@ -1,15 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import axios from 'axios';
-import { UserContext } from '../../Context/UserContext';
 
 import SkaterMoving from '../../assets/SkaterMoving.gif';
 
 const Login = () => {
 	const url = `${process.env.REACT_APP_API_URL}/users/login`
 
-	const { userValue, setUserValue } = useContext(UserContext);
 	const history = useHistory();
 
 	const [user, setUser] = useState({
@@ -47,13 +45,11 @@ const Login = () => {
 		axios.post(url,{
 			"username": user.username,
 			"password": user.password
-		}).then((res) => {
-			setUserValue([
-				res.data.existingUser._id,			// id
-				res.data.existingUser.email,		// email
-				res.data.existingUser.username,	// username
-				res.data.token									// token
-			])
+		}).then((res) => {			
+			localStorage.setItem('id', res.data.existingUser._id);
+			localStorage.setItem('email', res.data.existingUser.email);
+			localStorage.setItem('username', res.data.existingUser.username);
+			localStorage.setItem('token', res.data.token);
 			setTimeout(() => {
 				setLoading(false);
 				history.push("/");
@@ -74,7 +70,6 @@ const Login = () => {
 				<input className="login-form-username" onChange={handleChange} value={user.username} name="username" placeholder="username"></input><br></br>
 				<input className="login-form-password" onChange={handleChange} value={user.password} name="password" placeholder="********"></input><br></br>
 				<button className="login-button" onClick={onSubmit}>Login</button>
-				<p>{userValue}</p>
 			</form>
 
 		</div>
