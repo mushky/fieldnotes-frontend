@@ -8,8 +8,7 @@ import NoteAddIcon from '@material-ui/icons/NoteAdd';
 import Select from 'react-select'
 
 import axios from 'axios';
-
-import 'draft-js/dist/Draft.css';
+import RichTextEditor from '../Misc/RichTextEditor';
 
 const CreateNote = (props) => {
 	const url = process.env.REACT_APP_API_URL
@@ -28,6 +27,8 @@ const CreateNote = (props) => {
 
 	const [category, setCategory] = useState("");
 	const [categories, setCategories] = useState([]);
+
+	
 
 	useEffect(() => {
 		const fetchCategories = async () => {
@@ -106,7 +107,10 @@ const CreateNote = (props) => {
 					<br></br>
 				</Link>
 				<input className="note-form-input" name="title" onChange={onHandleChange} value={note.title} placeholder="Note Title" />
-				<hr></hr>
+				{/* <hr></hr> */}
+				{/* <div className="rich-text-editor">
+					<RichTextEditor onChange={onHandleChange} name="content" value={note.content}/>
+				</div> */}
 				<textarea className="note-form-textarea" name="content" onChange={onHandleChange} value={note.content} placeholder="Start typing here..." rows="5" cols="50" />
 				<Select className="note-select-button" onChange={handleSelect} options={categories} name="category" value={category}  placeholder="Category"/>
 				<input className="note-form-tags" name="source" onChange={onHandleChange} value={note.source} placeholder="Sources" />

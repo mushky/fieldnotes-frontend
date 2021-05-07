@@ -117,6 +117,7 @@ input {
   .notelist {
     flex-direction: column-reverse;
     margin-top: 10px;
+    overflow-y: scroll;
   }
 
   .right-container {
@@ -366,7 +367,7 @@ a:hover, a:active { text-decoration: none; color: var(--main-green-color) }
 
 .note-content {
   float: left;
-  margin-right: 50px;
+  /* margin-right: 50px; */
   width: 90%;
   height: 100%;
 }
@@ -377,7 +378,8 @@ a:hover, a:active { text-decoration: none; color: var(--main-green-color) }
 
 .note-dots {
   float: right;
-  margin-top: -50px;
+  width: 5%;
+  padding-top: 22px;
 }
 
 .response-note-detail-view-container {
@@ -779,4 +781,45 @@ a:hover, a:active { text-decoration: none; color: var(--main-green-color) }
   100% {
     transform: scaleX(100%)
   }
+}
+
+/* Draft js */
+
+.rich-text-editor {
+  margin-top: 10px;
+}
+
+div.DraftEditor-root {
+  border: 1px solid #1f1f1f;
+  background-color: #1f1f1f;
+  width: 100%;
+  overflow-y: auto;
+}
+
+div.DraftEditor-editorContainer,
+div.public-DraftEditor-content {
+  height: 100%;
+  color: white;
+  background-color: #1f1f1f;
+}
+
+div.RichEditor-styleButton {
+  color: white !important
+}
+
+div.RichEditor-controls {
+  color: white !important
+}
+
+div.RichEditor-activeButton {
+  color: white !important
+}
+
+div.RichEditor-root {
+  background-color: #1f1f1f;
+  border: #1f1f1f solid;
+}
+
+div.RichEditor-blockquote {
+  color: white !important;
 }
