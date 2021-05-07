@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../Context/UserContext';
 import { useHistory } from 'react-router-dom';
 
 const Logout = () => {
+	const { setUserValue } = useContext(UserContext);
 	const history = useHistory();
 
 	function onHandleSubmit(e) {
 		e.preventDefault();
 	
-		localStorage.setItem('id', "")
-		localStorage.setItem('email', "");
-		localStorage.setItem('username', "");
-		localStorage.setItem('token', "");
-
+		setUserValue([])
 		history.push("/login");
 	}
 

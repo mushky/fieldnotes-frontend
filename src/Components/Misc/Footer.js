@@ -4,15 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Footer = ({ currentUser }) => {
 
-	const username = localStorage.getItem("username");
-
 	return(
 		<div className="footer">
-			{ (username.length > 2) && 
-				<p><span className="footer-login-circle-indicator"></span>Logged in as {username}</p> 
+			{ (currentUser !== undefined) && 
+				<p><span className="footer-login-circle-indicator"></span>Logged in as {currentUser}</p> 
 			}
-			{ (username.length <= 0) &&
-				<p><span className="footer-logged-out-circle-indicator"></span><Link to={`/Login`}>Not logged in - <strong>Click to Login</strong></Link></p>
+			{ (currentUser === undefined) &&
+				<p><span className="footer-logged-out-circle-indicator"></span>Not logged in - <Link to="/Login">Login here</Link></p>
 			}
 		</div>
 	)

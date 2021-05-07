@@ -10,10 +10,11 @@ import Select from 'react-select'
 import axios from 'axios';
 import RichTextEditor from '../Misc/RichTextEditor';
 
+
 const CreateNote = (props) => {
 	const url = process.env.REACT_APP_API_URL
 
-	const userId = localStorage.getItem("id");
+	const { userValue } = useContext(UserContext);
 
 	const [note, setNote] = useState({
 		title: "",
@@ -21,7 +22,7 @@ const CreateNote = (props) => {
 		source: "",
 		category: "",
 		tags: "",
-		userId: userId,
+		userId: userValue[0],
 		isResponsive: props.isResponsive
 	});
 
@@ -32,7 +33,7 @@ const CreateNote = (props) => {
 
 	useEffect(() => {
 		const fetchCategories = async () => {
-			const res = await axios.get(`${url}/categories/user/${userId}`)
+			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
 
 			let objectArray = [];
 			for (let i = 0; i < res.data.category.length; i++) {
@@ -62,7 +63,7 @@ const CreateNote = (props) => {
 
 	function onHandleSubmit(e) {
 		e.preventDefault();
-		const token = localStorage.getItem("token");
+		const token = userValue[3];
 		const headers = {
 			"x-access-token": token
 		}
@@ -88,7 +89,7 @@ const CreateNote = (props) => {
 				setTimeout(() => {
 					setNote({ 
 						title: "", content: "", category: "", 
-						source: "", tags: "", userId: userId
+						source: "", tags: "", userId: userValue[0] 
 					})
 					setCategory('');
 				},100)
