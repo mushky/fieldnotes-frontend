@@ -59,6 +59,9 @@ const CreateCategory = (props) => {
 			<form className="category-input-form">
 
 				<input className="category-input-form" name="name" onChange={onHandleChange} value={category.name} placeholder="Category name" />
+
+				<br></br>
+				
 				<button className="add-category-button" onClick={onHandleSubmit}>Add</button>
 
 				<div>

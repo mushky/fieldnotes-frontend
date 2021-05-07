@@ -54,7 +54,7 @@ const CategoryList = (props) => {
 			<h2 className="category-title">Category List</h2>
 			
 			<CreateCategory addCategory={addCategory}/>
-
+			
 			<div className="category-list">
 				{categories.map((category) => {
 					return(
