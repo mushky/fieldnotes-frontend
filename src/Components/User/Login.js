@@ -23,8 +23,6 @@ const Login = () => {
 				<img className="skater-login-loading" src={SkaterMoving} alt="loading..." />
 				{/* <h1 className="login-loading">Loading...</h1> */}
 			</div>
-
-
 		)
 	}
 
@@ -74,8 +72,6 @@ const Login = () => {
 
 		</div>
 	)
-
 }
-
 
 export default Login;
