@@ -45,16 +45,16 @@ const NoteList = () => {
   
 	const fetchNotes = async () => {
 		setLoading(true);
-		const res = await axios.get(`${url}/notes/user/${userValue[0]}`)
-		setNotes(res.data.Note.filter(note => !note.isTrash))
-		setLoading(false);
+		const res = await axios.get(`${url}/notes/user/${userValue[0]}?page=1&size=100`)
+		setNotes(res.data.results.notes.filter(note => !note.isTrash))
+		setLoading(false);		
 	}
 
 	const fetchNotesBySearch = async () => {
 		setLoading(true);
-		const res = await axios.get(`${url}/notes/search?userId=${userId}&content=${content}`, {headers})
-		setNotes(res.data.Note.filter(note => !note.isTrash))
-		if (res.data.Note.length <= 0) {	
+		const res = await axios.get(`${url}/notes/search?userId=${userId}&content=${content}&page=1&size=100`, {headers})
+		setNotes(res.data.results.notes.filter(note => !note.isTrash))
+		if (res.data.results.notes.length <= 0) {	
 			setNotes([{
 				title: `Couldn't find any notes with that kind of content.`, 
 				content: `Content provided: ${content}`
@@ -154,7 +154,7 @@ const NoteList = () => {
 
 	// For Search
 	const handleSearchChange = (e) => {
-		setContent(e.target.value);	
+		setContent(e.target.value);
 	}
 
 	const onSearch = (e) => {

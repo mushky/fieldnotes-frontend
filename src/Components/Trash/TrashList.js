@@ -36,7 +36,7 @@ const TrashList = () => {
 	const fetchNotes = async () => {
 		setLoading(true);
 		const res = await axios.get(`${url}/notes/user/${userId}`, headers)
-		setNotes(res.data.Note.filter(note => note.isTrash))
+		setNotes(res.data.results.notes.filter(note => note.isTrash))
 		setLoading(false);
 	}
 
