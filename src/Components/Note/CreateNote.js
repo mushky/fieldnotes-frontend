@@ -8,8 +8,6 @@ import NoteAddIcon from '@material-ui/icons/NoteAdd';
 import Select from 'react-select'
 
 import axios from 'axios';
-import RichTextEditor from '../Misc/RichTextEditor';
-
 
 const CreateNote = (props) => {
 	const url = process.env.REACT_APP_API_URL

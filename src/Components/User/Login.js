@@ -23,10 +23,7 @@ const Login = () => {
 		return(
 			<div className="login-loading">
 				<img className="skater-login-loading" src={SkaterMoving} alt="loading..." />
-				{/* <h1 className="login-loading">Loading...</h1> */}
 			</div>
-
-
 		)
 	}
 
@@ -49,19 +46,16 @@ const Login = () => {
 			"password": user.password
 		}).then((res) => {
 			setUserValue([
-				res.data.existingUser._id,			// id
-				res.data.existingUser.email,		// email
-				res.data.existingUser.username,	// username
-				res.data.token									// token
+				res.data.existingUser._id, res.data.existingUser.email,
+				res.data.existingUser.username, res.data.token
 			])
 			setTimeout(() => {
-				setLoading(false);
-				history.push("/");
+				setLoading(false)
+				history.push("/")
 			})
 		}, (error) => {
 			setLoading(false);
-			console.log(error);
-			alert("Error with authentication " + error);
+			alert("Error with authentication " + error)
 		})
 	}
 

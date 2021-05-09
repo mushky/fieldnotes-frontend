@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import { UserContext } from '../../Context/UserContext';
@@ -9,29 +10,23 @@ import NoteDetailView from './NoteDetailView';
 import SideBar from '../Sidebar/SideBar';
 
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
+import SkaterMoving from '../../assets/SkaterMoving.gif';
 
 import axios from "axios";
 
+// TODO: Refactor Search section in html
 const NoteList = () => {
 	const { userValue } = useContext(UserContext);
 	const [notes, setNotes] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [editMode, setEditMode] = useState(false);
-
-	// The note currently selected by the user
-	const [selectedNote, setSelectedNote] = useState({
-		_id: "",
-		title: "",
-		content: "",
-		source: "",
-		category: "",
-		tags: "",
-		userId: userValue[0],
-		isTrash: ""
+	const [content, setContent] = useState(""); // For Search
+	const [selectedNote, setSelectedNote] = useState({ 	// The note currently selected by the user
+		_id: "", title: "", content: "", source: "",
+		category: "", tags: "", userId: userValue[0], isTrash: ""
 	});
 
-	// For Search
-	const [content, setContent] = useState("");
+	const welcomeNoteText = `Login to get started!\n\nClick the + button in the Top Right to create a new Note.\n\nSearch your notes using the search bar.\n\nClick the Hamburger Icon in the Top Left for more options.`
 
 	// For API
 	const url = process.env.REACT_APP_API_URL
@@ -60,30 +55,23 @@ const NoteList = () => {
 				content: `Content provided: ${content}`
 			}])
 		}
-
 		//setContent();
 		setLoading(false);
 	}
 
 	useEffect(() => {
 		fetchNotes();
-
 		if (notes.length <= 0) {
 			setSelectedNote({
-				_id: "0",
-				title: "Welcome to Field Notes",
-				content: "Login to get started!\n\nClick the + button in the Top Right to create a new Note.\n\nSearch your notes using the search bar.\n\nClick the Hamburger Icon in the Top Left for more options.",
-				source: "",
-				category: "",
-				tags: "",
-				userId: userValue[0],
+				_id: "0", title: "Welcome to Field Notes", content: welcomeNoteText,
+				source: "", category: "", tags: "", userId: userValue[0],
 			})
 		}
 	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	const addNote = (newNote) => {
     setNotes(prevNotes => {
-      return [newNote, ...prevNotes];
+      return [newNote, ...prevNotes]
     })
   }
 
@@ -92,16 +80,12 @@ const NoteList = () => {
 			if (notes[i]._id === newNote.id) {
 				let note = notes.filter((note) => note.id === newNote.id)
 
-				note.id = newNote._id
-				note.title = newNote.title;
-				note.content = newNote.content;
-				note.source = newNote.source;
-				note.category = newNote.category;
-				note.tags = newNote.tags;
+				note.id = newNote._id; note.title = newNote.title; note.content = newNote.content
+				note.source = newNote.source; note.category = newNote.category; note.tags = newNote.tags
 
 				notes[i] = note;
 
-				setSelectedNote(newNote);
+				setSelectedNote(newNote)
 				
 				return;
 			}
@@ -135,36 +119,38 @@ const NoteList = () => {
 
 	const selectNote = (noteObject) => {
 		setSelectedNote({
-			id: noteObject.id,
-			title: noteObject.title,
-			content: noteObject.content,
-			source: noteObject.source,
-			category: noteObject.category,
-			tags: noteObject.tags,
-			userId: noteObject.userId,
-			isTrash: noteObject.isTrash
+			id: noteObject.id, title: noteObject.title, content: noteObject.content,
+			source: noteObject.source, category: noteObject.category, tags: noteObject.tags,
+			userId: noteObject.userId, isTrash: noteObject.isTrash
 		});
-		console.log(noteObject)
-		setEditMode(false);
+		setEditMode(false)
 	}
 
 	const toggleEditMode = () => {
-		setEditMode(!editMode);
+		setEditMode(!editMode)
 	}
 
 	// For Search
 	const handleSearchChange = (e) => {
-		setContent(e.target.value);
+		setContent(e.target.value)
 	}
 
 	const onSearch = (e) => {
-		e.preventDefault();
+		e.preventDefault()
 		if (content === undefined || content === "") {
-			fetchNotes();
+			fetchNotes()
 		} else {
-			fetchNotesBySearch();
+			fetchNotesBySearch()
 		}
 	}
+
+	// if (loading) {
+	// 	return(
+	// 		<div className="login-loading">
+	// 			<img className="skater-login-loading" src={SkaterMoving} alt="loading..." />
+	// 		</div>
+	// 	)
+	// }
 
 	return(
 		<div className="container">
@@ -172,7 +158,6 @@ const NoteList = () => {
 			<SideBar />
 			
 			<div className="left-container">
-
 				<div className="search-fieldwrapper">
 					<input className="searchbar-input" 
 						name="search" 
@@ -209,11 +194,11 @@ const NoteList = () => {
 						</span>
 					</strong>
 				</div>
-				
-				{ loading && <h1>Loading...</h1> }
+
+				{/* { loading && <h1>Loading...</h1> } */}
+
 
 				<div className="notelist">
-
 					{ notes.length <= 0 && 
 						<SmallNote 
 							id={selectedNote.id} title={selectedNote.title} content={selectedNote.content} 
@@ -223,10 +208,8 @@ const NoteList = () => {
 					}
 					{notes.map((noteItem) => {
 						return(
-							<div>
-
+							<div>	
 								{/* Show on Mobile */}
-
 								<div className="responsive-note-detail-view">
 									<Link to={`/ResponsiveNoteDetailView/${noteItem._id}`}>
 										<SmallNote 
@@ -235,6 +218,8 @@ const NoteList = () => {
 											tags={noteItem.tags} userId={noteItem.userId} isTrash={noteItem.isTrash} onSelect={selectNote}
 										/>
 									</Link>
+									{ loading && <div className="login-loading"><img className="skater-login-loading" src={SkaterMoving} alt="loading..." /></div> }
+
 								</div>
 								
 								{/* Show on Desktop */}
@@ -246,6 +231,8 @@ const NoteList = () => {
 										tags={noteItem.tags} userId={noteItem.userId} isTrash={noteItem.isTrash} onSelect={selectNote}
 									/>
 								</div>
+								{ loading && <div className="login-loading"><img className="skater-login-loading" src={SkaterMoving} alt="loading..." /></div> }
+
 							</div>
 						)
 					})}

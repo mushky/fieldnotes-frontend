@@ -6,18 +6,17 @@ const SmallNote = (props) => {
 	const url = process.env.REACT_APP_API_URL
 
 	function handleSelect(e) {
-		props.onSelect(props);
+		props.onSelect(props)
 	}
 
 	function truncate(str) {
 		if (!str) return;
-		return str.length > 25 ? str.substring(0, 25) + "..." : str;
+		return str.length > 25 ? str.substring(0, 25) + "..." : str
 	}
 
 	const moveOutOfTrash = async () => {
 		alert("Moving note back to notes")
-		const res = await axios.put(`${url}/notes/outtrash/${props.id}`)
-		console.log(res);
+		await axios.put(`${url}/notes/outtrash/${props.id}`)
 	}
 
 	return(
@@ -37,9 +36,6 @@ const SmallNote = (props) => {
 						fill="#626262"/>
 				</svg>
 			</div>
-
-
-
 		</div>
 	)
 }

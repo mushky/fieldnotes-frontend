@@ -6,13 +6,13 @@ import { UserContext } from '../../Context/UserContext';
 const ResponsiveNoteDetailView = ({ match }) => {
 	const {
     params: { id },
-	} = match;
+	} = match
 
 	const url = process.env.REACT_APP_API_URL
 	
-	const { userValue } = useContext(UserContext);
+	const { userValue } = useContext(UserContext)
 
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(false)
 
 	const [note, setNote] = useState({
 		id: id, title: "", content: "",
@@ -23,7 +23,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 		setLoading(true);
 		const res = await axios.get(`${url}/notes/${id}`)
 		setNote(res.data.Note)
-		setLoading(false);
+		setLoading(false)
 	}
 
 	useEffect(() => {
@@ -32,7 +32,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 	},[])
 
 	const moveToTrash = async () => {
-		const res = await axios.put(`${url}/notes/intrash/${id}`)
+		await axios.put(`${url}/notes/intrash/${id}`)
 		alert(`Note Moved to trash`);
 		setNote({ 
 			id: id, title: note.title, 
@@ -42,7 +42,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 	}
 
 	const moveOutOfTrash = async () => {
-		const res = await axios.put(`${url}/notes/outtrash/${id}`)
+		await axios.put(`${url}/notes/outtrash/${id}`)
 		alert(`Note moved back to notes`);
 		setNote({ 
 			id: id, title: note.title, 
