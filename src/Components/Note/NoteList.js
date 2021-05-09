@@ -61,9 +61,14 @@ const NoteList = () => {
 
 	useEffect(() => {
 		fetchNotes();
-		if (notes.length <= 0) {
+		if (notes.length <= 0 && userId == undefined) {
 			setSelectedNote({
 				_id: "0", title: "Welcome to Field Notes", content: welcomeNoteText,
+				source: "", category: "", tags: "", userId: userValue[0],
+			})
+		} else {
+			setSelectedNote({
+				_id: "0", title: "Welcome Back", content: "Get back to it.",
 				source: "", category: "", tags: "", userId: userValue[0],
 			})
 		}
@@ -144,14 +149,6 @@ const NoteList = () => {
 		}
 	}
 
-	// if (loading) {
-	// 	return(
-	// 		<div className="login-loading">
-	// 			<img className="skater-login-loading" src={SkaterMoving} alt="loading..." />
-	// 		</div>
-	// 	)
-	// }
-
 	return(
 		<div className="container">
 			
@@ -195,7 +192,7 @@ const NoteList = () => {
 					</strong>
 				</div>
 
-				{/* { loading && <h1>Loading...</h1> } */}
+				{ loading && <h1>Loading...</h1> }
 
 
 				<div className="notelist">
@@ -231,7 +228,6 @@ const NoteList = () => {
 										tags={noteItem.tags} userId={noteItem.userId} isTrash={noteItem.isTrash} onSelect={selectNote}
 									/>
 								</div>
-								{ loading && <div className="login-loading"><img className="skater-login-loading" src={SkaterMoving} alt="loading..." /></div> }
 
 							</div>
 						)
