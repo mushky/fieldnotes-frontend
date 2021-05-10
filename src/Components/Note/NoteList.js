@@ -55,7 +55,6 @@ const NoteList = () => {
 				content: `Content provided: ${content}`
 			}])
 		}
-		//setContent();
 		setLoading(false);
 	}
 

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NoteList from './Components/Note/NoteList'
 import CreateNote from './Components/Note/CreateNote';
 import ResponsiveNoteDetailView from './Components/Note/ResponsiveNoteDetailView';
-
+import NoteDetailView from './Components/Note/NoteDetailView';
 import CategoryList from './Components/Categories/CategoryList';
 import TrashList from './Components/Trash/TrashList';
 import Login from './Components/User/Login';
@@ -26,6 +26,7 @@ function App() {
               <Route path="/" exact component={NoteList} />
               <Route path="/Categories" exact component={CategoryList} />
               <Route path="/AddNote" exact component={CreateNote} />
+              <Route path="/NoteDetailView" exact component={NoteDetailView} />
               <Route path="/ResponsiveNoteDetailView/:id" exact component={ResponsiveNoteDetailView} />
               <Route path="/Trash" exact component={TrashList} />
               <Route path="/Login" exact component={Login} />
