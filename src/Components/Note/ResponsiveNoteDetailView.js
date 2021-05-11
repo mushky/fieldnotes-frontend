@@ -52,7 +52,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 	},[])
 
 	const moveToTrash = async () => {
-		await axios.put(`${url}/notes/intrash/${id}`, {headers})
+		await axios.put(`${url}/notes/intrash/${id}`, { headers })
 		alert(`Note Moved to trash`);
 		setNote({ 
 			id: id, title: note.title, 
@@ -62,7 +62,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 	}
 
 	const moveOutOfTrash = async () => {
-		await axios.put(`${url}/notes/outtrash/${id}`, {headers})
+		await axios.put(`${url}/notes/outtrash/${id}`, { headers })
 		alert(`Note moved back to notes`);
 		setNote({ 
 			id: id, title: note.title, 
