@@ -21,7 +21,7 @@ const NoteList = () => {
 	const [loading, setLoading] = useState(false);
 	const [editMode, setEditMode] = useState(false);
 	const [content, setContent] = useState(""); // For Search
-	const [selectedNote, setSelectedNote] = useState({ 	// The note currently selected by the user
+	const [selectedNote, setSelectedNote] = useState({ 
 		_id: "", title: "", content: "", source: "",
 		category: "", tags: "", userId: userValue[0], isTrash: ""
 	});
@@ -40,7 +40,7 @@ const NoteList = () => {
   
 	const fetchNotes = async () => {
 		setLoading(true);
-		const res = await axios.get(`${url}/notes/user/${userValue[0]}?page=1&size=100`)
+		const res = await axios.get(`${url}/notes/user/${userValue[0]}?page=1&size=100`, {headers})
 		setNotes(res.data.results.notes.filter(note => !note.isTrash))
 		setLoading(false);		
 	}

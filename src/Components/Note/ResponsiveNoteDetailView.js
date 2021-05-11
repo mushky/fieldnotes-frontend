@@ -30,12 +30,12 @@ const ResponsiveNoteDetailView = ({ match }) => {
 
 	const fetchNote = async () => {
 		setLoading(true);
-		const res = await axios.get(`${url}/notes/${id}`)
+		const res = await axios.get(`${url}/notes/${id}`, {headers})
 		setNote(res.data.Note)
 		setLoading(false)
 	}
 	const getCategories = async () => {
-		const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
+		const res = await axios.get(`${url}/categories/user/${userValue[0]}`, {headers})
 
 		let objectArray = [];
 		for (let i = 0; i < res.data.category.length; i++) {
@@ -52,7 +52,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 	},[])
 
 	const moveToTrash = async () => {
-		await axios.put(`${url}/notes/intrash/${id}`)
+		await axios.put(`${url}/notes/intrash/${id}`, {headers})
 		alert(`Note Moved to trash`);
 		setNote({ 
 			id: id, title: note.title, 
@@ -62,7 +62,7 @@ const ResponsiveNoteDetailView = ({ match }) => {
 	}
 
 	const moveOutOfTrash = async () => {
-		await axios.put(`${url}/notes/outtrash/${id}`)
+		await axios.put(`${url}/notes/outtrash/${id}`, {headers})
 		alert(`Note moved back to notes`);
 		setNote({ 
 			id: id, title: note.title, 

@@ -28,11 +28,15 @@ const CreateNote = (props) => {
 	const [category, setCategory] = useState("");
 	const [categories, setCategories] = useState([]);
 
-	
+	const token = userValue[3];
+
+	const headers = {
+		"x-access-token": token
+	}	
 
 	useEffect(() => {
 		const fetchCategories = async () => {
-			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
+			const res = await axios.get(`${url}/categories/user/${userValue[0]}`, {headers})
 
 			let objectArray = [];
 			for (let i = 0; i < res.data.category.length; i++) {

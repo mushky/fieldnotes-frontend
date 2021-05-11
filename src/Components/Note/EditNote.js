@@ -23,8 +23,14 @@ const EditNote = (props) => {
 	const [categories, setCategories] = useState([]);
 	const [isExtraInfo, setIsExtraInfo] = useState(false);
 
+	const token = userValue[3];
+
+	const headers = {
+		"x-access-token": token
+	}
+
 	const getCategories = async () => {
-			const res = await axios.get(`${url}/categories/user/${userValue[0]}`)
+			const res = await axios.get(`${url}/categories/user/${userValue[0]}`, {headers})
 
 			let objectArray = [];
 			for (let i = 0; i < res.data.category.length; i++) {
@@ -53,11 +59,6 @@ const EditNote = (props) => {
 	function onHandleSubmit(e) {
 		e.preventDefault();
 
-		const token = userValue[3];
-		const headers = {
-			"x-access-token": token
-		}
-
 		axios.put(`${url}/notes/${props.id}`, note , {headers})
 			.then((res) => {
 				const updatedNote = {
@@ -79,7 +80,7 @@ const EditNote = (props) => {
 	}
 
 	const moveToTrash = async () => {
-		const res = await axios.put(`${url}/notes/intrash/${note.id}`)
+		const res = await axios.put(`${url}/notes/intrash/${note.id}`, {headers})
 		console.log(res);
 		setNote({ 
 			isTrash: true
