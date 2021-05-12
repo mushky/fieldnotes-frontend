@@ -1,6 +1,6 @@
 # Field Notes Frontend
 
-Foobar is a Python library for dealing with word pluralization.
+Fieldnotes is a mobile friendly note taking application that allows users to organize their notes. 
 
 ## Installation
 
