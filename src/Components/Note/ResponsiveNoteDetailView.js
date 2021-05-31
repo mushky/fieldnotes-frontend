@@ -42,7 +42,6 @@ const ResponsiveNoteDetailView = ({ match }) => {
 			objectArray.push(res.data.category[i].name)
 		}
 		setCategories(objectArray);
-	
 }
 
 	useEffect(() => {

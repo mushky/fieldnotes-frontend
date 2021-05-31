@@ -60,7 +60,7 @@ const NoteList = () => {
 
 	useEffect(() => {
 		fetchNotes();
-		if (notes.length <= 0 && userId == undefined) {
+		if (notes.length <= 0 && userId === undefined) {
 			setSelectedNote({
 				_id: "0", title: "Welcome to Field Notes", content: welcomeNoteText,
 				source: "", category: "", tags: "", userId: userValue[0],

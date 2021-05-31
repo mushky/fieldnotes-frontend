@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 
-
 const SearchBar = (props) => {
   // TODO: Refactor to replace Searchbar in NoteList
   const handleSearchChange = (e) => {
